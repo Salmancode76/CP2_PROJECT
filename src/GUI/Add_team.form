@@ -88,7 +88,7 @@
               <Color blue="ff" green="7f" red="0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Add Team"/>
+            <Property name="text" type="java.lang.String" value="Add Teams"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
