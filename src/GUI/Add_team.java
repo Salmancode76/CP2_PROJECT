@@ -49,7 +49,7 @@ public class Add_team extends javax.swing.JFrame {
         Title2.setFont(new java.awt.Font("Gadugi", 0, 90)); // NOI18N
         Title2.setForeground(new java.awt.Color(0, 127, 255));
         Title2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title2.setText("Add Teams");
+        Title2.setText("Add Team");
         Title2.setToolTipText("");
         Title2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
