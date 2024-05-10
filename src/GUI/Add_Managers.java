@@ -8,14 +8,12 @@ package GUI;
  *
  * @author salma
  */
-
-import java.util.Date;
-public class Add_Players extends javax.swing.JFrame {
+public class Add_Managers extends javax.swing.JFrame {
 
     /**
-     * Creates new form Add_Players
+     * Creates new form Add_Managers
      */
-    public Add_Players() {
+    public Add_Managers() {
         initComponents();
     }
 
@@ -49,13 +47,13 @@ public class Add_Players extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
         Field5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField10 = new javax.swing.JTextField();
         Field7 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
         Field6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jTextField11 = new javax.swing.JTextField();
         jButton19 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,7 +64,7 @@ public class Add_Players extends javax.swing.JFrame {
         Title2.setFont(new java.awt.Font("Gadugi", 0, 90)); // NOI18N
         Title2.setForeground(new java.awt.Color(0, 127, 255));
         Title2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title2.setText("Add Players");
+        Title2.setText("Add Managers");
         Title2.setToolTipText("");
         Title2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -221,14 +219,7 @@ public class Add_Players extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 127, 255));
-        jLabel6.setText("Is Captain:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
+        jLabel6.setText("Enter Bonus Percentage:");
 
         javax.swing.GroupLayout Field5Layout = new javax.swing.GroupLayout(Field5);
         Field5.setLayout(Field5Layout);
@@ -237,8 +228,8 @@ public class Add_Players extends javax.swing.JFrame {
             .addGroup(Field5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(177, 177, 177)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
+                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Field5Layout.setVerticalGroup(
             Field5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,7 +237,7 @@ public class Add_Players extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Field5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -270,9 +261,9 @@ public class Add_Players extends javax.swing.JFrame {
             .addGroup(Field7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(165, 165, 165)
+                .addGap(225, 225, 225)
                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
+                .addContainerGap())
         );
         Field7Layout.setVerticalGroup(
             Field7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,14 +279,7 @@ public class Add_Players extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 127, 255));
-        jLabel7.setText("Enter Postion:");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
+        jLabel7.setText("Enter Qualifications:");
 
         javax.swing.GroupLayout Field6Layout = new javax.swing.GroupLayout(Field6);
         Field6.setLayout(Field6Layout);
@@ -304,9 +288,8 @@ public class Add_Players extends javax.swing.JFrame {
             .addGroup(Field6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(146, 146, 146)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+                .addGap(93, 93, 93)
+                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Field6Layout.setVerticalGroup(
             Field6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,7 +297,7 @@ public class Add_Players extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Field6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -352,7 +335,7 @@ public class Add_Players extends javax.swing.JFrame {
                         .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
         Main_panel2Layout.setVerticalGroup(
             Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,7 +386,7 @@ public class Add_Players extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 975, Short.MAX_VALUE)
+            .addGap(0, 1082, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -411,7 +394,7 @@ public class Add_Players extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1254, Short.MAX_VALUE)
+            .addGap(0, 1193, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -425,14 +408,6 @@ public class Add_Players extends javax.swing.JFrame {
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton18ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
@@ -459,20 +434,20 @@ public class Add_Players extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Add_Players.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Add_Managers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Add_Players.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Add_Managers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Add_Players.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Add_Managers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Add_Players.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Add_Managers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Add_Players().setVisible(true);
+                new Add_Managers().setVisible(true);
             }
         });
     }
@@ -486,26 +461,10 @@ public class Add_Players extends javax.swing.JFrame {
     private javax.swing.JPanel Field5;
     private javax.swing.JPanel Field6;
     private javax.swing.JPanel Field7;
-    private javax.swing.JPanel Main_panel;
-    private javax.swing.JPanel Main_panel1;
     private javax.swing.JPanel Main_panel2;
-    private javax.swing.JLabel Title;
-    private javax.swing.JLabel Title1;
     private javax.swing.JLabel Title2;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
@@ -516,9 +475,9 @@ public class Add_Players extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
