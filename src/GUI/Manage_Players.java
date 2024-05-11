@@ -26,147 +26,147 @@ public class Manage_Players extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        Title = new javax.swing.JLabel();
-        Main_panel = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
+        managePlayersPanel = new javax.swing.JPanel();
+        managePlayersLabel = new javax.swing.JLabel();
+        managePlayersMenuPanel = new javax.swing.JPanel();
+        addBtn = new javax.swing.JButton();
+        goBackBtn = new javax.swing.JButton();
+        editBtn = new javax.swing.JButton();
+        transferBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        managePlayersPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        Title.setBackground(new java.awt.Color(255, 255, 255));
-        Title.setFont(new java.awt.Font("Gadugi", 0, 90)); // NOI18N
-        Title.setForeground(new java.awt.Color(0, 127, 255));
-        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title.setText("Manage Players");
-        Title.setToolTipText("");
-        Title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        managePlayersLabel.setBackground(new java.awt.Color(255, 255, 255));
+        managePlayersLabel.setFont(new java.awt.Font("Gadugi", 0, 90)); // NOI18N
+        managePlayersLabel.setForeground(new java.awt.Color(0, 127, 255));
+        managePlayersLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        managePlayersLabel.setText("Manage Players");
+        managePlayersLabel.setToolTipText("");
+        managePlayersLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Main_panel.setBackground(new java.awt.Color(255, 255, 255));
-        Main_panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 10, true));
+        managePlayersMenuPanel.setBackground(new java.awt.Color(255, 255, 255));
+        managePlayersMenuPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 10, true));
 
-        jButton7.setBackground(new java.awt.Color(211, 211, 211));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(0, 127, 255));
-        jButton7.setText("Add Player");
-        jButton7.setToolTipText("");
-        jButton7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton7.setPreferredSize(new java.awt.Dimension(175, 51));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        addBtn.setBackground(new java.awt.Color(211, 211, 211));
+        addBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        addBtn.setForeground(new java.awt.Color(0, 127, 255));
+        addBtn.setText("Add Player");
+        addBtn.setToolTipText("");
+        addBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        addBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addBtn.setPreferredSize(new java.awt.Dimension(175, 51));
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                addBtnActionPerformed(evt);
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(211, 211, 211));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 127, 255));
-        jButton8.setText("Go Back");
-        jButton8.setToolTipText("");
-        jButton8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.setPreferredSize(new java.awt.Dimension(231, 51));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        goBackBtn.setBackground(new java.awt.Color(211, 211, 211));
+        goBackBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        goBackBtn.setForeground(new java.awt.Color(0, 127, 255));
+        goBackBtn.setText("Go Back");
+        goBackBtn.setToolTipText("");
+        goBackBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        goBackBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        goBackBtn.setPreferredSize(new java.awt.Dimension(231, 51));
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                goBackBtnActionPerformed(evt);
             }
         });
 
-        jButton9.setBackground(new java.awt.Color(211, 211, 211));
-        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(0, 127, 255));
-        jButton9.setText("Edit Player");
-        jButton9.setToolTipText("");
-        jButton9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        editBtn.setBackground(new java.awt.Color(211, 211, 211));
+        editBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        editBtn.setForeground(new java.awt.Color(0, 127, 255));
+        editBtn.setText("Edit Player");
+        editBtn.setToolTipText("");
+        editBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        editBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                editBtnActionPerformed(evt);
             }
         });
 
-        jButton13.setBackground(new java.awt.Color(211, 211, 211));
-        jButton13.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(0, 127, 255));
-        jButton13.setText("Transfer Player");
-        jButton13.setToolTipText("");
-        jButton13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        transferBtn.setBackground(new java.awt.Color(211, 211, 211));
+        transferBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        transferBtn.setForeground(new java.awt.Color(0, 127, 255));
+        transferBtn.setText("Transfer Player");
+        transferBtn.setToolTipText("");
+        transferBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        transferBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        transferBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                transferBtnActionPerformed(evt);
             }
         });
 
-        jButton14.setBackground(new java.awt.Color(211, 211, 211));
-        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton14.setForeground(new java.awt.Color(0, 127, 255));
-        jButton14.setText("Delete Player");
-        jButton14.setToolTipText("");
-        jButton14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        deleteBtn.setBackground(new java.awt.Color(211, 211, 211));
+        deleteBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        deleteBtn.setForeground(new java.awt.Color(0, 127, 255));
+        deleteBtn.setText("Delete Player");
+        deleteBtn.setToolTipText("");
+        deleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        deleteBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                deleteBtnActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout Main_panelLayout = new javax.swing.GroupLayout(Main_panel);
-        Main_panel.setLayout(Main_panelLayout);
-        Main_panelLayout.setHorizontalGroup(
-            Main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Main_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout managePlayersMenuPanelLayout = new javax.swing.GroupLayout(managePlayersMenuPanel);
+        managePlayersMenuPanel.setLayout(managePlayersMenuPanelLayout);
+        managePlayersMenuPanelLayout.setHorizontalGroup(
+            managePlayersMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(managePlayersMenuPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(Main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Main_panelLayout.createSequentialGroup()
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(managePlayersMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(managePlayersMenuPanelLayout.createSequentialGroup()
+                        .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(Main_panelLayout.createSequentialGroup()
-                        .addGroup(Main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
-                            .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(managePlayersMenuPanelLayout.createSequentialGroup()
+                        .addGroup(managePlayersMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(transferBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+                            .addComponent(deleteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(22, 22, 22))))
         );
-        Main_panelLayout.setVerticalGroup(
-            Main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Main_panelLayout.createSequentialGroup()
+        managePlayersMenuPanelLayout.setVerticalGroup(
+            managePlayersMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(managePlayersMenuPanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
-                .addComponent(jButton9)
+                .addComponent(editBtn)
                 .addGap(21, 21, 21)
-                .addComponent(jButton13)
+                .addComponent(transferBtn)
                 .addGap(21, 21, 21)
-                .addComponent(jButton14)
+                .addComponent(deleteBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout managePlayersPanelLayout = new javax.swing.GroupLayout(managePlayersPanel);
+        managePlayersPanel.setLayout(managePlayersPanelLayout);
+        managePlayersPanelLayout.setHorizontalGroup(
+            managePlayersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(managePlayersLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(managePlayersPanelLayout.createSequentialGroup()
                 .addGap(114, 114, 114)
-                .addComponent(Main_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(managePlayersMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(113, 113, 113))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+        managePlayersPanelLayout.setVerticalGroup(
+            managePlayersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(managePlayersPanelLayout.createSequentialGroup()
+                .addComponent(managePlayersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Main_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(managePlayersMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(448, Short.MAX_VALUE))
         );
 
@@ -178,7 +178,7 @@ public class Manage_Players extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(managePlayersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
         );
         layout.setVerticalGroup(
@@ -187,32 +187,32 @@ public class Manage_Players extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(managePlayersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_addBtnActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_editBtnActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+    private void transferBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+    }//GEN-LAST:event_transferBtnActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_goBackBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,13 +250,13 @@ public class Manage_Players extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Main_panel;
-    private javax.swing.JLabel Title;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton addBtn;
+    private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton editBtn;
+    private javax.swing.JButton goBackBtn;
+    private javax.swing.JLabel managePlayersLabel;
+    private javax.swing.JPanel managePlayersMenuPanel;
+    private javax.swing.JPanel managePlayersPanel;
+    private javax.swing.JButton transferBtn;
     // End of variables declaration//GEN-END:variables
 }

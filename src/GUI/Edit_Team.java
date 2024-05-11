@@ -26,40 +26,40 @@ public class Edit_Team extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        Title2 = new javax.swing.JLabel();
-        Main_panel2 = new javax.swing.JPanel();
+        editTeamDetailsPanel = new javax.swing.JPanel();
+        editTeamDetailsLabel = new javax.swing.JLabel();
+        editTeamDetailsInputPanel = new javax.swing.JPanel();
         Field = new javax.swing.JPanel();
         Field1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        tNameLabel = new javax.swing.JLabel();
+        tNameTxt = new javax.swing.JTextField();
         Field2 = new javax.swing.JPanel();
         Field3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        stadiumLabel = new javax.swing.JLabel();
+        stadiumTxt = new javax.swing.JTextField();
         Field4 = new javax.swing.JPanel();
         Field5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        stadiumCapacityLabel = new javax.swing.JLabel();
         Field7 = new javax.swing.JPanel();
         Field6 = new javax.swing.JPanel();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jTextField9 = new javax.swing.JTextField();
+        goBackBtn = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
+        stadiumCapacityTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        editTeamDetailsPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        Title2.setBackground(new java.awt.Color(255, 255, 255));
-        Title2.setFont(new java.awt.Font("Gadugi", 0, 90)); // NOI18N
-        Title2.setForeground(new java.awt.Color(0, 127, 255));
-        Title2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title2.setText("Edit Team Details");
-        Title2.setToolTipText("");
-        Title2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        editTeamDetailsLabel.setBackground(new java.awt.Color(255, 255, 255));
+        editTeamDetailsLabel.setFont(new java.awt.Font("Gadugi", 0, 90)); // NOI18N
+        editTeamDetailsLabel.setForeground(new java.awt.Color(0, 127, 255));
+        editTeamDetailsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        editTeamDetailsLabel.setText("Edit Team Details");
+        editTeamDetailsLabel.setToolTipText("");
+        editTeamDetailsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Main_panel2.setBackground(new java.awt.Color(255, 255, 255));
-        Main_panel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 10, true));
+        editTeamDetailsInputPanel.setBackground(new java.awt.Color(255, 255, 255));
+        editTeamDetailsInputPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 10, true));
 
         Field.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -76,9 +76,9 @@ public class Edit_Team extends javax.swing.JFrame {
 
         Field1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 127, 255));
-        jLabel1.setText("Enter Team Name:");
+        tNameLabel.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
+        tNameLabel.setForeground(new java.awt.Color(0, 127, 255));
+        tNameLabel.setText("Enter Team Name:");
 
         javax.swing.GroupLayout Field1Layout = new javax.swing.GroupLayout(Field1);
         Field1.setLayout(Field1Layout);
@@ -86,9 +86,9 @@ public class Edit_Team extends javax.swing.JFrame {
             Field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Field1Layout.createSequentialGroup()
                 .addGap(68, 68, 68)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+                .addComponent(tNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
                 .addGap(6, 6, 6)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         Field1Layout.setVerticalGroup(
@@ -97,9 +97,9 @@ public class Edit_Team extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(Field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Field1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(tNameLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField7)))
+                    .addComponent(tNameTxt)))
         );
 
         Field2.setBackground(new java.awt.Color(255, 255, 255));
@@ -117,13 +117,13 @@ public class Edit_Team extends javax.swing.JFrame {
 
         Field3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 127, 255));
-        jLabel2.setText("Enter Stadium Name:");
+        stadiumLabel.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
+        stadiumLabel.setForeground(new java.awt.Color(0, 127, 255));
+        stadiumLabel.setText("Enter Stadium Name:");
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        stadiumTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                stadiumTxtActionPerformed(evt);
             }
         });
 
@@ -133,9 +133,9 @@ public class Edit_Team extends javax.swing.JFrame {
             Field3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Field3Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addComponent(jLabel2)
+                .addComponent(stadiumLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(stadiumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         Field3Layout.setVerticalGroup(
@@ -143,8 +143,8 @@ public class Edit_Team extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Field3Layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(Field3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(stadiumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stadiumLabel))
                 .addContainerGap())
         );
 
@@ -163,9 +163,9 @@ public class Edit_Team extends javax.swing.JFrame {
 
         Field5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 127, 255));
-        jLabel3.setText("Enter Stadium Capacity:");
+        stadiumCapacityLabel.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
+        stadiumCapacityLabel.setForeground(new java.awt.Color(0, 127, 255));
+        stadiumCapacityLabel.setText("Enter Stadium Capacity:");
 
         javax.swing.GroupLayout Field5Layout = new javax.swing.GroupLayout(Field5);
         Field5.setLayout(Field5Layout);
@@ -173,13 +173,13 @@ public class Edit_Team extends javax.swing.JFrame {
             Field5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Field5Layout.createSequentialGroup()
                 .addGap(68, 68, 68)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(stadiumCapacityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         Field5Layout.setVerticalGroup(
             Field5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Field5Layout.createSequentialGroup()
-                .addComponent(jLabel3)
+                .addComponent(stadiumCapacityLabel)
                 .addGap(0, 41, Short.MAX_VALUE))
         );
 
@@ -198,31 +198,31 @@ public class Edit_Team extends javax.swing.JFrame {
 
         Field6.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton18.setBackground(new java.awt.Color(211, 211, 211));
-        jButton18.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton18.setForeground(new java.awt.Color(0, 127, 255));
-        jButton18.setText("Go Back");
-        jButton18.setToolTipText("");
-        jButton18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton18.setPreferredSize(new java.awt.Dimension(231, 51));
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
+        goBackBtn.setBackground(new java.awt.Color(211, 211, 211));
+        goBackBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        goBackBtn.setForeground(new java.awt.Color(0, 127, 255));
+        goBackBtn.setText("Go Back");
+        goBackBtn.setToolTipText("");
+        goBackBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        goBackBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        goBackBtn.setPreferredSize(new java.awt.Dimension(231, 51));
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
+                goBackBtnActionPerformed(evt);
             }
         });
 
-        jButton19.setBackground(new java.awt.Color(211, 211, 211));
-        jButton19.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton19.setForeground(new java.awt.Color(0, 127, 255));
-        jButton19.setText("Save");
-        jButton19.setToolTipText("");
-        jButton19.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton19.setPreferredSize(new java.awt.Dimension(231, 51));
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
+        saveBtn.setBackground(new java.awt.Color(211, 211, 211));
+        saveBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        saveBtn.setForeground(new java.awt.Color(0, 127, 255));
+        saveBtn.setText("Save");
+        saveBtn.setToolTipText("");
+        saveBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        saveBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveBtn.setPreferredSize(new java.awt.Dimension(231, 51));
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
+                saveBtnActionPerformed(evt);
             }
         });
 
@@ -232,9 +232,9 @@ public class Edit_Team extends javax.swing.JFrame {
             Field6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Field6Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Field6Layout.setVerticalGroup(
@@ -242,22 +242,22 @@ public class Edit_Team extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Field6Layout.createSequentialGroup()
                 .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(Field6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout Main_panel2Layout = new javax.swing.GroupLayout(Main_panel2);
-        Main_panel2.setLayout(Main_panel2Layout);
-        Main_panel2Layout.setHorizontalGroup(
-            Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Main_panel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout editTeamDetailsInputPanelLayout = new javax.swing.GroupLayout(editTeamDetailsInputPanel);
+        editTeamDetailsInputPanel.setLayout(editTeamDetailsInputPanelLayout);
+        editTeamDetailsInputPanelLayout.setHorizontalGroup(
+            editTeamDetailsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editTeamDetailsInputPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Main_panel2Layout.createSequentialGroup()
+                .addGroup(editTeamDetailsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editTeamDetailsInputPanelLayout.createSequentialGroup()
                         .addComponent(Field5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(stadiumCapacityTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9))
                     .addComponent(Field6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Field7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,14 +265,14 @@ public class Edit_Team extends javax.swing.JFrame {
                     .addComponent(Field1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Field2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Field4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(Main_panel2Layout.createSequentialGroup()
+                    .addGroup(editTeamDetailsInputPanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(Field3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        Main_panel2Layout.setVerticalGroup(
-            Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Main_panel2Layout.createSequentialGroup()
+        editTeamDetailsInputPanelLayout.setVerticalGroup(
+            editTeamDetailsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editTeamDetailsInputPanelLayout.createSequentialGroup()
                 .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -284,31 +284,31 @@ public class Edit_Team extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(editTeamDetailsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Field5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(stadiumCapacityTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addComponent(Field6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Field7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Title2, javax.swing.GroupLayout.DEFAULT_SIZE, 1181, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout editTeamDetailsPanelLayout = new javax.swing.GroupLayout(editTeamDetailsPanel);
+        editTeamDetailsPanel.setLayout(editTeamDetailsPanelLayout);
+        editTeamDetailsPanelLayout.setHorizontalGroup(
+            editTeamDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(editTeamDetailsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1181, Short.MAX_VALUE)
+            .addGroup(editTeamDetailsPanelLayout.createSequentialGroup()
                 .addGap(114, 114, 114)
-                .addComponent(Main_panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(editTeamDetailsInputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(113, 113, 113))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(Title2, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+        editTeamDetailsPanelLayout.setVerticalGroup(
+            editTeamDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editTeamDetailsPanelLayout.createSequentialGroup()
+                .addComponent(editTeamDetailsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Main_panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editTeamDetailsInputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(470, 470, 470))
         );
 
@@ -320,7 +320,7 @@ public class Edit_Team extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(editTeamDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,24 +328,24 @@ public class Edit_Team extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editTeamDetailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton18ActionPerformed
+    }//GEN-LAST:event_goBackBtnActionPerformed
 
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton19ActionPerformed
+    }//GEN-LAST:event_saveBtnActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void stadiumTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stadiumTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_stadiumTxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,16 +391,16 @@ public class Edit_Team extends javax.swing.JFrame {
     private javax.swing.JPanel Field5;
     private javax.swing.JPanel Field6;
     private javax.swing.JPanel Field7;
-    private javax.swing.JPanel Main_panel2;
-    private javax.swing.JLabel Title2;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JPanel editTeamDetailsInputPanel;
+    private javax.swing.JLabel editTeamDetailsLabel;
+    private javax.swing.JPanel editTeamDetailsPanel;
+    private javax.swing.JButton goBackBtn;
+    private javax.swing.JButton saveBtn;
+    private javax.swing.JLabel stadiumCapacityLabel;
+    private javax.swing.JTextField stadiumCapacityTxt;
+    private javax.swing.JLabel stadiumLabel;
+    private javax.swing.JTextField stadiumTxt;
+    private javax.swing.JLabel tNameLabel;
+    private javax.swing.JTextField tNameTxt;
     // End of variables declaration//GEN-END:variables
 }

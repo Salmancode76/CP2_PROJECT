@@ -26,147 +26,147 @@ public class Manage_Teams extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        Title = new javax.swing.JLabel();
-        Main_panel = new javax.swing.JPanel();
-        View_Teams = new javax.swing.JButton();
-        Back = new javax.swing.JButton();
-        Add_Teams = new javax.swing.JButton();
-        Edit_Teams = new javax.swing.JButton();
-        Delete_Teams = new javax.swing.JButton();
+        manageTeamsPanel = new javax.swing.JPanel();
+        manageTeamsLabel = new javax.swing.JLabel();
+        manageTeamsMenuPanel = new javax.swing.JPanel();
+        View_TeamsBtn = new javax.swing.JButton();
+        BackBtn = new javax.swing.JButton();
+        Add_TeamsBtn = new javax.swing.JButton();
+        Edit_TeamsBtn = new javax.swing.JButton();
+        Delete_TeamsBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        manageTeamsPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        Title.setBackground(new java.awt.Color(255, 255, 255));
-        Title.setFont(new java.awt.Font("Gadugi", 0, 90)); // NOI18N
-        Title.setForeground(new java.awt.Color(0, 127, 255));
-        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title.setText("Manage Teams");
-        Title.setToolTipText("");
-        Title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        manageTeamsLabel.setBackground(new java.awt.Color(255, 255, 255));
+        manageTeamsLabel.setFont(new java.awt.Font("Gadugi", 0, 90)); // NOI18N
+        manageTeamsLabel.setForeground(new java.awt.Color(0, 127, 255));
+        manageTeamsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageTeamsLabel.setText("Manage Teams");
+        manageTeamsLabel.setToolTipText("");
+        manageTeamsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        Main_panel.setBackground(new java.awt.Color(255, 255, 255));
-        Main_panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 10, true));
+        manageTeamsMenuPanel.setBackground(new java.awt.Color(255, 255, 255));
+        manageTeamsMenuPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 10, true));
 
-        View_Teams.setBackground(new java.awt.Color(211, 211, 211));
-        View_Teams.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        View_Teams.setForeground(new java.awt.Color(0, 127, 255));
-        View_Teams.setText("View Teams");
-        View_Teams.setToolTipText("");
-        View_Teams.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        View_Teams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        View_Teams.setPreferredSize(new java.awt.Dimension(175, 51));
-        View_Teams.addActionListener(new java.awt.event.ActionListener() {
+        View_TeamsBtn.setBackground(new java.awt.Color(211, 211, 211));
+        View_TeamsBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        View_TeamsBtn.setForeground(new java.awt.Color(0, 127, 255));
+        View_TeamsBtn.setText("View Teams");
+        View_TeamsBtn.setToolTipText("");
+        View_TeamsBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        View_TeamsBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        View_TeamsBtn.setPreferredSize(new java.awt.Dimension(175, 51));
+        View_TeamsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                View_TeamsActionPerformed(evt);
+                View_TeamsBtnActionPerformed(evt);
             }
         });
 
-        Back.setBackground(new java.awt.Color(211, 211, 211));
-        Back.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        Back.setForeground(new java.awt.Color(0, 127, 255));
-        Back.setText("Go Back");
-        Back.setToolTipText("");
-        Back.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        Back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Back.setPreferredSize(new java.awt.Dimension(231, 51));
-        Back.addActionListener(new java.awt.event.ActionListener() {
+        BackBtn.setBackground(new java.awt.Color(211, 211, 211));
+        BackBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        BackBtn.setForeground(new java.awt.Color(0, 127, 255));
+        BackBtn.setText("Go Back");
+        BackBtn.setToolTipText("");
+        BackBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        BackBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BackBtn.setPreferredSize(new java.awt.Dimension(231, 51));
+        BackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackActionPerformed(evt);
+                BackBtnActionPerformed(evt);
             }
         });
 
-        Add_Teams.setBackground(new java.awt.Color(211, 211, 211));
-        Add_Teams.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        Add_Teams.setForeground(new java.awt.Color(0, 127, 255));
-        Add_Teams.setText("Add Teams");
-        Add_Teams.setToolTipText("");
-        Add_Teams.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        Add_Teams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Add_Teams.addActionListener(new java.awt.event.ActionListener() {
+        Add_TeamsBtn.setBackground(new java.awt.Color(211, 211, 211));
+        Add_TeamsBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        Add_TeamsBtn.setForeground(new java.awt.Color(0, 127, 255));
+        Add_TeamsBtn.setText("Add Teams");
+        Add_TeamsBtn.setToolTipText("");
+        Add_TeamsBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        Add_TeamsBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Add_TeamsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Add_TeamsActionPerformed(evt);
+                Add_TeamsBtnActionPerformed(evt);
             }
         });
 
-        Edit_Teams.setBackground(new java.awt.Color(211, 211, 211));
-        Edit_Teams.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        Edit_Teams.setForeground(new java.awt.Color(0, 127, 255));
-        Edit_Teams.setText("Edit Teams");
-        Edit_Teams.setToolTipText("");
-        Edit_Teams.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        Edit_Teams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Edit_Teams.addActionListener(new java.awt.event.ActionListener() {
+        Edit_TeamsBtn.setBackground(new java.awt.Color(211, 211, 211));
+        Edit_TeamsBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        Edit_TeamsBtn.setForeground(new java.awt.Color(0, 127, 255));
+        Edit_TeamsBtn.setText("Edit Teams");
+        Edit_TeamsBtn.setToolTipText("");
+        Edit_TeamsBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        Edit_TeamsBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Edit_TeamsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Edit_TeamsActionPerformed(evt);
+                Edit_TeamsBtnActionPerformed(evt);
             }
         });
 
-        Delete_Teams.setBackground(new java.awt.Color(211, 211, 211));
-        Delete_Teams.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        Delete_Teams.setForeground(new java.awt.Color(0, 127, 255));
-        Delete_Teams.setText("Delete Teams");
-        Delete_Teams.setToolTipText("");
-        Delete_Teams.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        Delete_Teams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Delete_Teams.addActionListener(new java.awt.event.ActionListener() {
+        Delete_TeamsBtn.setBackground(new java.awt.Color(211, 211, 211));
+        Delete_TeamsBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        Delete_TeamsBtn.setForeground(new java.awt.Color(0, 127, 255));
+        Delete_TeamsBtn.setText("Delete Teams");
+        Delete_TeamsBtn.setToolTipText("");
+        Delete_TeamsBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        Delete_TeamsBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Delete_TeamsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Delete_TeamsActionPerformed(evt);
+                Delete_TeamsBtnActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout Main_panelLayout = new javax.swing.GroupLayout(Main_panel);
-        Main_panel.setLayout(Main_panelLayout);
-        Main_panelLayout.setHorizontalGroup(
-            Main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Main_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout manageTeamsMenuPanelLayout = new javax.swing.GroupLayout(manageTeamsMenuPanel);
+        manageTeamsMenuPanel.setLayout(manageTeamsMenuPanelLayout);
+        manageTeamsMenuPanelLayout.setHorizontalGroup(
+            manageTeamsMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageTeamsMenuPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(Main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Main_panelLayout.createSequentialGroup()
-                        .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(manageTeamsMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(manageTeamsMenuPanelLayout.createSequentialGroup()
+                        .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(Main_panelLayout.createSequentialGroup()
-                        .addGroup(Main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(View_Teams, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Add_Teams, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Edit_Teams, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
-                            .addComponent(Delete_Teams, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(manageTeamsMenuPanelLayout.createSequentialGroup()
+                        .addGroup(manageTeamsMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(View_TeamsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Add_TeamsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Edit_TeamsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
+                            .addComponent(Delete_TeamsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(22, 22, 22))))
         );
-        Main_panelLayout.setVerticalGroup(
-            Main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Main_panelLayout.createSequentialGroup()
+        manageTeamsMenuPanelLayout.setVerticalGroup(
+            manageTeamsMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageTeamsMenuPanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(View_Teams, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(View_TeamsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
-                .addComponent(Add_Teams)
+                .addComponent(Add_TeamsBtn)
                 .addGap(21, 21, 21)
-                .addComponent(Edit_Teams)
+                .addComponent(Edit_TeamsBtn)
                 .addGap(21, 21, 21)
-                .addComponent(Delete_Teams)
+                .addComponent(Delete_TeamsBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout manageTeamsPanelLayout = new javax.swing.GroupLayout(manageTeamsPanel);
+        manageTeamsPanel.setLayout(manageTeamsPanelLayout);
+        manageTeamsPanelLayout.setHorizontalGroup(
+            manageTeamsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(manageTeamsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(manageTeamsPanelLayout.createSequentialGroup()
                 .addGap(114, 114, 114)
-                .addComponent(Main_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(manageTeamsMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(113, 113, 113))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+        manageTeamsPanelLayout.setVerticalGroup(
+            manageTeamsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageTeamsPanelLayout.createSequentialGroup()
+                .addComponent(manageTeamsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Main_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manageTeamsMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(448, Short.MAX_VALUE))
         );
 
@@ -178,7 +178,7 @@ public class Manage_Teams extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(manageTeamsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
         );
         layout.setVerticalGroup(
@@ -187,32 +187,32 @@ public class Manage_Teams extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manageTeamsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void View_TeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_View_TeamsActionPerformed
+    private void View_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_View_TeamsBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_View_TeamsActionPerformed
+    }//GEN-LAST:event_View_TeamsBtnActionPerformed
 
-    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BackActionPerformed
+    }//GEN-LAST:event_BackBtnActionPerformed
 
-    private void Add_TeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_TeamsActionPerformed
+    private void Add_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_TeamsBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Add_TeamsActionPerformed
+    }//GEN-LAST:event_Add_TeamsBtnActionPerformed
 
-    private void Edit_TeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_TeamsActionPerformed
+    private void Edit_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_TeamsBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Edit_TeamsActionPerformed
+    }//GEN-LAST:event_Edit_TeamsBtnActionPerformed
 
-    private void Delete_TeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_TeamsActionPerformed
+    private void Delete_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_TeamsBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Delete_TeamsActionPerformed
+    }//GEN-LAST:event_Delete_TeamsBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,13 +250,13 @@ public class Manage_Teams extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Add_Teams;
-    private javax.swing.JButton Back;
-    private javax.swing.JButton Delete_Teams;
-    private javax.swing.JButton Edit_Teams;
-    private javax.swing.JPanel Main_panel;
-    private javax.swing.JLabel Title;
-    private javax.swing.JButton View_Teams;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton Add_TeamsBtn;
+    private javax.swing.JButton BackBtn;
+    private javax.swing.JButton Delete_TeamsBtn;
+    private javax.swing.JButton Edit_TeamsBtn;
+    private javax.swing.JButton View_TeamsBtn;
+    private javax.swing.JLabel manageTeamsLabel;
+    private javax.swing.JPanel manageTeamsMenuPanel;
+    private javax.swing.JPanel manageTeamsPanel;
     // End of variables declaration//GEN-END:variables
 }
