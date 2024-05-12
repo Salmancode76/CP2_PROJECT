@@ -197,7 +197,7 @@ public class Manage_Teams extends javax.swing.JFrame {
     private void View_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_View_TeamsBtnActionPerformed
         // TODO add your handling code here:
         
-        Select_Teamm V = new Select_Teamm();
+        Select_Team_view V = new Select_Team_view();
         V.setVisible(true);
         this.setVisible(false);
         
@@ -230,8 +230,8 @@ public class Manage_Teams extends javax.swing.JFrame {
 
     private void Delete_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_TeamsBtnActionPerformed
         // TODO add your handling code here:
-        Select_Teamm V = new Select_Teamm();
-        V.setVisible(true);
+        Delete_Team dt = new Delete_Team();
+        dt.setVisible(true);
         this.setVisible(false);
         
     }//GEN-LAST:event_Delete_TeamsBtnActionPerformed

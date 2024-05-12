@@ -48,13 +48,12 @@ public class Add_Managers extends javax.swing.JFrame {
         Field5 = new javax.swing.JPanel();
         bonusLabel = new javax.swing.JLabel();
         bonusTxt = new javax.swing.JTextField();
-        Field7 = new javax.swing.JPanel();
-        teamLabel = new javax.swing.JLabel();
-        teamComboBox = new javax.swing.JComboBox<>();
         Field6 = new javax.swing.JPanel();
         qualificationsLabel = new javax.swing.JLabel();
         qualificationsTxt = new javax.swing.JTextField();
         addBtn = new javax.swing.JButton();
+        isCaptainComboBox = new javax.swing.JComboBox<>();
+        teamLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -241,40 +240,6 @@ public class Add_Managers extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Field7.setBackground(new java.awt.Color(255, 255, 255));
-
-        teamLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
-        teamLabel.setForeground(new java.awt.Color(0, 127, 255));
-        teamLabel.setText("Enter Team:");
-
-        teamComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        teamComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                teamComboBoxActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout Field7Layout = new javax.swing.GroupLayout(Field7);
-        Field7.setLayout(Field7Layout);
-        Field7Layout.setHorizontalGroup(
-            Field7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Field7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(teamLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(225, 225, 225)
-                .addComponent(teamComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        Field7Layout.setVerticalGroup(
-            Field7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Field7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Field7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(teamLabel)
-                    .addComponent(teamComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
         Field6.setBackground(new java.awt.Color(255, 255, 255));
 
         qualificationsLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
@@ -315,27 +280,41 @@ public class Add_Managers extends javax.swing.JFrame {
             }
         });
 
+        isCaptainComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        isCaptainComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isCaptainComboBoxActionPerformed(evt);
+            }
+        });
+
+        teamLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
+        teamLabel.setForeground(new java.awt.Color(0, 127, 255));
+        teamLabel.setText("Enter Team:");
+
         javax.swing.GroupLayout addMngsInputPanelLayout = new javax.swing.GroupLayout(addMngsInputPanel);
         addMngsInputPanel.setLayout(addMngsInputPanelLayout);
         addMngsInputPanelLayout.setHorizontalGroup(
             addMngsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addMngsInputPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(addMngsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addMngsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Field6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Field7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Field5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Field1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Field2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Field3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Field4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(addMngsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Field6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(addMngsInputPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(teamLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(isCaptainComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addMngsInputPanelLayout.createSequentialGroup()
                         .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(293, Short.MAX_VALUE))
+                        .addGap(43, 43, 43)
+                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
         addMngsInputPanelLayout.setVerticalGroup(
             addMngsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,13 +333,15 @@ public class Add_Managers extends javax.swing.JFrame {
                 .addComponent(Field5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(Field6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Field7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(addMngsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(isCaptainComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(teamLabel))
+                .addGap(26, 26, 26)
                 .addGroup(addMngsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout addManagersPanelLayout = new javax.swing.GroupLayout(addManagersPanel);
@@ -379,7 +360,7 @@ public class Add_Managers extends javax.swing.JFrame {
                 .addComponent(addMngslbl, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addMngsInputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(343, 343, 343))
+                .addGap(479, 479, 479))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -394,7 +375,7 @@ public class Add_Managers extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1193, Short.MAX_VALUE)
+            .addGap(0, 1347, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -414,13 +395,13 @@ public class Add_Managers extends javax.swing.JFrame {
         
     }//GEN-LAST:event_goBackBtnActionPerformed
 
-    private void teamComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_teamComboBoxActionPerformed
-
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void isCaptainComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isCaptainComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_isCaptainComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -465,7 +446,6 @@ public class Add_Managers extends javax.swing.JFrame {
     private javax.swing.JPanel Field4;
     private javax.swing.JPanel Field5;
     private javax.swing.JPanel Field6;
-    private javax.swing.JPanel Field7;
     private javax.swing.JButton addBtn;
     private javax.swing.JPanel addManagersPanel;
     private javax.swing.JPanel addMngsInputPanel;
@@ -477,6 +457,7 @@ public class Add_Managers extends javax.swing.JFrame {
     private javax.swing.JLabel dobLabel;
     private javax.swing.JTextField dobTxt;
     private javax.swing.JButton goBackBtn;
+    private javax.swing.JComboBox<String> isCaptainComboBox;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTxt;
     private javax.swing.JLabel nationalityLabel;
@@ -485,7 +466,6 @@ public class Add_Managers extends javax.swing.JFrame {
     private javax.swing.JTextField qualificationsTxt;
     private javax.swing.JLabel salaryLabel;
     private javax.swing.JTextField salaryTxt;
-    private javax.swing.JComboBox<String> teamComboBox;
     private javax.swing.JLabel teamLabel;
     // End of variables declaration//GEN-END:variables
 }
