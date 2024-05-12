@@ -355,6 +355,11 @@ public class Edit_Manager extends javax.swing.JFrame {
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
         // TODO add your handling code here:
+        
+        Select_Manager M = new Select_Manager();
+        M.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void teamComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBoxActionPerformed

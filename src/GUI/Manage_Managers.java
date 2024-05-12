@@ -173,18 +173,37 @@ public class Manage_Managers extends javax.swing.JFrame {
 
     private void Add_ManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_ManagerActionPerformed
         // TODO add your handling code here:
+        
+        Add_Managers M = new Add_Managers();
+        M.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_Add_ManagerActionPerformed
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         // TODO add your handling code here:
+        
+        Main_Page MP = new Main_Page();
+        MP.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BackActionPerformed
 
     private void Edit_ManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_ManagerActionPerformed
         // TODO add your handling code here:
+        
+        Select_Manager M = new Select_Manager();
+        M.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_Edit_ManagerActionPerformed
 
     private void Delete_ManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_ManagerActionPerformed
         // TODO add your handling code here:
+        
+        Delete_Manager M = new Delete_Manager();
+        M.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_Delete_ManagerActionPerformed
 
     /**

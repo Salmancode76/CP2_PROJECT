@@ -71,6 +71,11 @@ public class Select_Team extends javax.swing.JFrame {
         selectBtn.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         selectBtn.setForeground(new java.awt.Color(0, 127, 255));
         selectBtn.setText("Select Team");
+        selectBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -191,11 +196,23 @@ public class Select_Team extends javax.swing.JFrame {
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
         // TODO add your handling code here:
+        
+        Manage_Teams V = new Manage_Teams();
+        V.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void teamComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_teamComboBoxActionPerformed
+
+    private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
+        // TODO add your handling code here:
+        
+        Edit_Team V = new Edit_Team();
+        V.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_selectBtnActionPerformed
 
     /**
      * @param args the command line arguments

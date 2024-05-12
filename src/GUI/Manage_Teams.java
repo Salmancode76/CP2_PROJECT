@@ -196,6 +196,11 @@ public class Manage_Teams extends javax.swing.JFrame {
 
     private void View_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_View_TeamsBtnActionPerformed
         // TODO add your handling code here:
+        
+        Select_Teamm V = new Select_Teamm();
+        V.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_View_TeamsBtnActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
@@ -204,14 +209,27 @@ public class Manage_Teams extends javax.swing.JFrame {
 
     private void Add_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_TeamsBtnActionPerformed
         // TODO add your handling code here:
+        
+        Add_team V = new Add_team();
+        V.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_Add_TeamsBtnActionPerformed
 
     private void Edit_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_TeamsBtnActionPerformed
         // TODO add your handling code here:
+        
+        Select_Team V = new Select_Team();
+        V.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_Edit_TeamsBtnActionPerformed
 
     private void Delete_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_TeamsBtnActionPerformed
         // TODO add your handling code here:
+        Select_Teamm V = new Select_Teamm();
+        V.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_Delete_TeamsBtnActionPerformed
 
     /**

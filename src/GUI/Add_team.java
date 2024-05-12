@@ -240,6 +240,11 @@ public class Add_team extends javax.swing.JFrame {
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
+        
+        Manage_Teams V = new Manage_Teams();
+        V.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed

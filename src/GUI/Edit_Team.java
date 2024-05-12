@@ -337,6 +337,10 @@ public class Edit_Team extends javax.swing.JFrame {
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
         // TODO add your handling code here:
+        
+        Select_Team V = new Select_Team();
+        V.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed

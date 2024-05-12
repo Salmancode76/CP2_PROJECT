@@ -309,6 +309,11 @@ public class Delete_Team extends javax.swing.JFrame {
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
         // TODO add your handling code here:
+        
+        Manage_Teams V = new Manage_Teams();
+        V.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed

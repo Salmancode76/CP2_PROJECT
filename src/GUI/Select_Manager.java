@@ -193,6 +193,11 @@ public class Select_Manager extends javax.swing.JFrame {
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
+        
+        Manage_Managers M = new Manage_Managers();
+        M.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_jButton18ActionPerformed
 
     /**
