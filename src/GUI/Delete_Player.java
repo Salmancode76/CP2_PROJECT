@@ -29,18 +29,18 @@ public class Delete_Player extends javax.swing.JFrame {
         deletePlayerPanel = new javax.swing.JPanel();
         deletePlayerTitle = new javax.swing.JLabel();
         selectPlayerInputPanel = new javax.swing.JPanel();
-        goBackBtn = new javax.swing.JButton();
         Field = new javax.swing.JPanel();
         Field1 = new javax.swing.JPanel();
         Field2 = new javax.swing.JPanel();
         Field3 = new javax.swing.JPanel();
         selectPlayerLabel = new javax.swing.JLabel();
+        playerComboBox = new javax.swing.JComboBox<>();
         Field4 = new javax.swing.JPanel();
+        goBackBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
         Field5 = new javax.swing.JPanel();
         Field7 = new javax.swing.JPanel();
         Field6 = new javax.swing.JPanel();
-        deleteBtn = new javax.swing.JButton();
-        playerComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,20 +56,6 @@ public class Delete_Player extends javax.swing.JFrame {
 
         selectPlayerInputPanel.setBackground(new java.awt.Color(255, 255, 255));
         selectPlayerInputPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 10, true));
-
-        goBackBtn.setBackground(new java.awt.Color(211, 211, 211));
-        goBackBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        goBackBtn.setForeground(new java.awt.Color(0, 127, 255));
-        goBackBtn.setText("Go Back");
-        goBackBtn.setToolTipText("");
-        goBackBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        goBackBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        goBackBtn.setPreferredSize(new java.awt.Dimension(231, 51));
-        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goBackBtnActionPerformed(evt);
-            }
-        });
 
         Field.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -113,8 +99,14 @@ public class Delete_Player extends javax.swing.JFrame {
         Field3.setBackground(new java.awt.Color(255, 255, 255));
 
         selectPlayerLabel.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
-        selectPlayerLabel.setForeground(new java.awt.Color(0, 0, 0));
         selectPlayerLabel.setText("Select Player:");
+
+        playerComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        playerComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playerComboBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Field3Layout = new javax.swing.GroupLayout(Field3);
         Field3.setLayout(Field3Layout);
@@ -122,27 +114,68 @@ public class Delete_Player extends javax.swing.JFrame {
             Field3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Field3Layout.createSequentialGroup()
                 .addGap(151, 151, 151)
-                .addComponent(selectPlayerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(121, 121, 121))
+                .addComponent(selectPlayerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(playerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
         Field3Layout.setVerticalGroup(
             Field3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Field3Layout.createSequentialGroup()
-                .addComponent(selectPlayerLabel)
+                .addGroup(Field3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectPlayerLabel)
+                    .addComponent(playerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         Field4.setBackground(new java.awt.Color(255, 255, 255));
 
+        goBackBtn.setBackground(new java.awt.Color(211, 211, 211));
+        goBackBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        goBackBtn.setForeground(new java.awt.Color(0, 127, 255));
+        goBackBtn.setText("Go Back");
+        goBackBtn.setToolTipText("");
+        goBackBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        goBackBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        goBackBtn.setPreferredSize(new java.awt.Dimension(231, 51));
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackBtnActionPerformed(evt);
+            }
+        });
+
+        deleteBtn.setBackground(new java.awt.Color(211, 211, 211));
+        deleteBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        deleteBtn.setForeground(new java.awt.Color(0, 127, 255));
+        deleteBtn.setText("Delete Player");
+        deleteBtn.setToolTipText("");
+        deleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        deleteBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteBtn.setPreferredSize(new java.awt.Dimension(231, 51));
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Field4Layout = new javax.swing.GroupLayout(Field4);
         Field4.setLayout(Field4Layout);
         Field4Layout.setHorizontalGroup(
             Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(Field4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
         Field4Layout.setVerticalGroup(
             Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 201, Short.MAX_VALUE)
+            .addGroup(Field4Layout.createSequentialGroup()
+                .addGroup(Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         Field5.setBackground(new java.awt.Color(255, 255, 255));
@@ -184,93 +217,54 @@ public class Delete_Player extends javax.swing.JFrame {
             .addGap(0, 42, Short.MAX_VALUE)
         );
 
-        deleteBtn.setBackground(new java.awt.Color(211, 211, 211));
-        deleteBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        deleteBtn.setForeground(new java.awt.Color(0, 127, 255));
-        deleteBtn.setText("Delete Player");
-        deleteBtn.setToolTipText("");
-        deleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        deleteBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        deleteBtn.setPreferredSize(new java.awt.Dimension(231, 51));
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
-            }
-        });
-
-        playerComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        playerComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                playerComboBoxActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout selectPlayerInputPanelLayout = new javax.swing.GroupLayout(selectPlayerInputPanel);
         selectPlayerInputPanel.setLayout(selectPlayerInputPanelLayout);
         selectPlayerInputPanelLayout.setHorizontalGroup(
             selectPlayerInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selectPlayerInputPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(selectPlayerInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(selectPlayerInputPanelLayout.createSequentialGroup()
-                        .addGroup(selectPlayerInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Field6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Field1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Field2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Field3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Field4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Field7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Field5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(selectPlayerInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(playerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addGroup(selectPlayerInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Field6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Field7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Field5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         selectPlayerInputPanelLayout.setVerticalGroup(
             selectPlayerInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selectPlayerInputPanelLayout.createSequentialGroup()
-                .addGroup(selectPlayerInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectPlayerInputPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115))
-                    .addGroup(selectPlayerInputPanelLayout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(selectPlayerInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(playerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(selectPlayerInputPanelLayout.createSequentialGroup()
-                                .addComponent(Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Field2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Field3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
+                .addGap(54, 54, 54)
+                .addComponent(Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Field2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Field3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(Field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Field5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(Field6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Field7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout deletePlayerPanelLayout = new javax.swing.GroupLayout(deletePlayerPanel);
         deletePlayerPanel.setLayout(deletePlayerPanelLayout);
         deletePlayerPanelLayout.setHorizontalGroup(
             deletePlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(deletePlayerTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(deletePlayerPanelLayout.createSequentialGroup()
+            .addComponent(deletePlayerTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 1251, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, deletePlayerPanelLayout.createSequentialGroup()
                 .addGap(114, 114, 114)
                 .addComponent(selectPlayerInputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(113, 113, 113))
+                .addGap(125, 125, 125))
         );
         deletePlayerPanelLayout.setVerticalGroup(
             deletePlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,23 +272,23 @@ public class Delete_Player extends javax.swing.JFrame {
                 .addComponent(deletePlayerTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(selectPlayerInputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(392, 392, 392))
+                .addGap(556, 556, 556))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1187, Short.MAX_VALUE)
+            .addGap(0, 1275, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(deletePlayerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(deletePlayerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1244, Short.MAX_VALUE)
+            .addGap(0, 1270, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -307,6 +301,9 @@ public class Delete_Player extends javax.swing.JFrame {
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
         // TODO add your handling code here:
+        Manage_Players mp= new Manage_Players();
+        mp.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void playerComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerComboBoxActionPerformed

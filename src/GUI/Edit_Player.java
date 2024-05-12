@@ -48,8 +48,8 @@ public class Edit_Player extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         Field7 = new javax.swing.JPanel();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
+        btn_back = new javax.swing.JButton();
+        btn_save = new javax.swing.JButton();
         Field6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -234,31 +234,31 @@ public class Edit_Player extends javax.swing.JFrame {
 
         Field7.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton18.setBackground(new java.awt.Color(211, 211, 211));
-        jButton18.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton18.setForeground(new java.awt.Color(0, 127, 255));
-        jButton18.setText("Go Back");
-        jButton18.setToolTipText("");
-        jButton18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton18.setPreferredSize(new java.awt.Dimension(231, 51));
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
+        btn_back.setBackground(new java.awt.Color(211, 211, 211));
+        btn_back.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        btn_back.setForeground(new java.awt.Color(0, 127, 255));
+        btn_back.setText("Go Back");
+        btn_back.setToolTipText("");
+        btn_back.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        btn_back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_back.setPreferredSize(new java.awt.Dimension(231, 51));
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
+                btn_backActionPerformed(evt);
             }
         });
 
-        jButton19.setBackground(new java.awt.Color(211, 211, 211));
-        jButton19.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton19.setForeground(new java.awt.Color(0, 127, 255));
-        jButton19.setText("Save");
-        jButton19.setToolTipText("");
-        jButton19.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton19.setPreferredSize(new java.awt.Dimension(231, 51));
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
+        btn_save.setBackground(new java.awt.Color(211, 211, 211));
+        btn_save.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        btn_save.setForeground(new java.awt.Color(0, 127, 255));
+        btn_save.setText("Save");
+        btn_save.setToolTipText("");
+        btn_save.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        btn_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_save.setPreferredSize(new java.awt.Dimension(231, 51));
+        btn_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
+                btn_saveActionPerformed(evt);
             }
         });
 
@@ -268,9 +268,9 @@ public class Edit_Player extends javax.swing.JFrame {
             Field7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Field7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Field7Layout.setVerticalGroup(
@@ -278,8 +278,8 @@ public class Edit_Player extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Field7Layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(Field7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -397,17 +397,20 @@ public class Edit_Player extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton18ActionPerformed
+        Manage_Players mp= new Manage_Players();
+        mp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_backActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton19ActionPerformed
+    }//GEN-LAST:event_btn_saveActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
@@ -459,8 +462,8 @@ public class Edit_Player extends javax.swing.JFrame {
     private javax.swing.JPanel Field7;
     private javax.swing.JPanel Main_panel2;
     private javax.swing.JLabel Title2;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
+    private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_save;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
