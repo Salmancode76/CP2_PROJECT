@@ -32,10 +32,11 @@ public class Main_Page extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
         Main_panel = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_Manage_Managers = new javax.swing.JButton();
+        btn_pay_roll = new javax.swing.JButton();
+        btn_Manage_Players = new javax.swing.JButton();
+        btn_Manage_teams = new javax.swing.JButton();
+        btn_exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -54,58 +55,58 @@ public class Main_Page extends javax.swing.JFrame {
         Main_panel.setBackground(new java.awt.Color(255, 255, 255));
         Main_panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 10, true));
 
-        jButton2.setBackground(new java.awt.Color(211, 211, 211));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 127, 255));
-        jButton2.setText("Manage Managers");
-        jButton2.setToolTipText("");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setMaximumSize(new java.awt.Dimension(231, 51));
-        jButton2.setMinimumSize(new java.awt.Dimension(231, 51));
-        jButton2.setPreferredSize(new java.awt.Dimension(231, 51));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_Manage_Managers.setBackground(new java.awt.Color(211, 211, 211));
+        btn_Manage_Managers.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        btn_Manage_Managers.setForeground(new java.awt.Color(0, 127, 255));
+        btn_Manage_Managers.setText("Manage Managers");
+        btn_Manage_Managers.setToolTipText("");
+        btn_Manage_Managers.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        btn_Manage_Managers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Manage_Managers.setMaximumSize(new java.awt.Dimension(231, 51));
+        btn_Manage_Managers.setMinimumSize(new java.awt.Dimension(231, 51));
+        btn_Manage_Managers.setPreferredSize(new java.awt.Dimension(231, 51));
+        btn_Manage_Managers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_Manage_ManagersActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(211, 211, 211));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(0, 127, 255));
-        jButton6.setText("Pay roll");
-        jButton6.setToolTipText("");
-        jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btn_pay_roll.setBackground(new java.awt.Color(211, 211, 211));
+        btn_pay_roll.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        btn_pay_roll.setForeground(new java.awt.Color(0, 127, 255));
+        btn_pay_roll.setText("Pay roll");
+        btn_pay_roll.setToolTipText("");
+        btn_pay_roll.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        btn_pay_roll.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_pay_roll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btn_pay_rollActionPerformed(evt);
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(211, 211, 211));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(0, 127, 255));
-        jButton7.setText("Manage Players");
-        jButton7.setToolTipText("");
-        jButton7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btn_Manage_Players.setBackground(new java.awt.Color(211, 211, 211));
+        btn_Manage_Players.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        btn_Manage_Players.setForeground(new java.awt.Color(0, 127, 255));
+        btn_Manage_Players.setText("Manage Players");
+        btn_Manage_Players.setToolTipText("");
+        btn_Manage_Players.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        btn_Manage_Players.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Manage_Players.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btn_Manage_PlayersActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(211, 211, 211));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 127, 255));
-        jButton3.setText("Manage Teams");
-        jButton3.setToolTipText("");
-        jButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_Manage_teams.setBackground(new java.awt.Color(211, 211, 211));
+        btn_Manage_teams.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        btn_Manage_teams.setForeground(new java.awt.Color(0, 127, 255));
+        btn_Manage_teams.setText("Manage Teams");
+        btn_Manage_teams.setToolTipText("");
+        btn_Manage_teams.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        btn_Manage_teams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Manage_teams.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_Manage_teamsActionPerformed(evt);
             }
         });
 
@@ -116,34 +117,52 @@ public class Main_Page extends javax.swing.JFrame {
             .addGroup(Main_panelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(Main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_pay_roll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Manage_Players, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Manage_Managers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Manage_teams, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         Main_panelLayout.setVerticalGroup(
             Main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Main_panelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                .addComponent(btn_Manage_Players, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                .addComponent(btn_Manage_Managers, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                .addComponent(btn_Manage_teams, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                .addComponent(btn_pay_roll, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                 .addGap(21, 21, 21))
         );
+
+        btn_exit.setBackground(new java.awt.Color(211, 211, 211));
+        btn_exit.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        btn_exit.setForeground(new java.awt.Color(0, 127, 255));
+        btn_exit.setText("Exit");
+        btn_exit.setToolTipText("");
+        btn_exit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        btn_exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(Main_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(Main_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(113, 113, 113))
         );
         jPanel1Layout.setVerticalGroup(
@@ -152,7 +171,9 @@ public class Main_Page extends javax.swing.JFrame {
                 .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Main_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(59, 59, 59))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_exit)
+                .addGap(18, 18, 18))
         );
 
         getContentPane().add(jPanel1);
@@ -160,21 +181,36 @@ public class Main_Page extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_Manage_ManagersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Manage_ManagersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+         Manage_Managers mm= new Manage_Managers();
+        mm.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_Manage_ManagersActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btn_pay_rollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pay_rollActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+       
+    }//GEN-LAST:event_btn_pay_rollActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btn_Manage_PlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Manage_PlayersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        Manage_Players mp= new Manage_Players();
+        mp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_Manage_PlayersActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_Manage_teamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Manage_teamsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+          Manage_Teams mt= new Manage_Teams();
+        mt.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_Manage_teamsActionPerformed
+
+    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btn_exitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,10 +257,11 @@ public class Main_Page extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Main_panel;
     private javax.swing.JLabel Title;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton btn_Manage_Managers;
+    private javax.swing.JButton btn_Manage_Players;
+    private javax.swing.JButton btn_Manage_teams;
+    private javax.swing.JButton btn_exit;
+    private javax.swing.JButton btn_pay_roll;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
