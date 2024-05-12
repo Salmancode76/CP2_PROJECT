@@ -205,6 +205,10 @@ public class Manage_Teams extends javax.swing.JFrame {
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
         // TODO add your handling code here:
+        
+        Main_Page MP = new Main_Page();
+        MP.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BackBtnActionPerformed
 
     private void Add_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_TeamsBtnActionPerformed
