@@ -6,138 +6,70 @@ import java.util.*;
  */
 public class Team {
 
-    /**
-     * Default constructor
-     */
-    public Team() {
-    }
-
-    /**
-     * 
-     */
     private String name;
-
-    /**
-     * 
-     */
     private String stadium;
-
-    /**
-     * 
-     */
     private int capacity;
-
-    /**
-     * 
-     */
     private Manager manager;
-
-    /**
-     * 
-     */
     private ArrayList<Player> players;
 
-    /**
-     * 
-     */
-    private ArrayList <Player> Players;
-
-    /**
-     * @return
-     */
-    public String getName() {
-        // TODO implement here
-        return "";
+    public Team()  
+    {
+    
     }
 
-    /**
-     * @param Name
-     */
-    public void setName(String Name) {
-        // TODO implement here
+    public String getName() 
+    {
+        return name;
     }
 
-    /**
-     * @return
-     */
-    public String getStadium() {
-        // TODO implement here
-        return "";
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
-    /**
-     * @param value
-     */
-    public void setStadium(String value) {
-        // TODO implement here
+    public String getStadium() 
+    {
+        return stadium;
     }
 
-    /**
-     * @return
-     */
-    public int getCapacity() {
-        // TODO implement here
-        return 0;
+    public void setStadium(String stadium) 
+    {
+        this.stadium = stadium;
     }
 
-    /**
-     * @param value
-     */
-    public void setCapacity(int value) {
-        // TODO implement here
+    public int getCapacity() 
+    {
+        return capacity;
     }
 
-    /**
-     * @return
-     */
-    public Manager getManager() {
-        // TODO implement here
-        return null;
+    public void setCapacity(int capacity) 
+    {
+        this.capacity = capacity;
     }
 
-    /**
-     * @param Manager
-     */
-    public void setManager(Manager Manager) {
-        // TODO implement here
+    public Manager getManager() 
+    {
+        return manager;
     }
 
-    /**
-     * @return
-     */
-    public ArrayList<Player> getPlayers() {
-        // TODO implement here
-        return null;
+    public void setManager(Manager manager) 
+    {
+        this.manager = manager;
+    }
+     public void addPlayers(Player player)
+    {
+        
     }
 
-    /**
-     * @param value
-     */
-    public void setPlayers(ArrayList<Player> value) {
-        // TODO implement here
+    public void removePlayer(Player player)
+    {
+        
     }
 
-    /**
-     * 
-     */
-    public void removePlayer() {
-        // TODO implement here
+    public ArrayList<Player> getPlayers() 
+    {
+        return players;
     }
 
-    /**
-     * @param player
-     */
-    public void addPlayer(Player player) {
-        // TODO implement here
-    }
-
-    /**
-     * @param player
-     */
-    public void removePlayer(Player player) {
-        // TODO implement here
-    }
-
-
-
+    
 }

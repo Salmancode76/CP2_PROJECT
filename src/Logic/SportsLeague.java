@@ -5,6 +5,10 @@ import java.util.*;
 public class SportsLeague 
 {
 
+    private ArrayList <Team> Teams;
+    private ArrayList <Player> All_Players;
+    private ArrayList <Manager> Managers;
+    
     
     public SportsLeague() 
     {
@@ -12,9 +16,7 @@ public class SportsLeague
     }
 
    
-    private ArrayList <Team> Teams;
-    private ArrayList <Player> All_Players;
-    private ArrayList <Manager> Managers;
+    
 
 
     public void addTeam(Team team) 

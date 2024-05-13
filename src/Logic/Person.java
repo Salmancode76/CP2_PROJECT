@@ -7,6 +7,13 @@ import java.util.*;
 public class Person 
 {
 
+    private int ID;
+    private String name;
+    private String address;
+    private String dob;
+    private String nationality;
+    private double salary;
+
     
     public Person() //Default constructor
     {
@@ -14,12 +21,6 @@ public class Person
     }
 
    
-    private int ID;
-    private String name;
-    private String address;
-    private String dob;
-    private String nationality;
-    private double salary;
 
     public int getID() 
     {

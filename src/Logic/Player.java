@@ -6,70 +6,44 @@ import java.util.*;
  */
 public class Player extends Person {
 
-    /**
-     * Default constructor
-     */
-    public Player() {
-    }
-
-    /**
-     * 
-     */
+    
     private String position;
-
-    /**
-     * 
-     */
     private boolean isCaptain;
-
-    /**
-     * 
-     */
     private Team team;
-
-    /**
-     * @return
-     */
-    public String getPosition() {
-        // TODO implement here
-        return "";
+    public Player() {
+        
+        
+        
     }
 
-    /**
-     * @param value
-     */
-    public void setPosition(String value) {
-        // TODO implement here
+    public String getPosition() 
+    {
+        return position;
     }
 
-    /**
-     * @return
-     */
-    public boolean getIsCaptain() {
-        // TODO implement here
-        return false;
+    public void setPosition(String position)
+    {
+        this.position = position;
     }
 
-    /**
-     * @param value
-     */
-    public void setIsCaptain(boolean value) {
-        // TODO implement here
+    public boolean isIsCaptain() 
+    {
+        return isCaptain;
     }
 
-    /**
-     * @return
-     */
-    public Team getTeam() {
-        // TODO implement here
-        return null;
+    public void setIsCaptain(boolean isCaptain) 
+    {
+        this.isCaptain = isCaptain;
     }
 
-    /**
-     * @param value
-     */
-    public void setTeam(Team value) {
-        // TODO implement here
+    public Team getTeam() 
+    {
+        return team;
     }
 
+    public void setTeam(Team team) 
+    {
+        this.team = team;
+    }
 }
+
