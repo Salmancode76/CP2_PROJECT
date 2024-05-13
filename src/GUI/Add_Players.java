@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
+import Logic.Player;
 
 /**
  *
@@ -93,6 +94,12 @@ public class Add_Players extends javax.swing.JFrame {
         nameLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
         nameLabel.setForeground(new java.awt.Color(0, 127, 255));
         nameLabel.setText("Enter Name:");
+
+        nameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameTxtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout FieldLayout = new javax.swing.GroupLayout(Field);
         Field.setLayout(FieldLayout);
@@ -430,6 +437,8 @@ public class Add_Players extends javax.swing.JFrame {
         mp.setVisible(true);
         this.setVisible(false);
         mp.setSize(this.getSize());
+        
+        
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void isCaptainComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isCaptainComboBoxActionPerformed
@@ -442,11 +451,20 @@ public class Add_Players extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
+        Player pl = new Player();
+        System.out.println(nameTxt.getText());
+        
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void positionComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_positionComboBox1ActionPerformed
+
+    private void nameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTxtActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_nameTxtActionPerformed
 
     /**
      * @param args the command line arguments
