@@ -1,75 +1,53 @@
 
 import java.util.*;
 
-/**
- * 
- */
-public class Manager extends Person {
 
-    /**
-     * Default constructor
-     */
-    public Manager() {
+public class Manager extends Person 
+{
+
+    
+    public Manager()
+    {
+        
     }
 
-    /**
-     * 
-     */
     private double bonusPercentage;
-
-    /**
-     * 
-     */
     private String qualifications;
-
-    /**
-     * 
-     */
     private Team team;
 
-    /**
-     * @return
-     */
-    public double getBonusPercentage() {
-        // TODO implement here
-        return 0.0d;
+    public double getBonusPercentage() 
+    {
+        return bonusPercentage;
     }
 
-    /**
-     * @param value
-     */
-    public void setBonusPercentage(double value) {
-        // TODO implement here
+    public String getQualifications()
+    {
+        return qualifications;
     }
 
-    /**
-     * @return
-     */
-    public String getQualifications() {
-        // TODO implement here
-        return "";
+    public Team getTeam()
+    {
+        return team;
     }
 
-    /**
-     * @param value
-     */
-    public void setQualifications(String value) {
-        // TODO implement here
+    public void setBonusPercentage(double bonusPercentage) 
+    {
+        this.bonusPercentage = bonusPercentage;
     }
 
-    /**
-     * @return
-     */
-    public Team getTeam() {
-        // TODO implement here
-        return null;
+    public void setQualifications(String qualifications)
+    {
+        this.qualifications = qualifications;
     }
 
-    /**
-     * @param value
-     */
-    public void setTeam(Team value) {
-        // TODO implement here
+    public void setTeam(Team team) 
+    {
+        this.team = team;
     }
+    
+    
+
+    
+   
 
 }

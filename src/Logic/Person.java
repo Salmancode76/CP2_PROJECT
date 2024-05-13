@@ -4,132 +4,84 @@ import java.util.*;
 /**
  * 
  */
-public class Person {
+public class Person 
+{
 
-    /**
-     * Default constructor
-     */
-    public Person() {
+    
+    public Person() //Default constructor
+    {
+        
     }
 
-    /**
-     * 
-     */
+   
     private int ID;
-
-    /**
-     * 
-     */
     private String name;
-
-    /**
-     * 
-     */
     private String address;
-
-    /**
-     * 
-     */
     private String dob;
-
-    /**
-     * 
-     */
     private String nationality;
-
-    /**
-     * 
-     */
     private double salary;
 
-    /**
-     * @return
-     */
-    public int getID() {
-        // TODO implement here
-        return 0;
+    public int getID() 
+    {
+        return ID;
     }
 
-    /**
-     * @param value
-     */
-    public void setID(int value) {
-        // TODO implement here
+    public String getName() 
+    {
+        return name;
     }
 
-    /**
-     * @return
-     */
-    public String getName() {
-        // TODO implement here
-        return "";
+    public String getAddress() 
+    {
+        return address;
+        
     }
 
-    /**
-     * @param value
-     */
-    public void setName(String value) {
-        // TODO implement here
+    public String getDob() 
+    {
+        return dob;
     }
 
-    /**
-     * @return
-     */
-    public String getAddress() {
-        // TODO implement here
-        return "";
+    public String getNationality()
+    {
+        return nationality;
     }
 
-    /**
-     * @param value
-     */
-    public void setAddress(String value) {
-        // TODO implement here
+    public double getSalary() 
+    {
+        return salary;
     }
 
-    /**
-     * @return
-     */
-    public String getDob() {
-        // TODO implement here
-        return "";
+    public void setID(int ID) 
+    {
+        this.ID = ID;
     }
 
-    /**
-     * @param value
-     */
-    public void setDob(String value) {
-        // TODO implement here
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
-    /**
-     * @return
-     */
-    public String getNationality() {
-        // TODO implement here
-        return "";
+    public void setAddress(String address) 
+    {
+        this.address = address;
     }
 
-    /**
-     * @param value
-     */
-    public void setNationality(String value) {
-        // TODO implement here
+    public void setDob(String dob) 
+    {
+        this.dob = dob;
     }
 
-    /**
-     * @return
-     */
-    public double getSalary() {
-        // TODO implement here
-        return 0.0d;
+    public void setNationality(String nationality)
+    {
+        this.nationality = nationality;
     }
 
-    /**
-     * @param value
-     */
-    public void setSalary(double value) {
-        // TODO implement here
+    public void setSalary(double salary)
+    {
+        this.salary = salary;
     }
 
+   
+    
 }
