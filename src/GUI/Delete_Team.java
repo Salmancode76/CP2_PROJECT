@@ -231,7 +231,7 @@ public class Delete_Team extends javax.swing.JFrame {
                 .addGroup(selectTeamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(selectTeamPanelLayout.createSequentialGroup()
                         .addComponent(teamComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(selectTeamPanelLayout.createSequentialGroup()
                         .addComponent(teamLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -285,15 +285,6 @@ public class Delete_Team extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
-        // TODO add your handling code here:
-        
-        Manage_Teams V = new Manage_Teams();
-        V.setVisible(true);
-        this.setVisible(false);
-        
-    }//GEN-LAST:event_goBackBtnActionPerformed
-
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteBtnActionPerformed
@@ -301,6 +292,16 @@ public class Delete_Team extends javax.swing.JFrame {
     private void teamComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_teamComboBoxActionPerformed
+
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
+        // TODO add your handling code here:
+
+        Manage_Teams V = new Manage_Teams();
+        V.setVisible(true);
+        this.setVisible(false);
+        V.setSize(this.getSize());
+
+    }//GEN-LAST:event_goBackBtnActionPerformed
 
     /**
      * @param args the command line arguments

@@ -215,6 +215,7 @@ public class Transfer_Player extends javax.swing.JFrame {
         Manage_Players mp= new Manage_Players();
         mp.setVisible(true);
         this.setVisible(false);
+        mp.setSize(this.getSize());
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

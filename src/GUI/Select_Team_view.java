@@ -29,11 +29,11 @@ public class Select_Team_view extends javax.swing.JFrame {
         viewTeamPanel = new javax.swing.JPanel();
         selectTeamTitle = new javax.swing.JLabel();
         viewPanel = new javax.swing.JPanel();
-        goBackBtn = new javax.swing.JButton();
         selectLabel = new javax.swing.JLabel();
         teamComboBox = new javax.swing.JComboBox<>();
         chooseTeamLabel = new javax.swing.JLabel();
         viewBtn = new javax.swing.JButton();
+        goBackBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,20 +50,6 @@ public class Select_Team_view extends javax.swing.JFrame {
 
         viewPanel.setBackground(new java.awt.Color(255, 255, 255));
         viewPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 10, true));
-
-        goBackBtn.setBackground(new java.awt.Color(211, 211, 211));
-        goBackBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        goBackBtn.setForeground(new java.awt.Color(0, 127, 255));
-        goBackBtn.setText("Go Back");
-        goBackBtn.setToolTipText("");
-        goBackBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        goBackBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        goBackBtn.setPreferredSize(new java.awt.Dimension(231, 51));
-        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goBackBtnActionPerformed(evt);
-            }
-        });
 
         selectLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         selectLabel.setForeground(new java.awt.Color(0, 127, 255));
@@ -91,6 +77,20 @@ public class Select_Team_view extends javax.swing.JFrame {
             }
         });
 
+        goBackBtn.setBackground(new java.awt.Color(211, 211, 211));
+        goBackBtn.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        goBackBtn.setForeground(new java.awt.Color(0, 127, 255));
+        goBackBtn.setText("Go Back");
+        goBackBtn.setToolTipText("");
+        goBackBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        goBackBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        goBackBtn.setPreferredSize(new java.awt.Dimension(231, 51));
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
         viewPanel.setLayout(viewPanelLayout);
         viewPanelLayout.setHorizontalGroup(
@@ -105,14 +105,16 @@ public class Select_Team_view extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(teamComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(viewPanelLayout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(62, 462, Short.MAX_VALUE)
                                 .addComponent(viewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(167, 167, 167))
                     .addGroup(viewPanelLayout.createSequentialGroup()
                         .addComponent(chooseTeamLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(viewPanelLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         viewPanelLayout.setVerticalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,10 +126,10 @@ public class Select_Team_view extends javax.swing.JFrame {
                     .addComponent(selectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(teamComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewBtn))
-                .addContainerGap(333, Short.MAX_VALUE))
+                .addComponent(viewBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
 
         javax.swing.GroupLayout viewTeamPanelLayout = new javax.swing.GroupLayout(viewTeamPanel);
@@ -172,6 +174,7 @@ public class Select_Team_view extends javax.swing.JFrame {
         View_teams V = new View_teams();
         V.setVisible(true);
         this.setVisible(false);
+        V.setSize(this.getSize());
     }//GEN-LAST:event_viewBtnActionPerformed
 
     private void teamComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBoxActionPerformed
@@ -184,6 +187,7 @@ public class Select_Team_view extends javax.swing.JFrame {
         Manage_Teams V = new Manage_Teams();
         V.setVisible(true);
         this.setVisible(false);
+        V.setSize(this.getSize());
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     /**

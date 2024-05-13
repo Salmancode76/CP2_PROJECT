@@ -69,7 +69,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="addMngslbl" pref="147" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="addMngsInputPanel" min="-2" max="-2" attributes="0"/>
+                  <Component id="addMngsInputPanel" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="479" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -140,19 +140,19 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                      <Component id="Field" min="-2" max="-2" attributes="0"/>
+                      <Component id="Field" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Field1" min="-2" max="-2" attributes="0"/>
+                      <Component id="Field1" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Field2" min="-2" max="-2" attributes="0"/>
+                      <Component id="Field2" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Field3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Field3" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Field4" min="-2" max="-2" attributes="0"/>
+                      <Component id="Field4" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Component id="Field5" min="-2" max="-2" attributes="0"/>
+                      <Component id="Field5" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                      <Component id="Field6" min="-2" max="-2" attributes="0"/>
+                      <Component id="Field6" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="isCaptainComboBox" alignment="3" min="-2" max="-2" attributes="0"/>

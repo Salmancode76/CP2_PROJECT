@@ -296,6 +296,7 @@ public class Delete_Manager extends javax.swing.JFrame {
         Manage_Managers M = new Manage_Managers();
         M.setVisible(true);
         this.setVisible(false);
+        M.setSize(this.getSize());
         
     }//GEN-LAST:event_goBackBtnActionPerformed
 

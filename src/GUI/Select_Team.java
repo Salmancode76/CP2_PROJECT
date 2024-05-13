@@ -200,6 +200,7 @@ public class Select_Team extends javax.swing.JFrame {
         Manage_Teams V = new Manage_Teams();
         V.setVisible(true);
         this.setVisible(false);
+        V.setSize(this.getSize());
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void teamComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBoxActionPerformed
@@ -212,6 +213,7 @@ public class Select_Team extends javax.swing.JFrame {
         Edit_Team V = new Edit_Team();
         V.setVisible(true);
         this.setVisible(false);
+        V.setSize(this.getSize());
     }//GEN-LAST:event_selectBtnActionPerformed
 
     /**

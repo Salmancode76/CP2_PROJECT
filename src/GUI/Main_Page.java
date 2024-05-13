@@ -18,6 +18,9 @@ public class Main_Page extends javax.swing.JFrame {
     public Main_Page() {
        
         initComponents();
+        this.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+        this.setExtendedState(Main_Page.MAXIMIZED_BOTH);
+        this.setLocationRelativeTo(null); // Center the frame on the screen
     }
 
     /**
@@ -185,7 +188,9 @@ public class Main_Page extends javax.swing.JFrame {
         // TODO add your handling code here:
          Manage_Managers mm= new Manage_Managers();
         mm.setVisible(true);
+        
         this.setVisible(false);
+        mm.setSize(this.getSize());
     }//GEN-LAST:event_btn_Manage_ManagersActionPerformed
 
     private void btn_pay_rollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pay_rollActionPerformed
@@ -198,6 +203,7 @@ public class Main_Page extends javax.swing.JFrame {
         Manage_Players mp= new Manage_Players();
         mp.setVisible(true);
         this.setVisible(false);
+        mp.setSize(this.getSize());
     }//GEN-LAST:event_btn_Manage_PlayersActionPerformed
 
     private void btn_Manage_teamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Manage_teamsActionPerformed
@@ -205,6 +211,7 @@ public class Main_Page extends javax.swing.JFrame {
           Manage_Teams mt= new Manage_Teams();
         mt.setVisible(true);
         this.setVisible(false);
+        mt.setSize(this.getSize());
     }//GEN-LAST:event_btn_Manage_teamsActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
@@ -246,6 +253,8 @@ public class Main_Page extends javax.swing.JFrame {
               
 
                 new Main_Page().setVisible(true);
+               
+                
                                
       
 

@@ -138,6 +138,7 @@ public class View_teams extends javax.swing.JFrame {
         Select_Team_view V = new Select_Team_view();
         V.setVisible(true);
         this.setVisible(false);
+        V.setSize(this.getSize());
     }//GEN-LAST:event_jButton18ActionPerformed
 
     /**

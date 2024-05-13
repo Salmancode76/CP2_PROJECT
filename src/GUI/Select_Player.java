@@ -29,9 +29,9 @@ public class Select_Player extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         Title2 = new javax.swing.JLabel();
         Main_panel2 = new javax.swing.JPanel();
-        jButton18 = new javax.swing.JButton();
+        btn_back = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btn_select_player = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -52,25 +52,30 @@ public class Select_Player extends javax.swing.JFrame {
         Main_panel2.setBackground(new java.awt.Color(255, 255, 255));
         Main_panel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 10, true));
 
-        jButton18.setBackground(new java.awt.Color(211, 211, 211));
-        jButton18.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton18.setForeground(new java.awt.Color(0, 127, 255));
-        jButton18.setText("Go Back");
-        jButton18.setToolTipText("");
-        jButton18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton18.setPreferredSize(new java.awt.Dimension(231, 51));
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
+        btn_back.setBackground(new java.awt.Color(211, 211, 211));
+        btn_back.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        btn_back.setForeground(new java.awt.Color(0, 127, 255));
+        btn_back.setText("Go Back");
+        btn_back.setToolTipText("");
+        btn_back.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        btn_back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_back.setPreferredSize(new java.awt.Dimension(231, 51));
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
+                btn_backActionPerformed(evt);
             }
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 127, 255));
-        jButton1.setText("Select Palyer");
+        btn_select_player.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        btn_select_player.setForeground(new java.awt.Color(0, 127, 255));
+        btn_select_player.setText("Select Palyer");
+        btn_select_player.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_select_playerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,13 +83,13 @@ public class Select_Player extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(243, 243, 243)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                .addComponent(btn_select_player, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                 .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addComponent(btn_select_player)
                 .addGap(0, 158, Short.MAX_VALUE))
         );
 
@@ -113,7 +118,7 @@ public class Select_Player extends javax.swing.JFrame {
                 .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Main_panel2Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(Main_panel2Layout.createSequentialGroup()
                             .addContainerGap(144, Short.MAX_VALUE)
@@ -142,7 +147,7 @@ public class Select_Player extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
 
@@ -189,13 +194,26 @@ public class Select_Player extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton18ActionPerformed
+               Manage_Players mp= new Manage_Players();
+        mp.setVisible(true);
+        this.setVisible(false);
+        mp.setSize(this.getSize());
+       
+    }//GEN-LAST:event_btn_backActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void btn_select_playerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_select_playerActionPerformed
+        // TODO add your handling code here:
+          Edit_Player ep= new Edit_Player();
+        ep.setVisible(true);
+        this.setVisible(false);
+        ep.setSize(this.getSize());
+    }//GEN-LAST:event_btn_select_playerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,8 +253,8 @@ public class Select_Player extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Main_panel2;
     private javax.swing.JLabel Title2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton18;
+    private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_select_player;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

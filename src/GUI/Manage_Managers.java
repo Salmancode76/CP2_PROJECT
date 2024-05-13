@@ -177,6 +177,7 @@ public class Manage_Managers extends javax.swing.JFrame {
         Add_Managers M = new Add_Managers();
         M.setVisible(true);
         this.setVisible(false);
+        M.setSize(this.getSize());
         
     }//GEN-LAST:event_Add_ManagerActionPerformed
 
@@ -186,6 +187,7 @@ public class Manage_Managers extends javax.swing.JFrame {
         Main_Page MP = new Main_Page();
         MP.setVisible(true);
         this.setVisible(false);
+        MP.setSize(this.getSize());
     }//GEN-LAST:event_BackActionPerformed
 
     private void Edit_ManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_ManagerActionPerformed
@@ -194,6 +196,7 @@ public class Manage_Managers extends javax.swing.JFrame {
         Select_Manager M = new Select_Manager();
         M.setVisible(true);
         this.setVisible(false);
+        M.setSize(this.getSize());
         
     }//GEN-LAST:event_Edit_ManagerActionPerformed
 
@@ -203,6 +206,7 @@ public class Manage_Managers extends javax.swing.JFrame {
         Delete_Manager M = new Delete_Manager();
         M.setVisible(true);
         this.setVisible(false);
+        M.setSize(this.getSize());
         
     }//GEN-LAST:event_Delete_ManagerActionPerformed
 

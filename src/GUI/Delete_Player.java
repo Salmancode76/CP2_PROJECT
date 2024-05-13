@@ -304,6 +304,7 @@ public class Delete_Player extends javax.swing.JFrame {
         Manage_Players mp= new Manage_Players();
         mp.setVisible(true);
         this.setVisible(false);
+        mp.setSize(this.getSize());
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void playerComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerComboBoxActionPerformed

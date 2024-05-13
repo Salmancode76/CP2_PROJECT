@@ -359,7 +359,7 @@ public class Edit_Manager extends javax.swing.JFrame {
         Select_Manager M = new Select_Manager();
         M.setVisible(true);
         this.setVisible(false);
-        
+        M.setSize(this.getSize());
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void teamComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBoxActionPerformed

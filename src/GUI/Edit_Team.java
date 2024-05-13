@@ -341,6 +341,7 @@ public class Edit_Team extends javax.swing.JFrame {
         Select_Team V = new Select_Team();
         V.setVisible(true);
         this.setVisible(false);
+        V.setSize(this.getSize());
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed

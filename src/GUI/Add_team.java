@@ -244,6 +244,7 @@ public class Add_team extends javax.swing.JFrame {
         Manage_Teams V = new Manage_Teams();
         V.setVisible(true);
         this.setVisible(false);
+        V.setSize(this.getSize());
         
     }//GEN-LAST:event_jButton18ActionPerformed
 

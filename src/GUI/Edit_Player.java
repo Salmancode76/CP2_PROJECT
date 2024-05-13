@@ -399,9 +399,10 @@ public class Edit_Player extends javax.swing.JFrame {
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         // TODO add your handling code here:
-        Manage_Players mp= new Manage_Players();
-        mp.setVisible(true);
+        Select_Player sp= new Select_Player();
+        sp.setVisible(true);
         this.setVisible(false);
+        sp.setSize(this.getSize());
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed

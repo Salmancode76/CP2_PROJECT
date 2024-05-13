@@ -199,13 +199,15 @@ public class Manage_Players extends javax.swing.JFrame {
         Add_Players ap= new Add_Players();
         ap.setVisible(true);
         this.setVisible(false);
+        ap.setSize(this.getSize());
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
-         Edit_Player ep= new Edit_Player();
-        ep.setVisible(true);
+         Select_Player sp= new Select_Player();
+        sp.setVisible(true);
         this.setVisible(false);
+        sp.setSize(this.getSize());
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void transferBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferBtnActionPerformed
@@ -213,6 +215,7 @@ public class Manage_Players extends javax.swing.JFrame {
          Transfer_Player tp = new Transfer_Player();
         tp.setVisible(true);
         this.setVisible(false);
+        tp.setSize(this.getSize());
     }//GEN-LAST:event_transferBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
@@ -220,6 +223,7 @@ public class Manage_Players extends javax.swing.JFrame {
         Delete_Player dp = new Delete_Player();
         dp.setVisible(true);
         this.setVisible(false);
+        dp.setSize(this.getSize());
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
@@ -227,6 +231,7 @@ public class Manage_Players extends javax.swing.JFrame {
          Main_Page mp = new Main_Page();
         mp.setVisible(true);
         this.setVisible(false);
+        mp.setSize(this.getSize());
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     /**

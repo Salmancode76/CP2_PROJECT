@@ -200,6 +200,7 @@ public class Manage_Teams extends javax.swing.JFrame {
         Select_Team_view V = new Select_Team_view();
         V.setVisible(true);
         this.setVisible(false);
+        V.setSize(this.getSize());
         
     }//GEN-LAST:event_View_TeamsBtnActionPerformed
 
@@ -209,6 +210,7 @@ public class Manage_Teams extends javax.swing.JFrame {
         Main_Page MP = new Main_Page();
         MP.setVisible(true);
         this.setVisible(false);
+        MP.setSize(this.getSize());
     }//GEN-LAST:event_BackBtnActionPerformed
 
     private void Add_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_TeamsBtnActionPerformed
@@ -217,6 +219,7 @@ public class Manage_Teams extends javax.swing.JFrame {
         Add_team V = new Add_team();
         V.setVisible(true);
         this.setVisible(false);
+        V.setSize(this.getSize());
         
     }//GEN-LAST:event_Add_TeamsBtnActionPerformed
 
@@ -226,6 +229,7 @@ public class Manage_Teams extends javax.swing.JFrame {
         Select_Team V = new Select_Team();
         V.setVisible(true);
         this.setVisible(false);
+        V.setSize(this.getSize());
     }//GEN-LAST:event_Edit_TeamsBtnActionPerformed
 
     private void Delete_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_TeamsBtnActionPerformed
@@ -233,6 +237,7 @@ public class Manage_Teams extends javax.swing.JFrame {
         Delete_Team dt = new Delete_Team();
         dt.setVisible(true);
         this.setVisible(false);
+        dt.setSize(this.getSize());
         
     }//GEN-LAST:event_Delete_TeamsBtnActionPerformed
 
