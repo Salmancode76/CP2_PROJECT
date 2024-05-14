@@ -290,22 +290,16 @@ public class Add_team extends javax.swing.JFrame {
     System.out.println("Stadium Capacity: " + st_cp);
     
     String filePath = "teams.txt";
+    //Add item first to the arraylist
     SportsLeague sl = new SportsLeague();
     sl.addTeam(tm);
     
+    //Overwriting the old array with the new array
       try (
-        FileOutputStream fos = new FileOutputStream(filePath, true);
+        FileOutputStream fos = new FileOutputStream(filePath);
         // Create a new ObjectOutputStream without writing a header if the file already exists
-        ObjectOutputStream oos = new ObjectOutputStream(fos) {
-            //Overriding ObjectOutputStream method to make sure the header start at the start of the file and not create many headers
-            protected void writeStreamHeader() throws IOException {
-                //create a header if the file is empty
-                if (fos.getChannel().position() == 0) {
-                    super.writeStreamHeader();
-                }
-            }
-        }) {
-        oos.writeObject(tm);
+        ObjectOutputStream oos = new ObjectOutputStream(fos) {}) {
+        oos.writeObject(sl.getTeams());
         System.out.println("Team added to file.");
     } catch (IOException ex) {
         ex.printStackTrace();

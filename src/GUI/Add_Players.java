@@ -6,6 +6,7 @@ package GUI;
 import Logic.Player;
 import Logic.Person;
 import Logic.Team;
+import Logic.SportsLeague;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.EOFException;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 
 /**
@@ -37,31 +39,16 @@ public class Add_Players extends javax.swing.JFrame {
     private void loadTeamsFromFile() {
       
     DefaultComboBoxModel dmc = new DefaultComboBoxModel();
+    //bind
     dmc.addElement("No Team");
+    //add data
     teamComboBox1.setModel(dmc);
-    try (
-            
-         FileInputStream fis = new FileInputStream("teams.txt");
-         ObjectInputStream in = new ObjectInputStream(fis)) {
-        //in.reset();
-      Team  teamName;
+   //populating The combo box
+    ArrayList <Team> teams_temp= new SportsLeague().getTeams();
+   for (int i=0;i< teams_temp.size();i++) {
+    teamComboBox1.addItem(teams_temp.get(i).getName());
+}
 
-        while (true) {
-            try {
-                teamName = (Team) in.readObject();
-                
-                dmc.addElement(teamName.getName());
-
-                
-            } catch (EOFException e) {
-                break; // End of file reached
-            }
-        }
-        teamComboBox1.setModel(dmc);
-        
-    } catch (IOException | ClassNotFoundException ex) {
-        //ex.printStackTrace();
-    }
  
     }
 
@@ -304,7 +291,7 @@ public class Add_Players extends javax.swing.JFrame {
         });
 
         GP_captain.add(Rbtn_no);
-        Rbtn_no.setText("NO");
+        Rbtn_no.setText("No");
         Rbtn_no.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Rbtn_noActionPerformed(evt);
@@ -532,6 +519,7 @@ public class Add_Players extends javax.swing.JFrame {
         pl.setDob(dobTxt.getText());
         pl.setNationality(nationalityTxt.getText());
        double salary = Double.parseDouble(salaryTxt.getText());
+       pl.setSalary(salary);
  
        if(Rbtn_yes.isSelected()==true){
            pl.setIsCaptain(true);
@@ -541,8 +529,11 @@ public class Add_Players extends javax.swing.JFrame {
        }
        pl.setPosition(positionComboBox.getSelectedItem().toString());
        
-
-       
+for (int i=0;i<new SportsLeague().getTeams().size();i++){
+    if (new SportsLeague().getTeams().get(i).getName().equals(teamComboBox1.getSelectedItem().toString())){
+        pl.setTeam(new SportsLeague().getTeams().get(i));
+    }
+}      
        
     // Similarly, set other properties of the Player
 System.out.printf("ID: %s%n", pl.getID());
@@ -553,13 +544,10 @@ System.out.printf("Nationality: %s%n", pl.getNationality());
 System.out.printf("Salary: %.2f%n", pl.getSalary());
 System.out.printf("Is Captain: %s%n", pl.isIsCaptain());
 System.out.printf("Position: %s%n", pl.getPosition());
-        System.out.println("Team is "+ pl.getTeam());
+System.out.println("Team is "+ pl.getTeam());
        // System.out.println(nameTxt.getText());
       // add(nameTxt.getText());
 
-        //in.reset();
-      Team  teamName;
-        
         
         
         

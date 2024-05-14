@@ -1,19 +1,63 @@
 package Logic;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.*;
+import java.io.Serializable;
+import java.io.IOException;
 
 
-public class SportsLeague 
+public class SportsLeague  implements Serializable 
 {
 
-    private ArrayList <Team> Teams;
     private ArrayList <Player> All_Players;
     private ArrayList <Manager> Managers;
+    private ArrayList <Team> Teams;
     
+    public SportsLeague() {
+    All_Players = new ArrayList<>();
+    Managers = new ArrayList<>();
+    Teams = new ArrayList<>();
+    //File Object
+    File file = new File("teams.txt");
     
-    public SportsLeague() 
-    {
-        
+   //Making sure the exists
+    if (!file.exists()) {
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+    //Only read when the file is NOT empty
+    if (file.length() > 0) {
+    try {
+        //File stream
+        FileInputStream fis = new FileInputStream(file);
+        ObjectInputStream in = new ObjectInputStream(fis);
+        
+        Teams = new ArrayList<>();
+        while (true) {
+            try {
+                //copying all data from the serialized file to the temp array
+                ArrayList<Team> teamsInFile = (ArrayList<Team>) in.readObject();
+                Teams.addAll(teamsInFile);
+            } catch (EOFException e) {
+                break; 
+            }
+        }
+        
+        in.close();
+        fis.close();
+    } catch (IOException | ClassNotFoundException ex) {
+        ex.printStackTrace();
+    }
+
+
+}
+    }
+    
 
    
     
@@ -21,6 +65,8 @@ public class SportsLeague
 
     public void addTeam(Team team) 
     {
+            Teams.add(team);
+        
        
     }
 
@@ -90,7 +136,18 @@ public class SportsLeague
     {
         
     }
- 
+    //new
+    public ArrayList<Player> getAll_Players() {
+        return All_Players;
+    }
+
+    public ArrayList<Team> getTeams() {
+        return Teams;
+    }
+
+    public void setTeams(ArrayList<Team> Teams) {
+        this.Teams = Teams;
+    }
     
     
 
