@@ -4,6 +4,19 @@
  */
 package GUI;
 import Logic.Player;
+import Logic.Person;
+import Logic.Team;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.EOFException;
+import java.io.FileNotFoundException;
+
 
 /**
  *
@@ -11,14 +24,49 @@ import Logic.Player;
  */
 
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class Add_Players extends javax.swing.JFrame {
+    DefaultComboBoxModel<String> dmc = new DefaultComboBoxModel<>();
 
-    /**
-     * Creates new form Add_Players
-     */
     public Add_Players() {
         initComponents();
+        loadTeamsFromFile(); // Load teams from file when Add_Players frame is created
     }
+
+    private void loadTeamsFromFile() {
+      
+    DefaultComboBoxModel dmc = new DefaultComboBoxModel();
+    dmc.addElement("No Team");
+    teamComboBox1.setModel(dmc);
+    try (
+            
+         FileInputStream fis = new FileInputStream("teams.txt");
+         ObjectInputStream in = new ObjectInputStream(fis)) {
+        //in.reset();
+      Team  teamName;
+
+        while (true) {
+            try {
+                teamName = (Team) in.readObject();
+                
+                dmc.addElement(teamName.getName());
+
+                
+            } catch (EOFException e) {
+                break; // End of file reached
+            }
+        }
+        teamComboBox1.setModel(dmc);
+        
+    } catch (IOException | ClassNotFoundException ex) {
+        //ex.printStackTrace();
+    }
+ 
+    }
+
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,6 +77,7 @@ public class Add_Players extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        GP_captain = new javax.swing.ButtonGroup();
         addPlayersPanel = new javax.swing.JPanel();
         addPlayersLabel = new javax.swing.JLabel();
         addPlayersInputPanel = new javax.swing.JPanel();
@@ -49,10 +98,11 @@ public class Add_Players extends javax.swing.JFrame {
         salaryTxt = new javax.swing.JTextField();
         Field5 = new javax.swing.JPanel();
         isCaptainLabel = new javax.swing.JLabel();
-        isCaptainComboBox = new javax.swing.JComboBox<>();
+        Rbtn_yes = new javax.swing.JRadioButton();
+        Rbtn_no = new javax.swing.JRadioButton();
         Field7 = new javax.swing.JPanel();
         teamLabel = new javax.swing.JLabel();
-        positionComboBox1 = new javax.swing.JComboBox<>();
+        teamComboBox1 = new javax.swing.JComboBox<>();
         Field6 = new javax.swing.JPanel();
         positionLabel = new javax.swing.JLabel();
         positionComboBox = new javax.swing.JComboBox<>();
@@ -124,6 +174,12 @@ public class Add_Players extends javax.swing.JFrame {
 
         Field1.setBackground(new java.awt.Color(255, 255, 255));
 
+        addressTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressTxtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Field1Layout = new javax.swing.GroupLayout(Field1);
         Field1.setLayout(Field1Layout);
         Field1Layout.setHorizontalGroup(
@@ -135,10 +191,9 @@ public class Add_Players extends javax.swing.JFrame {
         );
         Field1Layout.setVerticalGroup(
             Field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Field1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(Field1Layout.createSequentialGroup()
                 .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 26, Short.MAX_VALUE))
         );
 
         DOB.setBackground(new java.awt.Color(255, 255, 255));
@@ -146,6 +201,12 @@ public class Add_Players extends javax.swing.JFrame {
         dobLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
         dobLabel.setForeground(new java.awt.Color(0, 127, 255));
         dobLabel.setText("Enter Date of Birth:");
+
+        dobTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dobTxtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout DOBLayout = new javax.swing.GroupLayout(DOB);
         DOB.setLayout(DOBLayout);
@@ -173,6 +234,12 @@ public class Add_Players extends javax.swing.JFrame {
         nationalityLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
         nationalityLabel.setForeground(new java.awt.Color(0, 127, 255));
         nationalityLabel.setText("Enter Nationality:");
+
+        nationalityTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nationalityTxtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Field3Layout = new javax.swing.GroupLayout(Field3);
         Field3.setLayout(Field3Layout);
@@ -228,10 +295,19 @@ public class Add_Players extends javax.swing.JFrame {
         isCaptainLabel.setForeground(new java.awt.Color(0, 127, 255));
         isCaptainLabel.setText("Is Captain:");
 
-        isCaptainComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        isCaptainComboBox.addActionListener(new java.awt.event.ActionListener() {
+        GP_captain.add(Rbtn_yes);
+        Rbtn_yes.setText("Yes");
+        Rbtn_yes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                isCaptainComboBoxActionPerformed(evt);
+                Rbtn_yesActionPerformed(evt);
+            }
+        });
+
+        GP_captain.add(Rbtn_no);
+        Rbtn_no.setText("NO");
+        Rbtn_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Rbtn_noActionPerformed(evt);
             }
         });
 
@@ -242,17 +318,20 @@ public class Add_Players extends javax.swing.JFrame {
             .addGroup(Field5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(isCaptainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(257, 257, 257)
-                .addComponent(isCaptainComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(258, 258, 258)
+                .addComponent(Rbtn_yes)
+                .addGap(72, 72, 72)
+                .addComponent(Rbtn_no))
         );
         Field5Layout.setVerticalGroup(
             Field5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Field5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Field5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(Field5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(isCaptainLabel)
-                    .addComponent(isCaptainComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Field5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Rbtn_no, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                        .addComponent(Rbtn_yes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -262,10 +341,10 @@ public class Add_Players extends javax.swing.JFrame {
         teamLabel.setForeground(new java.awt.Color(0, 127, 255));
         teamLabel.setText("Enter Team:");
 
-        positionComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        positionComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        teamComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No-Team" }));
+        teamComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                positionComboBox1ActionPerformed(evt);
+                teamComboBox1ActionPerformed(evt);
             }
         });
 
@@ -277,7 +356,7 @@ public class Add_Players extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(teamLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(242, 242, 242)
-                .addComponent(positionComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(teamComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         Field7Layout.setVerticalGroup(
@@ -286,7 +365,7 @@ public class Add_Players extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Field7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(teamLabel)
-                    .addComponent(positionComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(teamComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -296,7 +375,7 @@ public class Add_Players extends javax.swing.JFrame {
         positionLabel.setForeground(new java.awt.Color(0, 127, 255));
         positionLabel.setText("Enter Postion:");
 
-        positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Attack", "Defence", "Midfielder", "Goal Keeper" }));
         positionComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 positionComboBoxActionPerformed(evt);
@@ -371,8 +450,8 @@ public class Add_Players extends javax.swing.JFrame {
             .addGroup(addPlayersInputPanelLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(addPlayersInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(18, 18, 18)
+                .addGroup(addPlayersInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addressLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -441,10 +520,6 @@ public class Add_Players extends javax.swing.JFrame {
         
     }//GEN-LAST:event_backBtnActionPerformed
 
-    private void isCaptainComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isCaptainComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_isCaptainComboBoxActionPerformed
-
     private void positionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_positionComboBoxActionPerformed
@@ -452,19 +527,76 @@ public class Add_Players extends javax.swing.JFrame {
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
         Player pl = new Player();
-        System.out.println(nameTxt.getText());
+        pl.setName(nameTxt.getText());
+        pl.setAddress(addressTxt.getText());
+        pl.setDob(dobTxt.getText());
+        pl.setNationality(nationalityTxt.getText());
+       double salary = Double.parseDouble(salaryTxt.getText());
+ 
+       if(Rbtn_yes.isSelected()==true){
+           pl.setIsCaptain(true);
+           
+       }else{
+           pl.setIsCaptain(false);
+       }
+       pl.setPosition(positionComboBox.getSelectedItem().toString());
+       
+
+       
+       
+    // Similarly, set other properties of the Player
+System.out.printf("ID: %s%n", pl.getID());
+System.out.printf("Name: %s%n", pl.getName());
+System.out.printf("Address: %s%n", pl.getAddress());
+System.out.printf("Date of Birth: %s%n", pl.getDob());
+System.out.printf("Nationality: %s%n", pl.getNationality());
+System.out.printf("Salary: %.2f%n", pl.getSalary());
+System.out.printf("Is Captain: %s%n", pl.isIsCaptain());
+System.out.printf("Position: %s%n", pl.getPosition());
+        System.out.println("Team is "+ pl.getTeam());
+       // System.out.println(nameTxt.getText());
+      // add(nameTxt.getText());
+
+        //in.reset();
+      Team  teamName;
         
+        
+        
+        
+       
+       
+       
     }//GEN-LAST:event_addBtnActionPerformed
 
-    private void positionComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionComboBox1ActionPerformed
+    private void teamComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_positionComboBox1ActionPerformed
+    }//GEN-LAST:event_teamComboBox1ActionPerformed
 
     private void nameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTxtActionPerformed
         // TODO add your handling code here:
         
         
     }//GEN-LAST:event_nameTxtActionPerformed
+
+    private void addressTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addressTxtActionPerformed
+
+    private void dobTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dobTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dobTxtActionPerformed
+
+    private void nationalityTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nationalityTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nationalityTxtActionPerformed
+
+    private void Rbtn_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rbtn_noActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Rbtn_noActionPerformed
+
+    private void Rbtn_yesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rbtn_yesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Rbtn_yesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -498,6 +630,7 @@ public class Add_Players extends javax.swing.JFrame {
             public void run() {
                 new Add_Players().setVisible(true);
             }
+            
         });
     }
 
@@ -510,6 +643,9 @@ public class Add_Players extends javax.swing.JFrame {
     private javax.swing.JPanel Field5;
     private javax.swing.JPanel Field6;
     private javax.swing.JPanel Field7;
+    private javax.swing.ButtonGroup GP_captain;
+    private javax.swing.JRadioButton Rbtn_no;
+    private javax.swing.JRadioButton Rbtn_yes;
     private javax.swing.JButton addBtn;
     private javax.swing.JPanel addPlayersInputPanel;
     private javax.swing.JLabel addPlayersLabel;
@@ -519,17 +655,16 @@ public class Add_Players extends javax.swing.JFrame {
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel dobLabel;
     private javax.swing.JTextField dobTxt;
-    private javax.swing.JComboBox<String> isCaptainComboBox;
     private javax.swing.JLabel isCaptainLabel;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTxt;
     private javax.swing.JLabel nationalityLabel;
     private javax.swing.JTextField nationalityTxt;
     private javax.swing.JComboBox<String> positionComboBox;
-    private javax.swing.JComboBox<String> positionComboBox1;
     private javax.swing.JLabel positionLabel;
     private javax.swing.JLabel salaryLabel;
     private javax.swing.JTextField salaryTxt;
+    public javax.swing.JComboBox<String> teamComboBox1;
     private javax.swing.JLabel teamLabel;
     // End of variables declaration//GEN-END:variables
 }

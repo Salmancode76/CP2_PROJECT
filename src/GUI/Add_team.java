@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
-
+import Logic.Team;
+import Logic.SportsLeague;
+import javax.swing.DefaultComboBoxModel;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author salma
@@ -13,9 +18,15 @@ public class Add_team extends javax.swing.JFrame {
     /**
      * Creates new form Add_team
      */
+    // Define the constructor with Add_Players instance
+    private Add_Players addPlayersInstance; // Add this field
+
+    // Define the constructor with Add_Players instance
     public Add_team() {
+        
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,17 +40,17 @@ public class Add_team extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         Title2 = new javax.swing.JLabel();
         Main_panel2 = new javax.swing.JPanel();
-        jButton18 = new javax.swing.JButton();
+        btn_go_back = new javax.swing.JButton();
         Field1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton19 = new javax.swing.JButton();
+        stadium_nametxt = new javax.swing.JTextField();
+        btn_add = new javax.swing.JButton();
         Field2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        Team_nametxt = new javax.swing.JTextField();
         Field4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        stadium_captxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,17 +67,17 @@ public class Add_team extends javax.swing.JFrame {
         Main_panel2.setBackground(new java.awt.Color(255, 255, 255));
         Main_panel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 10, true));
 
-        jButton18.setBackground(new java.awt.Color(211, 211, 211));
-        jButton18.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton18.setForeground(new java.awt.Color(0, 127, 255));
-        jButton18.setText("Go Back");
-        jButton18.setToolTipText("");
-        jButton18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton18.setPreferredSize(new java.awt.Dimension(231, 51));
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
+        btn_go_back.setBackground(new java.awt.Color(211, 211, 211));
+        btn_go_back.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        btn_go_back.setForeground(new java.awt.Color(0, 127, 255));
+        btn_go_back.setText("Go Back");
+        btn_go_back.setToolTipText("");
+        btn_go_back.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        btn_go_back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_go_back.setPreferredSize(new java.awt.Dimension(231, 51));
+        btn_go_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
+                btn_go_backActionPerformed(evt);
             }
         });
 
@@ -76,6 +87,12 @@ public class Add_team extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 127, 255));
         jLabel2.setText("Enter Stadium Name:");
 
+        stadium_nametxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stadium_nametxtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Field1Layout = new javax.swing.GroupLayout(Field1);
         Field1.setLayout(Field1Layout);
         Field1Layout.setHorizontalGroup(
@@ -83,7 +100,7 @@ public class Add_team extends javax.swing.JFrame {
             .addGroup(Field1Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                 .addGap(80, 80, 80)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(stadium_nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Field1Layout.setVerticalGroup(
             Field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,21 +108,21 @@ public class Add_team extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(stadium_nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jButton19.setBackground(new java.awt.Color(211, 211, 211));
-        jButton19.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jButton19.setForeground(new java.awt.Color(0, 127, 255));
-        jButton19.setText("Add");
-        jButton19.setToolTipText("");
-        jButton19.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
-        jButton19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton19.setPreferredSize(new java.awt.Dimension(231, 51));
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
+        btn_add.setBackground(new java.awt.Color(211, 211, 211));
+        btn_add.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        btn_add.setForeground(new java.awt.Color(0, 127, 255));
+        btn_add.setText("Add");
+        btn_add.setToolTipText("");
+        btn_add.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
+        btn_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_add.setPreferredSize(new java.awt.Dimension(231, 51));
+        btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
+                btn_addActionPerformed(evt);
             }
         });
 
@@ -115,6 +132,12 @@ public class Add_team extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 127, 255));
         jLabel3.setText("Enter Team Name:");
 
+        Team_nametxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Team_nametxtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Field2Layout = new javax.swing.GroupLayout(Field2);
         Field2.setLayout(Field2Layout);
         Field2Layout.setHorizontalGroup(
@@ -122,7 +145,7 @@ public class Add_team extends javax.swing.JFrame {
             .addGroup(Field2Layout.createSequentialGroup()
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                 .addGap(80, 80, 80)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Team_nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Field2Layout.setVerticalGroup(
             Field2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +153,7 @@ public class Add_team extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Field2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Team_nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -138,16 +161,22 @@ public class Add_team extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 127, 255));
-        jLabel5.setText("Enter Stadium Name:");
+        jLabel5.setText("Enter Stadium Capcity:");
+
+        stadium_captxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stadium_captxtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Field4Layout = new javax.swing.GroupLayout(Field4);
         Field4.setLayout(Field4Layout);
         Field4Layout.setHorizontalGroup(
             Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Field4Layout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(80, 80, 80)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(stadium_captxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Field4Layout.setVerticalGroup(
             Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +184,7 @@ public class Add_team extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(stadium_captxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -167,9 +196,9 @@ public class Add_team extends javax.swing.JFrame {
                 .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Main_panel2Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_go_back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
-                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Main_panel2Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(Field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,7 +207,7 @@ public class Add_team extends javax.swing.JFrame {
                         .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Field2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
         Main_panel2Layout.setVerticalGroup(
             Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,8 +220,8 @@ public class Add_team extends javax.swing.JFrame {
                 .addComponent(Field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_go_back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -238,7 +267,7 @@ public class Add_team extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+    private void btn_go_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_backActionPerformed
         // TODO add your handling code here:
         
         Manage_Teams V = new Manage_Teams();
@@ -246,11 +275,57 @@ public class Add_team extends javax.swing.JFrame {
         this.setVisible(false);
         V.setSize(this.getSize());
         
-    }//GEN-LAST:event_jButton18ActionPerformed
+    }//GEN-LAST:event_btn_go_backActionPerformed
 
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton19ActionPerformed
+     Team tm = new Team();
+    tm.setName(Team_nametxt.getText());
+    tm.setStadium(stadium_nametxt.getText());
+    int st_cp = Integer.parseInt(stadium_captxt.getText());
+    tm.setCapacity(st_cp);
+    
+    System.out.println("Name: " + tm.getName());
+    System.out.println("Stadium: " + tm.getStadium());
+    System.out.println("Stadium Capacity: " + st_cp);
+    
+    String filePath = "teams.txt";
+    SportsLeague sl = new SportsLeague();
+    sl.addTeam(tm);
+    
+      try (
+        FileOutputStream fos = new FileOutputStream(filePath, true);
+        // Create a new ObjectOutputStream without writing a header if the file already exists
+        ObjectOutputStream oos = new ObjectOutputStream(fos) {
+            //Overriding ObjectOutputStream method to make sure the header start at the start of the file and not create many headers
+            protected void writeStreamHeader() throws IOException {
+                //create a header if the file is empty
+                if (fos.getChannel().position() == 0) {
+                    super.writeStreamHeader();
+                }
+            }
+        }) {
+        oos.writeObject(tm);
+        System.out.println("Team added to file.");
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
+
+          
+           
+    }//GEN-LAST:event_btn_addActionPerformed
+
+    private void Team_nametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Team_nametxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Team_nametxtActionPerformed
+
+    private void stadium_nametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stadium_nametxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stadium_nametxtActionPerformed
+
+    private void stadium_captxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stadium_captxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stadium_captxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,15 +367,15 @@ public class Add_team extends javax.swing.JFrame {
     private javax.swing.JPanel Field2;
     private javax.swing.JPanel Field4;
     private javax.swing.JPanel Main_panel2;
+    private javax.swing.JTextField Team_nametxt;
     private javax.swing.JLabel Title2;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
+    private javax.swing.JButton btn_add;
+    private javax.swing.JButton btn_go_back;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField stadium_captxt;
+    private javax.swing.JTextField stadium_nametxt;
     // End of variables declaration//GEN-END:variables
 }

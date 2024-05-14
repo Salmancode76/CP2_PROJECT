@@ -114,9 +114,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jButton18" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_go_back" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="jButton19" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_add" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
@@ -130,7 +130,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="262" max="32767" attributes="0"/>
+                      <EmptySpace pref="252" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -145,8 +145,8 @@
                       <Component id="Field4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="82" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton18" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton19" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_go_back" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_add" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
@@ -154,7 +154,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton18">
+            <Component class="javax.swing.JButton" name="btn_go_back">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="d3" red="d3" type="rgb"/>
@@ -182,7 +182,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton18ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_go_backActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="Field1">
@@ -198,7 +198,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel2" pref="348" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="jTextField5" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="stadium_nametxt" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -208,7 +208,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField5" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="stadium_nametxt" min="-2" pref="36" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -227,11 +227,14 @@
                     <Property name="text" type="java.lang.String" value="Enter Stadium Name:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField5">
+                <Component class="javax.swing.JTextField" name="stadium_nametxt">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stadium_nametxtActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton19">
+            <Component class="javax.swing.JButton" name="btn_add">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="d3" red="d3" type="rgb"/>
@@ -259,7 +262,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton19ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_addActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="Field2">
@@ -275,7 +278,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel3" pref="348" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="jTextField6" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="Team_nametxt" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -285,7 +288,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField6" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="Team_nametxt" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -304,7 +307,10 @@
                     <Property name="text" type="java.lang.String" value="Enter Team Name:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField6">
+                <Component class="javax.swing.JTextField" name="Team_nametxt">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Team_nametxtActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -319,9 +325,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel5" pref="348" max="32767" attributes="0"/>
+                          <Component id="jLabel5" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="jTextField7" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="stadium_captxt" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -331,7 +337,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField7" alignment="1" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="stadium_captxt" alignment="1" min="-2" pref="36" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -347,10 +353,13 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="7f" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Enter Stadium Name:"/>
+                    <Property name="text" type="java.lang.String" value="Enter Stadium Capcity:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField7">
+                <Component class="javax.swing.JTextField" name="stadium_captxt">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stadium_captxtActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

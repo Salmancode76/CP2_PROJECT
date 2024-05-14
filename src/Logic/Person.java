@@ -7,7 +7,8 @@ import java.util.*;
 public class Person 
 {
 
-    private int ID;
+    private static int  ID=0;
+    private int Owner_id;
     private String name;
     private String address;
     private String dob;
@@ -17,7 +18,7 @@ public class Person
     
     public Person() //Default constructor
     {
-        
+        Owner_id=ID++; 
     }
 
    

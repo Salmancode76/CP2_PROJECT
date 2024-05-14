@@ -1,10 +1,12 @@
 package Logic;
 
+import java.io.Serializable;
 import java.util.*;
+
 /**
  * 
  */
-public class Team {
+public class Team implements Serializable {
 
     private String name;
     private String stadium;
@@ -14,6 +16,7 @@ public class Team {
 
     public Team()  
     {
+     players = new ArrayList<>();
     
     }
 
@@ -69,6 +72,9 @@ public class Team {
     public ArrayList<Player> getPlayers() 
     {
         return players;
+    }
+    public String toString() {
+        return "Name: " + name;
     }
 
     
