@@ -2,19 +2,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
 package GUI;
+import Logic.*;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 
-/**
- *
- * @author salma
- */
-public class Add_Managers extends javax.swing.JFrame {
-
+public class Add_Managers extends javax.swing.JFrame 
+{
+    private void loadTeamsFromFile() 
+    {
+      
+    DefaultComboBoxModel dmc = new DefaultComboBoxModel();
+    //bind
+    dmc.addElement("No Team");
+    //add data
+    teamComboBox.setModel(dmc);
+   //populating The combo box
+    ArrayList <Team> teams_temp= new SportsLeague().getTeams();
+   for (int i=0;i< teams_temp.size();i++)
+   {
+    teamComboBox.addItem(teams_temp.get(i).getName());
+   }
+    }
     /**
      * Creates new form Add_Managers
      */
-    public Add_Managers() {
+    public Add_Managers() 
+    {
         initComponents();
+        loadTeamsFromFile();
     }
 
     /**
@@ -52,7 +69,7 @@ public class Add_Managers extends javax.swing.JFrame {
         qualificationsLabel = new javax.swing.JLabel();
         qualificationsTxt = new javax.swing.JTextField();
         addBtn = new javax.swing.JButton();
-        isCaptainComboBox = new javax.swing.JComboBox<>();
+        teamComboBox = new javax.swing.JComboBox<>();
         teamLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,6 +107,12 @@ public class Add_Managers extends javax.swing.JFrame {
         nameLabel.setForeground(new java.awt.Color(0, 127, 255));
         nameLabel.setText("Enter Name:");
 
+        nameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameTxtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout FieldLayout = new javax.swing.GroupLayout(Field);
         Field.setLayout(FieldLayout);
         FieldLayout.setHorizontalGroup(
@@ -115,6 +138,12 @@ public class Add_Managers extends javax.swing.JFrame {
         addressLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
         addressLabel.setForeground(new java.awt.Color(0, 127, 255));
         addressLabel.setText("Enter Address:");
+
+        addressTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressTxtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Field1Layout = new javax.swing.GroupLayout(Field1);
         Field1.setLayout(Field1Layout);
@@ -142,6 +171,12 @@ public class Add_Managers extends javax.swing.JFrame {
         dobLabel.setForeground(new java.awt.Color(0, 127, 255));
         dobLabel.setText("Enter Date of Birth:");
 
+        dobTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dobTxtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Field2Layout = new javax.swing.GroupLayout(Field2);
         Field2.setLayout(Field2Layout);
         Field2Layout.setHorizontalGroup(
@@ -167,6 +202,12 @@ public class Add_Managers extends javax.swing.JFrame {
         nationalityLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
         nationalityLabel.setForeground(new java.awt.Color(0, 127, 255));
         nationalityLabel.setText("Enter Nationality:");
+
+        nationalityTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nationalityTxtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Field3Layout = new javax.swing.GroupLayout(Field3);
         Field3.setLayout(Field3Layout);
@@ -194,6 +235,12 @@ public class Add_Managers extends javax.swing.JFrame {
         salaryLabel.setForeground(new java.awt.Color(0, 127, 255));
         salaryLabel.setText("Enter Salary:");
 
+        salaryTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salaryTxtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Field4Layout = new javax.swing.GroupLayout(Field4);
         Field4.setLayout(Field4Layout);
         Field4Layout.setHorizontalGroup(
@@ -220,6 +267,12 @@ public class Add_Managers extends javax.swing.JFrame {
         bonusLabel.setForeground(new java.awt.Color(0, 127, 255));
         bonusLabel.setText("Enter Bonus Percentage:");
 
+        bonusTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bonusTxtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Field5Layout = new javax.swing.GroupLayout(Field5);
         Field5.setLayout(Field5Layout);
         Field5Layout.setHorizontalGroup(
@@ -245,6 +298,12 @@ public class Add_Managers extends javax.swing.JFrame {
         qualificationsLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
         qualificationsLabel.setForeground(new java.awt.Color(0, 127, 255));
         qualificationsLabel.setText("Enter Qualifications:");
+
+        qualificationsTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qualificationsTxtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Field6Layout = new javax.swing.GroupLayout(Field6);
         Field6.setLayout(Field6Layout);
@@ -280,10 +339,10 @@ public class Add_Managers extends javax.swing.JFrame {
             }
         });
 
-        isCaptainComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        isCaptainComboBox.addActionListener(new java.awt.event.ActionListener() {
+        teamComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        teamComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                isCaptainComboBoxActionPerformed(evt);
+                teamComboBoxActionPerformed(evt);
             }
         });
 
@@ -309,7 +368,7 @@ public class Add_Managers extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(teamLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(isCaptainComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(teamComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addMngsInputPanelLayout.createSequentialGroup()
                         .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
@@ -335,7 +394,7 @@ public class Add_Managers extends javax.swing.JFrame {
                 .addComponent(Field6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addMngsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(isCaptainComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(teamComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(teamLabel))
                 .addGap(26, 26, 26)
                 .addGroup(addMngsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -398,11 +457,68 @@ public class Add_Managers extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
+        
+        Manager m1 = new Manager();
+        
+        m1.setName(nameTxt.getText());
+        m1.setAddress(addressTxt.getText());
+        m1.setDob(dobTxt.getText());
+        m1.setNationality(nationalityTxt.getText());
+        
+        double salary = Double.parseDouble(salaryTxt.getText());
+        m1.setSalary(salary);
+        
+        double bonusPercentage = Double.parseDouble(bonusTxt.getText());
+        m1.setBonusPercentage(bonusPercentage);
+
+        m1.setQualifications(qualificationsTxt.getText());
+        
+        // -----for loop-----
+        
+        
+        
+        
     }//GEN-LAST:event_addBtnActionPerformed
 
-    private void isCaptainComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isCaptainComboBoxActionPerformed
+    private void teamComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_isCaptainComboBoxActionPerformed
+    }//GEN-LAST:event_teamComboBoxActionPerformed
+
+    private void nameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTxtActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_nameTxtActionPerformed
+
+    private void addressTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTxtActionPerformed
+        // TODO add your handling code here:
+        Manager M = new Manager();
+    }//GEN-LAST:event_addressTxtActionPerformed
+
+    private void dobTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dobTxtActionPerformed
+        // TODO add your handling code here:
+        Manager M = new Manager();
+    }//GEN-LAST:event_dobTxtActionPerformed
+
+    private void nationalityTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nationalityTxtActionPerformed
+        // TODO add your handling code here:
+        Manager M = new Manager();
+    }//GEN-LAST:event_nationalityTxtActionPerformed
+
+    private void salaryTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salaryTxtActionPerformed
+        // TODO add your handling code here:
+        Manager M = new Manager();
+    }//GEN-LAST:event_salaryTxtActionPerformed
+
+    private void bonusTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bonusTxtActionPerformed
+        // TODO add your handling code here:
+        Manager M = new Manager();
+    }//GEN-LAST:event_bonusTxtActionPerformed
+
+    private void qualificationsTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qualificationsTxtActionPerformed
+        // TODO add your handling code here:
+        Manager M = new Manager();
+    }//GEN-LAST:event_qualificationsTxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,7 +574,6 @@ public class Add_Managers extends javax.swing.JFrame {
     private javax.swing.JLabel dobLabel;
     private javax.swing.JTextField dobTxt;
     private javax.swing.JButton goBackBtn;
-    private javax.swing.JComboBox<String> isCaptainComboBox;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTxt;
     private javax.swing.JLabel nationalityLabel;
@@ -467,6 +582,7 @@ public class Add_Managers extends javax.swing.JFrame {
     private javax.swing.JTextField qualificationsTxt;
     private javax.swing.JLabel salaryLabel;
     private javax.swing.JTextField salaryTxt;
+    private javax.swing.JComboBox<String> teamComboBox;
     private javax.swing.JLabel teamLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -124,7 +124,7 @@
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                               <Component id="teamLabel" min="-2" pref="128" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="isCaptainComboBox" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="teamComboBox" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="goBackBtn" min="-2" max="-2" attributes="0"/>
@@ -155,7 +155,7 @@
                       <Component id="Field6" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="isCaptainComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="teamComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="teamLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -244,6 +244,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="nameTxt">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameTxtActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -291,6 +294,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="addressTxt">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addressTxtActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -338,6 +344,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="dobTxt">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dobTxtActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -385,6 +394,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="nationalityTxt">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nationalityTxtActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -432,6 +444,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="salaryTxt">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salaryTxtActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -479,6 +494,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="bonusTxt">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bonusTxtActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -526,6 +544,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="qualificationsTxt">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="qualificationsTxtActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -560,7 +581,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="isCaptainComboBox">
+            <Component class="javax.swing.JComboBox" name="teamComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -572,7 +593,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="isCaptainComboBoxActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teamComboBoxActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

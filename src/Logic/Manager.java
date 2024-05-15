@@ -1,8 +1,9 @@
 package Logic;
+import java.io.Serializable;
 import java.util.*;
 
 
-public class Manager extends Person 
+public class Manager extends Person implements Serializable 
 {
 
     
@@ -14,7 +15,7 @@ public class Manager extends Person
     private double bonusPercentage;
     private String qualifications;
     private Team team;
-
+    
     public double getBonusPercentage() 
     {
         return bonusPercentage;
