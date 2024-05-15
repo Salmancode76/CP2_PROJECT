@@ -2,10 +2,13 @@ package Logic;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.ObjectInputStream;
 import java.util.*;
 import java.io.Serializable;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class SportsLeague  implements Serializable 
@@ -37,7 +40,6 @@ public class SportsLeague  implements Serializable
         FileInputStream fis = new FileInputStream(file);
         ObjectInputStream in = new ObjectInputStream(fis);
         
-        Teams = new ArrayList<>();
         while (true) {
             try {
                 //copying all data from the serialized file to the temp array
@@ -56,6 +58,42 @@ public class SportsLeague  implements Serializable
 
 
 }
+    File file_play = new File("players.txt");
+    if (!file_play.exists()){
+        try {
+            file_play.createNewFile();
+        } catch (IOException ex) {
+            Logger.getLogger(SportsLeague.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        try {
+            FileInputStream fisp = new FileInputStream(file_play);
+        try {
+            if (file_play.length()>0){
+            ObjectInputStream osp = new ObjectInputStream(fisp);
+            while(true){
+                try {
+                    ArrayList<Player> playersInFile = (ArrayList<Player>) osp.readObject();
+                    All_Players.addAll(playersInFile);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(SportsLeague.class.getName()).log(Level.SEVERE, null, ex);
+                }catch (EOFException ex) {
+                    // Break the loop when EOFException is thrown
+                    break;
+                }
+                
+            }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(SportsLeague.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SportsLeague.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
+    
+    
     }
     
 
@@ -79,7 +117,7 @@ public class SportsLeague  implements Serializable
    
     public void addPlayer(Player player) 
     {
-        
+        All_Players.add(player);
     }
 
     

@@ -1,14 +1,14 @@
 package Logic;
 import java.util.*;
+import java.io.Serializable;
 
 /**
  * 
  */
-public class Person 
+public class Person implements Serializable
 {
 
-    private static int  ID=0;
-    private int Owner_id;
+ 
     private String name;
     private String address;
     private String dob;
@@ -18,15 +18,8 @@ public class Person
     
     public Person() //Default constructor
     {
-        Owner_id=ID++; 
     }
 
-   
-
-    public int getID() 
-    {
-        return ID;
-    }
 
     public String getName() 
     {
@@ -54,10 +47,6 @@ public class Person
         return salary;
     }
 
-    public void setID(int ID) 
-    {
-        this.ID = ID;
-    }
 
     public void setName(String name)
     {

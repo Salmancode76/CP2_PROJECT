@@ -4,6 +4,11 @@
  */
 package GUI;
 
+import Logic.SportsLeague;
+import Logic.Player;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author salma
@@ -13,8 +18,22 @@ public class Select_Player extends javax.swing.JFrame {
     /**
      * Creates new form Select_Player
      */
+    
+    private void loadTeamsFromFile() {
+      
+    DefaultComboBoxModel dmcp = new DefaultComboBoxModel();
+    //bind
+    //add data
+   //populating The combo box
+    ArrayList <Player> teams_play=new SportsLeague().getAll_Players();
+    select_teamCombo.setModel(dmcp);
+   for (int i=0;i< teams_play.size();i++) {
+    select_teamCombo.addItem(teams_play.get(i).toString());
+}
+    }
     public Select_Player() {
         initComponents();
+        loadTeamsFromFile();
     }
 
     /**
@@ -33,7 +52,7 @@ public class Select_Player extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btn_select_player = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        select_teamCombo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,10 +117,9 @@ public class Select_Player extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Select Player :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        select_teamCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                select_teamComboActionPerformed(evt);
             }
         });
 
@@ -127,7 +145,7 @@ public class Select_Player extends javax.swing.JFrame {
                             .addGap(131, 131, 131)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(select_teamCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGap(44, 44, 44))))
                 .addGap(123, 123, 123))
             .addGroup(Main_panel2Layout.createSequentialGroup()
@@ -143,7 +161,7 @@ public class Select_Player extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(select_teamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
@@ -203,9 +221,9 @@ public class Select_Player extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btn_backActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void select_teamComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_teamComboActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_select_teamComboActionPerformed
 
     private void btn_select_playerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_select_playerActionPerformed
         // TODO add your handling code here:
@@ -255,10 +273,10 @@ public class Select_Player extends javax.swing.JFrame {
     private javax.swing.JLabel Title2;
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_select_player;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JComboBox<String> select_teamCombo;
     // End of variables declaration//GEN-END:variables
 }

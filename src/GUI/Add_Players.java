@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.EOFException;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 
@@ -512,41 +514,67 @@ public class Add_Players extends javax.swing.JFrame {
     }//GEN-LAST:event_positionComboBoxActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
-        Player pl = new Player();
-        pl.setName(nameTxt.getText());
-        pl.setAddress(addressTxt.getText());
-        pl.setDob(dobTxt.getText());
-        pl.setNationality(nationalityTxt.getText());
-       double salary = Double.parseDouble(salaryTxt.getText());
-       pl.setSalary(salary);
- 
-       if(Rbtn_yes.isSelected()==true){
-           pl.setIsCaptain(true);
-           
-       }else{
-           pl.setIsCaptain(false);
-       }
-       pl.setPosition(positionComboBox.getSelectedItem().toString());
-       
-for (int i=0;i<new SportsLeague().getTeams().size();i++){
-    if (new SportsLeague().getTeams().get(i).getName().equals(teamComboBox1.getSelectedItem().toString())){
-        pl.setTeam(new SportsLeague().getTeams().get(i));
-    }
-}      
-       
-    // Similarly, set other properties of the Player
-System.out.printf("ID: %s%n", pl.getID());
-System.out.printf("Name: %s%n", pl.getName());
-System.out.printf("Address: %s%n", pl.getAddress());
-System.out.printf("Date of Birth: %s%n", pl.getDob());
-System.out.printf("Nationality: %s%n", pl.getNationality());
-System.out.printf("Salary: %.2f%n", pl.getSalary());
-System.out.printf("Is Captain: %s%n", pl.isIsCaptain());
-System.out.printf("Position: %s%n", pl.getPosition());
-System.out.println("Team is "+ pl.getTeam());
-       // System.out.println(nameTxt.getText());
-      // add(nameTxt.getText());
+        try {
+            // TODO add your handling code here:
+            Player pl = new Player();
+            SportsLeague sl = new SportsLeague();
+            pl.setName(nameTxt.getText());
+            pl.setAddress(addressTxt.getText());
+            pl.setDob(dobTxt.getText());
+            pl.setNationality(nationalityTxt.getText());
+            double salary = Double.parseDouble(salaryTxt.getText());
+            pl.setSalary(salary);
+            
+            
+            if(Rbtn_yes.isSelected()==true){
+                pl.setIsCaptain(true);
+                
+            }else{
+                pl.setIsCaptain(false);
+            }
+            pl.setPosition(positionComboBox.getSelectedItem().toString());
+            
+            for (int i=0;i<sl.getTeams().size();i++){
+                if (sl.getTeams().get(i).getName().equals(teamComboBox1.getSelectedItem().toString())){
+                    pl.setTeam(sl.getTeams().get(i));
+                }
+            }
+                sl.addPlayer(pl);
+                
+                String file_path_player ="players.txt";
+                try {
+                    FileOutputStream fosp = new FileOutputStream(file_path_player);
+                    try {
+                        ObjectOutputStream oosp = new ObjectOutputStream(fosp);
+                        
+                        oosp.writeObject(sl.getAll_Players());
+                        System.out.println("Player Added");
+                        
+                    } catch (IOException ex) {
+                        Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+            
+            // Similarly, set other properties of the Player
+            System.out.printf("Name: %s%n", pl.getName());
+            System.out.printf("Address: %s%n", pl.getAddress());
+            System.out.printf("Date of Birth: %s%n", pl.getDob());
+            System.out.printf("Nationality: %s%n", pl.getNationality());
+            System.out.printf("Salary: %.2f%n", pl.getSalary());
+            System.out.printf("Is Captain: %s%n", pl.isIsCaptain());
+            System.out.printf("Position: %s%n", pl.getPosition());
+            System.out.println("Team is "+ pl.getTeam());
+            // System.out.println(nameTxt.getText());
+            // add(nameTxt.getText());
+        } catch (IOException ex) {
+            Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         
         
