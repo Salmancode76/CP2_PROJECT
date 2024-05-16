@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Person implements Serializable
 {
 
- 
+    private int id;
     private String name;
     private String address;
     private String dob;
@@ -71,6 +71,14 @@ public class Person implements Serializable
     public void setSalary(double salary)
     {
         this.salary = salary;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
    

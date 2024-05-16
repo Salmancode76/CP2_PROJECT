@@ -6,7 +6,10 @@ package GUI;
 
 import Logic.SportsLeague;
 import Logic.Player;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -214,7 +217,7 @@ public class Select_Player extends javax.swing.JFrame {
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         // TODO add your handling code here:
-               Manage_Players mp= new Manage_Players();
+          Manage_Players mp= new Manage_Players();
         mp.setVisible(true);
         this.setVisible(false);
         mp.setSize(this.getSize());
@@ -227,10 +230,35 @@ public class Select_Player extends javax.swing.JFrame {
 
     private void btn_select_playerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_select_playerActionPerformed
         // TODO add your handling code here:
-          Edit_Player ep= new Edit_Player();
+           // Get the selected player's name from the combo box
+    String selectedPlayerName = (String) select_teamCombo.getSelectedItem();
+
+    // Find the selected player from the list of all players
+    ArrayList<Player> allPlayers = new SportsLeague().getAll_Players();
+    Player selectedPlayer = null;
+    for (Player player : allPlayers) {
+        if (player.toString().equals(selectedPlayerName)) {
+            selectedPlayer = player;
+            break;
+        }
+    }
+
+    // Pass the selected player to the Edit_Player page
+    if (selectedPlayer != null) {
+        Edit_Player ep = new Edit_Player();
+        try {
+            ep = new Edit_Player(selectedPlayer);
+        } catch (IOException ex) {
+            Logger.getLogger(Select_Player.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ep.setVisible(true);
         this.setVisible(false);
         ep.setSize(this.getSize());
+    } else {
+        // Handle the case where the selected player is not found
+        System.out.println("Selected player not found");
+    }
+         
     }//GEN-LAST:event_btn_select_playerActionPerformed
 
     /**

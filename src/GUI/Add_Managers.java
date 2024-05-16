@@ -5,8 +5,19 @@
 
 package GUI;
 import Logic.*;
+import Logic.Manager;
+import Logic.Person;
+import Logic.Player;
+import Logic.Team;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 public class Add_Managers extends javax.swing.JFrame 
 {
@@ -15,7 +26,6 @@ public class Add_Managers extends javax.swing.JFrame
       
     DefaultComboBoxModel dmc = new DefaultComboBoxModel();
     //bind
-    dmc.addElement("No Team");
     //add data
     teamComboBox.setModel(dmc);
    //populating The combo box
@@ -339,7 +349,6 @@ public class Add_Managers extends javax.swing.JFrame
             }
         });
 
-        teamComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         teamComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teamComboBoxActionPerformed(evt);
@@ -434,7 +443,7 @@ public class Add_Managers extends javax.swing.JFrame
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1347, Short.MAX_VALUE)
+            .addGap(0, 1348, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -458,22 +467,56 @@ public class Add_Managers extends javax.swing.JFrame
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
         
-        Manager m1 = new Manager();
-        
+       Manager m1 = new Manager();
+        SportsLeague sl = new SportsLeague();
+                    Team tm = new Team();
         m1.setName(nameTxt.getText());
         m1.setAddress(addressTxt.getText());
         m1.setDob(dobTxt.getText());
         m1.setNationality(nationalityTxt.getText());
-        
+
         double salary = Double.parseDouble(salaryTxt.getText());
         m1.setSalary(salary);
-        
+
         double bonusPercentage = Double.parseDouble(bonusTxt.getText());
         m1.setBonusPercentage(bonusPercentage);
 
         m1.setQualifications(qualificationsTxt.getText());
+        for (int i=0;i<sl.getTeams().size();i++){
+                if (sl.getTeams().get(i).getName().equals(teamComboBox.getSelectedItem().toString())){
+    
+                   tm=sl.getTeams().get(i);
+                }
+            }
+        if(!sl.designateManager(m1, tm)){
+          JOptionPane.showMessageDialog(null, "A Team MUST have only 1 Manager", "Manager Error", JOptionPane.ERROR_MESSAGE); 
+
+        }
         
-        // -----for loop-----
+             String file_path_player ="managers.txt";
+             String file_path_team ="teams.txt";
+                try {
+                    FileOutputStream fosp = new FileOutputStream(file_path_player);
+                    FileOutputStream fost = new FileOutputStream(file_path_team);
+
+                    try {
+                        ObjectOutputStream oosp = new ObjectOutputStream(fosp);
+                         ObjectOutputStream oost = new ObjectOutputStream(fost);
+
+                        oosp.writeObject(sl.getManagers());
+                        oost.writeObject(sl.getTeams());
+                        System.out.println("Manager Added");
+                        
+                    } catch (IOException ex) {
+                        Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+
+
         
         
         

@@ -61,7 +61,11 @@ public class Team implements Serializable {
     }
      public void addPlayers(Player player)
     {
-        
+        players.add(player);
+    }
+        public void addManagers(Manager manager_add)
+    {
+        manager=manager_add;
     }
 
     public void removePlayer(Player player)

@@ -4,6 +4,11 @@
  */
 package GUI;
 
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import Logic.Manager;
+import Logic.SportsLeague;
+
 /**
  *
  * @author salma
@@ -13,8 +18,21 @@ public class Select_Manager extends javax.swing.JFrame {
     /**
      * Creates new form Select_Manager
      */
+    private void loadManagerssFromFile()
+    {
+         DefaultComboBoxModel dmcpM = new DefaultComboBoxModel();
+
+         ArrayList<Manager> managersData = new SportsLeague().getManagers();
+         Managers_combo.setModel(dmcpM);
+         for (int i = 0; i < managersData.size(); i++)
+         {
+            Managers_combo.addItem(managersData.get(i).toString());
+         }
+    }
+    
     public Select_Manager() {
         initComponents();
+        loadManagerssFromFile();
     }
 
     /**
@@ -32,7 +50,7 @@ public class Select_Manager extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Managers_combo = new javax.swing.JComboBox<>();
         btn_Select_Manager = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
 
@@ -75,10 +93,10 @@ public class Select_Manager extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Select Manager :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        Managers_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Managers_combo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                Managers_comboActionPerformed(evt);
             }
         });
 
@@ -124,7 +142,7 @@ public class Select_Manager extends javax.swing.JFrame {
                             .addGroup(Main_panel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, 0, 195, Short.MAX_VALUE)))
+                                .addComponent(Managers_combo, 0, 195, Short.MAX_VALUE)))
                         .addGap(167, 167, 167))))
             .addGroup(Main_panel2Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
@@ -139,7 +157,7 @@ public class Select_Manager extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Managers_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,9 +210,9 @@ public class Select_Manager extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void Managers_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Managers_comboActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_Managers_comboActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
@@ -251,10 +269,10 @@ public class Select_Manager extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Main_panel2;
+    private javax.swing.JComboBox<String> Managers_combo;
     private javax.swing.JLabel Title2;
     private javax.swing.JButton btn_Select_Manager;
     private javax.swing.JButton jButton18;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

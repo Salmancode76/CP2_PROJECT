@@ -9,9 +9,10 @@ public class Manager extends Person implements Serializable
     
     public Manager()
     {
+          SportsLeague sl = new SportsLeague();
+            this.setId(sl.getManagers().size());
         
     }
-
     private double bonusPercentage;
     private String qualifications;
     private Team team;
@@ -20,6 +21,8 @@ public class Manager extends Person implements Serializable
     {
         return bonusPercentage;
     }
+
+ 
 
     public String getQualifications()
     {
@@ -45,6 +48,13 @@ public class Manager extends Person implements Serializable
     {
         this.team = team;
     }
+
+    @Override
+    public String toString() {
+        return "ID: "+this.getId()+" Name: "+this.getName()+" Team: "+team.getName();
+    }
+    
+    
     
     
 

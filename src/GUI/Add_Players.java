@@ -7,6 +7,7 @@ import Logic.Player;
 import Logic.Person;
 import Logic.Team;
 import Logic.SportsLeague;
+import java.awt.Component;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
@@ -30,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 public class Add_Players extends javax.swing.JFrame {
     DefaultComboBoxModel<String> dmc = new DefaultComboBoxModel<>();
 
@@ -99,6 +101,7 @@ public class Add_Players extends javax.swing.JFrame {
         addressLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Add_player_page");
 
         addPlayersPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -256,6 +259,12 @@ public class Add_Players extends javax.swing.JFrame {
         salaryLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
         salaryLabel.setForeground(new java.awt.Color(0, 127, 255));
         salaryLabel.setText("Enter Salary:");
+
+        salaryTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                salaryTxtKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout Field4Layout = new javax.swing.GroupLayout(Field4);
         Field4.setLayout(Field4Layout);
@@ -518,6 +527,7 @@ public class Add_Players extends javax.swing.JFrame {
             // TODO add your handling code here:
             Player pl = new Player();
             SportsLeague sl = new SportsLeague();
+            Team tm = new Team();
             pl.setName(nameTxt.getText());
             pl.setAddress(addressTxt.getText());
             pl.setDob(dobTxt.getText());
@@ -525,29 +535,37 @@ public class Add_Players extends javax.swing.JFrame {
             double salary = Double.parseDouble(salaryTxt.getText());
             pl.setSalary(salary);
             
-            
-            if(Rbtn_yes.isSelected()==true){
-                pl.setIsCaptain(true);
-                
-            }else{
-                pl.setIsCaptain(false);
-            }
             pl.setPosition(positionComboBox.getSelectedItem().toString());
             
             for (int i=0;i<sl.getTeams().size();i++){
                 if (sl.getTeams().get(i).getName().equals(teamComboBox1.getSelectedItem().toString())){
-                    pl.setTeam(sl.getTeams().get(i));
+                    
+                   tm=sl.getTeams().get(i);
                 }
             }
-                sl.addPlayer(pl);
+
+           if(Rbtn_yes.isSelected()==true){
+    boolean isDesignated = sl.designateCaptain(pl, tm);
+    if(!isDesignated){
+       JOptionPane.showMessageDialog(null, "A Team MUST have only 1 captain", "Captain Error", JOptionPane.ERROR_MESSAGE); 
+    }
+}
                 
+             sl.assignPlayerToTeam(pl,tm);
+             
+             
+            
                 String file_path_player ="players.txt";
+                String file_path_team ="teams.txt";
                 try {
                     FileOutputStream fosp = new FileOutputStream(file_path_player);
+                    FileOutputStream fost = new FileOutputStream(file_path_team);
                     try {
                         ObjectOutputStream oosp = new ObjectOutputStream(fosp);
+                         ObjectOutputStream oost = new ObjectOutputStream(fost);
                         
                         oosp.writeObject(sl.getAll_Players());
+                        oost.writeObject(sl.getTeams());
                         System.out.println("Player Added");
                         
                     } catch (IOException ex) {
@@ -557,6 +575,9 @@ public class Add_Players extends javax.swing.JFrame {
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                
+                
             
             
             // Similarly, set other properties of the Player
@@ -613,6 +634,14 @@ public class Add_Players extends javax.swing.JFrame {
     private void Rbtn_yesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rbtn_yesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Rbtn_yesActionPerformed
+
+    private void salaryTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_salaryTxtKeyTyped
+        // TODO add your handling code here:
+        char c= evt.getKeyChar();
+        if(Character.isLetter(c)&&!evt.isAltDown()){
+            evt.consume();
+        }
+    }//GEN-LAST:event_salaryTxtKeyTyped
 
     /**
      * @param args the command line arguments

@@ -3,19 +3,67 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
-
+import Logic.Player;
+import Logic.SportsLeague;
+import Logic.Team;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author faisa
  */
 public class Edit_Player extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Edit_Player
-     */
+    
+    private Player editPlayer;
+    private int id_play;
+    private SportsLeague sp;
+
+
+    
     public Edit_Player() {
         initComponents();
+       sp = new SportsLeague(); 
+
     }
+    /**
+     * Creates new form Edit_Player
+     * @param edit_Play
+     * 
+     */
+    //passing edit_Play from select player page
+    public Edit_Player(Player edit_Play) throws IOException { 
+        initComponents();
+          sp = new SportsLeague();
+          //setting the values in there correct components
+         this.editPlayer=edit_Play;
+        txt_edit_pla_name.setText(edit_Play.getName());
+        txtAddress.setText(edit_Play.getAddress());
+        txt_dob.setText(edit_Play.getDob());
+        txt_natio.setText(edit_Play.getNationality());
+        txt_salary.setText(String.valueOf((double) edit_Play.getSalary()));
+        if(edit_Play.isIsCaptain()){
+            Rbtn_yes.setSelected(true);
+            
+        }else{
+            Rbtn_no.setSelected(true);
+        }
+        
+        positionComboBox.setSelectedItem(edit_Play.getPosition());
+        
+
+       
+
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,33 +74,35 @@ public class Edit_Player extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BTG_captain = new javax.swing.ButtonGroup();
         jPanel3 = new javax.swing.JPanel();
         Title2 = new javax.swing.JLabel();
         Main_panel2 = new javax.swing.JPanel();
         Field = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txt_edit_pla_name = new javax.swing.JTextField();
         Field1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
         Field2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txt_dob = new javax.swing.JTextField();
         Field3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txt_natio = new javax.swing.JTextField();
         Field4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txt_salary = new javax.swing.JTextField();
         Field5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Rbtn_yes = new javax.swing.JRadioButton();
+        Rbtn_no = new javax.swing.JRadioButton();
         Field7 = new javax.swing.JPanel();
         btn_back = new javax.swing.JButton();
         btn_save = new javax.swing.JButton();
         Field6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        positionComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +125,12 @@ public class Edit_Player extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 127, 255));
         jLabel1.setText("Enter Name:");
 
+        txt_edit_pla_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_edit_pla_nameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout FieldLayout = new javax.swing.GroupLayout(Field);
         Field.setLayout(FieldLayout);
         FieldLayout.setHorizontalGroup(
@@ -83,7 +139,7 @@ public class Edit_Player extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(86, 86, 86)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_edit_pla_name, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         FieldLayout.setVerticalGroup(
             FieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +147,7 @@ public class Edit_Player extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(FieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_edit_pla_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -101,6 +157,12 @@ public class Edit_Player extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 127, 255));
         jLabel2.setText("Enter Address:");
 
+        txtAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Field1Layout = new javax.swing.GroupLayout(Field1);
         Field1.setLayout(Field1Layout);
         Field1Layout.setHorizontalGroup(
@@ -109,7 +171,7 @@ public class Edit_Player extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(68, 68, 68)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Field1Layout.setVerticalGroup(
             Field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +179,7 @@ public class Edit_Player extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Field1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -127,6 +189,12 @@ public class Edit_Player extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 127, 255));
         jLabel3.setText("Enter Date of Birth:");
 
+        txt_dob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_dobActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Field2Layout = new javax.swing.GroupLayout(Field2);
         Field2.setLayout(Field2Layout);
         Field2Layout.setHorizontalGroup(
@@ -135,7 +203,7 @@ public class Edit_Player extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(29, 29, 29)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_dob, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Field2Layout.setVerticalGroup(
             Field2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +211,7 @@ public class Edit_Player extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Field2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_dob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -153,6 +221,12 @@ public class Edit_Player extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 127, 255));
         jLabel4.setText("Enter Nationality:");
 
+        txt_natio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_natioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Field3Layout = new javax.swing.GroupLayout(Field3);
         Field3.setLayout(Field3Layout);
         Field3Layout.setHorizontalGroup(
@@ -161,7 +235,7 @@ public class Edit_Player extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_natio, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Field3Layout.setVerticalGroup(
             Field3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,7 +243,7 @@ public class Edit_Player extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Field3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_natio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -179,6 +253,12 @@ public class Edit_Player extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 127, 255));
         jLabel5.setText("Enter Salary:");
 
+        txt_salary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_salaryActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Field4Layout = new javax.swing.GroupLayout(Field4);
         Field4.setLayout(Field4Layout);
         Field4Layout.setHorizontalGroup(
@@ -187,7 +267,7 @@ public class Edit_Player extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(59, 59, 59)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_salary, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Field4Layout.setVerticalGroup(
             Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +275,7 @@ public class Edit_Player extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_salary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -205,10 +285,19 @@ public class Edit_Player extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 127, 255));
         jLabel6.setText("Make Captain:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        BTG_captain.add(Rbtn_yes);
+        Rbtn_yes.setText("Yes");
+        Rbtn_yes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                Rbtn_yesActionPerformed(evt);
+            }
+        });
+
+        BTG_captain.add(Rbtn_no);
+        Rbtn_no.setText("No");
+        Rbtn_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Rbtn_noActionPerformed(evt);
             }
         });
 
@@ -219,16 +308,21 @@ public class Edit_Player extends javax.swing.JFrame {
             .addGroup(Field5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(197, 197, 197)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(195, 195, 195)
+                .addComponent(Rbtn_yes)
+                .addGap(72, 72, 72)
+                .addComponent(Rbtn_no)
+                .addGap(29, 29, 29))
         );
         Field5Layout.setVerticalGroup(
             Field5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Field5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Field5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(Field5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Field5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Rbtn_no, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                        .addComponent(Rbtn_yes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6))
                 .addContainerGap())
         );
 
@@ -289,10 +383,10 @@ public class Edit_Player extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 127, 255));
         jLabel7.setText("Enter Postion:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Attack", "Defence", "Midfielder", "Goal Keeper" }));
+        positionComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                positionComboBoxActionPerformed(evt);
             }
         });
 
@@ -303,8 +397,8 @@ public class Edit_Player extends javax.swing.JFrame {
             .addGroup(Field6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(105, 105, 105)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(107, 107, 107)
+                .addComponent(positionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Field6Layout.setVerticalGroup(
             Field6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,7 +406,7 @@ public class Edit_Player extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Field6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(positionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -386,7 +480,7 @@ public class Edit_Player extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1226, Short.MAX_VALUE)
+            .addGap(0, 1227, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -405,17 +499,92 @@ public class Edit_Player extends javax.swing.JFrame {
         sp.setSize(this.getSize());
     }//GEN-LAST:event_btn_backActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
-        // TODO add your handling code here:
+        FileOutputStream fo = null;
+        
+        //changing the player info
+        try {
+            // TODO add your handling code here:
+            sp.editPlayerDetails(editPlayer, txt_edit_pla_name.getText(), txtAddress.getText(), txt_dob.getText(), txt_natio.getText(), Double.parseDouble(txt_salary.getText()), positionComboBox.getSelectedItem().toString());
+       
+
+                for (int i=0;i<sp.getAll_Players().size();i++){
+                      if(editPlayer.getId()==sp.getAll_Players().get(i).getId()){
+                          if(Rbtn_yes.isSelected()==true){
+        sp.getAll_Players().get(i).setIsCaptain(true);
+
+ }else{
+ sp.getAll_Players().get(i).setIsCaptain(false);
+                }
+                      }
+                }
+                 
+// }
+
+                   
+                
+                //Overwriting the old Player arrau with the new array
+              
+            
+            
+            File file_edit_pla = new File("players.txt");
+            fo = new FileOutputStream(file_edit_pla);
+            try {
+                ObjectOutputStream oos = new ObjectOutputStream(fo);
+                oos.writeObject(sp.getAll_Players());
+            } catch (IOException ex) {
+                Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fo.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+       
+        
+        
+        
+        
     }//GEN-LAST:event_btn_saveActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void txt_edit_pla_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_edit_pla_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        
+    }//GEN-LAST:event_txt_edit_pla_nameActionPerformed
+
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressActionPerformed
+
+    private void positionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_positionComboBoxActionPerformed
+
+    private void Rbtn_yesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rbtn_yesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Rbtn_yesActionPerformed
+
+    private void Rbtn_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rbtn_noActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Rbtn_noActionPerformed
+
+    private void txt_dobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dobActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_dobActionPerformed
+
+    private void txt_natioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_natioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_natioActionPerformed
+
+    private void txt_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_salaryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_salaryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,6 +622,7 @@ public class Edit_Player extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup BTG_captain;
     private javax.swing.JPanel Field;
     private javax.swing.JPanel Field1;
     private javax.swing.JPanel Field2;
@@ -462,11 +632,11 @@ public class Edit_Player extends javax.swing.JFrame {
     private javax.swing.JPanel Field6;
     private javax.swing.JPanel Field7;
     private javax.swing.JPanel Main_panel2;
+    private javax.swing.JRadioButton Rbtn_no;
+    private javax.swing.JRadioButton Rbtn_yes;
     private javax.swing.JLabel Title2;
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_save;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -475,10 +645,11 @@ public class Edit_Player extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JComboBox<String> positionComboBox;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txt_dob;
+    private javax.swing.JTextField txt_edit_pla_name;
+    private javax.swing.JTextField txt_natio;
+    private javax.swing.JTextField txt_salary;
     // End of variables declaration//GEN-END:variables
 }
