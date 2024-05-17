@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import Logic.Manager;
 import Logic.SportsLeague;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,6 +18,11 @@ import Logic.SportsLeague;
  */
 public class Select_Manager extends javax.swing.JFrame {
 
+    
+    public Select_Manager() {
+        initComponents();
+        loadManagerssFromFile();
+    }
     /**
      * Creates new form Select_Manager
      */
@@ -30,10 +38,6 @@ public class Select_Manager extends javax.swing.JFrame {
          }
     }
     
-    public Select_Manager() {
-        initComponents();
-        loadManagerssFromFile();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -226,10 +230,42 @@ public class Select_Manager extends javax.swing.JFrame {
 
     private void btn_Select_ManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Select_ManagerActionPerformed
         // TODO add your handling code here:
-          Edit_Manager M = new Edit_Manager();
-        M.setVisible(true);
+        String selectedManagerName = (String) Managers_combo.getSelectedItem();
+
+    // Find the selected player from the list of all players
+    ArrayList<Manager> allManagers = new SportsLeague().getManagers();
+    Manager selectedManager = null;
+    for (Manager manager : allManagers)
+    {
+        if (manager.toString().equals(selectedManagerName)) 
+        {
+            selectedManager = manager;
+            break;
+        }
+    }
+
+    // Pass the selected player to the Edit_Player page
+    if (selectedManager != null) 
+    {
+        Edit_Manager em = new Edit_Manager();
+        try 
+        {
+          em = new Edit_Manager(selectedManager);
+        } 
+        catch (IOException ex)
+        {
+            Logger.getLogger(Select_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        em.setVisible(true);
         this.setVisible(false);
-        M.setSize(this.getSize());
+        em.setSize(this.getSize());
+    } 
+    else 
+    {
+        // Handle the case where the selected player is not found
+        System.out.println("Selected manager not found");
+    }
+        
     }//GEN-LAST:event_btn_Select_ManagerActionPerformed
 
     /**
