@@ -27,14 +27,14 @@ public class Player extends Person  {
     }
 
  
-    public Player(String name, String address, String dob, String nationality, double salary,String position,  Team team,boolean isCaptain ) {
+    public Player(String name, String address, String dob, String nationality, double salary,String position,  Team team,boolean isCaptain ) throws IOException {
         super(name, address, dob, nationality, salary);       
         this.position = position;
         this.isCaptain = isCaptain;
         this.team = team;
     }
 
-    public Player(String name, String address, String dob, String nationality, double salary,String position,boolean isCaptain ) {
+    public Player(String name, String address, String dob, String nationality, double salary,String position,boolean isCaptain ) throws IOException {
         super(name, address, dob, nationality, salary);
     }
 

@@ -19,7 +19,7 @@ public class Manager extends Person implements Serializable
         
     }
 
-     public Manager(String name, String address, String dob, String nationality, double salary, double bonusPercentage, String qualifications) {
+     public Manager(String name, String address, String dob, String nationality, double salary, double bonusPercentage, String qualifications) throws IOException {
         super(name, address, dob, nationality,salary); 
         this.bonusPercentage = bonusPercentage;
         this.qualifications = qualifications;
