@@ -3,7 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
-
+import Logic.SportsLeague;
+import Logic.Team;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author faisa
@@ -13,10 +22,22 @@ public class Edit_Team extends javax.swing.JFrame {
     /**
      * Creates new form Edit_Team
      */
-    public Edit_Team() {
+    
+    private Team edit_team_obj;
+   
+     public Edit_Team() {
         initComponents();
     }
+    
+    public Edit_Team(Team edit_team) {
+        initComponents();
+        tNameTxt.setText(edit_team.getName());
+        stadiumTxt.setText(edit_team.getStadium());
+        stadiumCapacityTxt.setText(String.valueOf( (int) edit_team.getCapacity()));
+        this.edit_team_obj=edit_team;
+    }
 
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -346,6 +367,23 @@ public class Edit_Team extends javax.swing.JFrame {
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
+         SportsLeague sp = new SportsLeague(); 
+        sp.editTeamDetails(edit_team_obj,tNameTxt.getText(),stadiumTxt.getText(), Integer.parseInt(stadiumCapacityTxt.getText()));
+        File file_edit_tea = new File("teams.txt");
+        FileOutputStream fot=null;        
+        try {
+                     fot = new FileOutputStream(file_edit_tea);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            try {
+                ObjectOutputStream oos = new ObjectOutputStream(fot);
+                oos.writeObject(sp.getTeams());
+            } catch (IOException ex) {
+                Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void stadiumTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stadiumTxtActionPerformed

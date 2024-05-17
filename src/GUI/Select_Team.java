@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import Logic.Player;
 import Logic.SportsLeague;
 import Logic.Team;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class Select_Team extends javax.swing.JFrame {
        private void loadTeamsFromFile() {
       
     DefaultComboBoxModel dmc = new DefaultComboBoxModel();
-     //add data
+    //    //add data
     teamComboBox.setModel(dmc);
    //populating The combo box
     ArrayList <Team> teams_temp= new SportsLeague().getTeams();
@@ -226,11 +227,22 @@ public class Select_Team extends javax.swing.JFrame {
 
     private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
         // TODO add your handling code here:
-        
-        Edit_Team V = new Edit_Team();
-        V.setVisible(true);
-        this.setVisible(false);
-        V.setSize(this.getSize());
+        ArrayList<Team> allTeams = new SportsLeague().getTeams();
+        Team Selected_team=null; 
+        for (int i=0;i<allTeams.size();i++) {
+            if(allTeams.get(i).getName().equals(teamComboBox.getSelectedItem())){
+                Selected_team=allTeams.get(i);
+            }
+         
+       
+    }
+           if(Selected_team!=null){
+                  Edit_Team V = new Edit_Team(Selected_team);
+                 V.setVisible(true);
+                    this.setVisible(false);
+                    V.setSize(this.getSize());
+            }
+  
     }//GEN-LAST:event_selectBtnActionPerformed
 
     /**

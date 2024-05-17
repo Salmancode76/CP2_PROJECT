@@ -268,12 +268,7 @@ if(!file.exists() && !file_play.exists() && !file_managers.exists() && file_boot
 
     
     public void editTeamDetails(Team team, String newName, String newStadium, int newCapacity) 
-    {
-
-
-        team.setName(newName);
-        team.setStadium(newStadium);
-        team.setCapacity(newCapacity);
+    { 
 
     // Update the team in the Teams list
     for (int i = 0; i < Teams.size(); i++) 
@@ -282,7 +277,7 @@ if(!file.exists() && !file_play.exists() && !file_managers.exists() && file_boot
         {
             Teams.get(i).setName(newName);
             Teams.get(i).setStadium(newStadium);
-            Teams.get(i).setCapacity(newCapacity);  // Replace the old team with the updated team
+            Teams.get(i).setCapacity(newCapacity);  
             break;
         }
     }
