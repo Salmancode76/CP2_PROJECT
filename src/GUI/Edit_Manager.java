@@ -4,19 +4,55 @@
  */
 package GUI;
 
+import Logic.Manager;
+import Logic.SportsLeague;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author faisa
  */
 public class Edit_Manager extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Edit_Manager
-     */
-    public Edit_Manager() {
+    // copied from edit player with needed changes
+    
+    private Manager editManager;
+    private int id_Manager;
+    private SportsLeague sp;
+    
+    
+    
+    public Edit_Manager() 
+    {
         initComponents();
+        sp = new SportsLeague(); //copied
+        
     }
 
+    public Edit_Manager(Manager edit_Manager) throws IOException { 
+          initComponents();
+          sp = new SportsLeague();
+          //setting the values in there correct components
+         this.editManager=edit_Manager;
+        nameTxt.setText(edit_Manager.getName());
+        addressTxt.setText(edit_Manager.getAddress());
+        dobTxt.setText(edit_Manager.getDob());
+        nationalityTxt.setText(edit_Manager.getNationality());
+        salaryTxt.setText(String.valueOf((double) edit_Manager.getSalary()));
+        bonusTxt.setText(String.valueOf((double) edit_Manager.getBonusPercentage()));
+        qualificationsTxt.setText(edit_Manager.getQualifications());
+        
+        //after being done w this, we move to the save button
+
+    
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,8 +85,6 @@ public class Edit_Manager extends javax.swing.JFrame {
         bonusTxt = new javax.swing.JTextField();
         qualificationsLabel = new javax.swing.JLabel();
         qualificationsTxt = new javax.swing.JTextField();
-        teamLabel = new javax.swing.JLabel();
-        teamComboBox = new javax.swing.JComboBox<>();
         saveBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -200,17 +234,6 @@ public class Edit_Manager extends javax.swing.JFrame {
         qualificationsLabel.setForeground(new java.awt.Color(0, 127, 255));
         qualificationsLabel.setText("Enter Qualifications:");
 
-        teamLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
-        teamLabel.setForeground(new java.awt.Color(0, 127, 255));
-        teamLabel.setText("Enter Team:");
-
-        teamComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        teamComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                teamComboBoxActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout Field4Layout = new javax.swing.GroupLayout(Field4);
         Field4.setLayout(Field4Layout);
         Field4Layout.setHorizontalGroup(
@@ -229,11 +252,7 @@ public class Edit_Manager extends javax.swing.JFrame {
                     .addGroup(Field4Layout.createSequentialGroup()
                         .addComponent(qualificationsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(59, 59, 59)
-                        .addComponent(qualificationsTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Field4Layout.createSequentialGroup()
-                        .addComponent(teamLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(teamComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(qualificationsTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         Field4Layout.setVerticalGroup(
             Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,11 +269,7 @@ public class Edit_Manager extends javax.swing.JFrame {
                 .addGroup(Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(qualificationsTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(qualificationsLabel))
-                .addGap(18, 18, 18)
-                .addGroup(Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(teamLabel)
-                    .addComponent(teamComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         saveBtn.setBackground(new java.awt.Color(211, 211, 211));
@@ -362,12 +377,61 @@ public class Edit_Manager extends javax.swing.JFrame {
         M.setSize(this.getSize());
     }//GEN-LAST:event_goBackBtnActionPerformed
 
-    private void teamComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_teamComboBoxActionPerformed
-
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
+        
+        FileOutputStream fo = null;
+        
+        //changing the player info
+        try 
+        {
+            // TODO add your handling code here:
+            sp.editManagerDetails(editManager, nameTxt.getText(), addressTxt.getText(), dobTxt.getText(),
+            nationalityTxt.getText(), Double.parseDouble(salaryTxt.getText()),Double.parseDouble( bonusTxt.getText()),
+            qualificationsTxt.getText());
+            
+             //Overwriting the old Player array with the new array
+             File file_edit_manager = new File("managers.txt");
+             fo = new FileOutputStream(file_edit_manager);
+            try 
+            {
+               
+                ObjectOutputStream oos = new ObjectOutputStream(fo);
+                oos.writeObject(sp.getManagers());
+            } 
+            
+            
+            catch (IOException ex) 
+            {
+                Logger.getLogger(Edit_Manager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        catch (FileNotFoundException ex)
+        {
+            Logger.getLogger(Edit_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally 
+        {
+            try 
+            {
+                fo.close();
+            } 
+            catch (IOException ex)
+            {
+                Logger.getLogger(Edit_Manager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_saveBtnActionPerformed
 
     /**
@@ -430,7 +494,7 @@ public class Edit_Manager extends javax.swing.JFrame {
     private javax.swing.JLabel salaryLabel;
     private javax.swing.JTextField salaryTxt;
     private javax.swing.JButton saveBtn;
-    private javax.swing.JComboBox<String> teamComboBox;
-    private javax.swing.JLabel teamLabel;
     // End of variables declaration//GEN-END:variables
+
+   
 }
