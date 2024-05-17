@@ -623,11 +623,12 @@
                 <Component class="javax.swing.JComboBox" name="positionComboBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="5">
                         <StringItem index="0" value="Attack"/>
-                        <StringItem index="1" value="Defence"/>
-                        <StringItem index="2" value="Midfielder"/>
+                        <StringItem index="1" value="Defender"/>
+                        <StringItem index="2" value="Midfield"/>
                         <StringItem index="3" value="Goal Keeper"/>
+                        <StringItem index="4" value="Forward"/>
                       </StringArray>
                     </Property>
                   </Properties>

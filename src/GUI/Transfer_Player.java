@@ -4,6 +4,11 @@
  */
 package GUI;
 
+
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import Logic.SportsLeague;
+import Logic.Team;
 /**
  *
  * @author salma
@@ -13,8 +18,52 @@ public class Transfer_Player extends javax.swing.JFrame {
     /**
      * Creates new form Transfer_Player
      */
+       private void loadTeamsFromFile() {
+      
+    DefaultComboBoxModel dmctt = new DefaultComboBoxModel();
+    //bind
+    //add data
+    select_team_comb.setModel(dmctt);
+   //populating The combo box
+    ArrayList <Team> teams_temp= new SportsLeague().getTeams();
+   for (int i=0;i< teams_temp.size();i++) {
+    select_team_comb.addItem(teams_temp.get(i).getName());
+    
+ 
+   }
+       }
+       
+   private void loadTeamsFromFile2() {
+    DefaultComboBoxModel dmcpt = new DefaultComboBoxModel();
+    //bind
+    select_pla_comb.setModel(dmcpt);    
+
+    // Create a single instance of SportsLeague
+    SportsLeague sp = new SportsLeague();
+
+    //populating The combo box with team players
+    for(int i=0; i<sp.getTeams().size(); i++){
+        for(int j=0; j<sp.getTeams().get(i).getPlayers().size(); j++){
+            select_pla_comb.addItem(sp.getTeams().get(i).getPlayers().get(j).toString());
+        }
+    }
+
+    //populating The combo box with unassigned players
+    for(int i=0; i<sp.getUnassign_players().size(); i++){
+        select_pla_comb.addItem(sp.getUnassign_players().get(i).toString());
+    }
+}
+
+    
+
+    
+    
     public Transfer_Player() {
-        initComponents();
+       initComponents();
+        loadTeamsFromFile();
+        loadTeamsFromFile2();
+        
+        
     }
 
     /**
@@ -31,11 +80,11 @@ public class Transfer_Player extends javax.swing.JFrame {
         Main_panel2 = new javax.swing.JPanel();
         btn_back = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        select_pla_comb = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        select_team_comb = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,10 +130,9 @@ public class Transfer_Player extends javax.swing.JFrame {
             .addGap(0, 143, Short.MAX_VALUE)
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        select_pla_comb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                select_pla_combActionPerformed(evt);
             }
         });
 
@@ -103,10 +151,9 @@ public class Transfer_Player extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Select Team :");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        select_team_comb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                select_team_combActionPerformed(evt);
             }
         });
 
@@ -133,11 +180,11 @@ public class Transfer_Player extends javax.swing.JFrame {
                             .addGroup(Main_panel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(select_team_comb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(Main_panel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(select_pla_comb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(44, 44, 44)))
                 .addGap(123, 123, 123))
             .addGroup(Main_panel2Layout.createSequentialGroup()
@@ -152,12 +199,12 @@ public class Transfer_Player extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(select_pla_comb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(select_team_comb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,13 +265,13 @@ public class Transfer_Player extends javax.swing.JFrame {
         mp.setSize(this.getSize());
     }//GEN-LAST:event_btn_backActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void select_pla_combActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_pla_combActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_select_pla_combActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void select_team_combActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_team_combActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_select_team_combActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,12 +313,12 @@ public class Transfer_Player extends javax.swing.JFrame {
     private javax.swing.JLabel Title2;
     private javax.swing.JButton btn_back;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JComboBox<String> select_pla_comb;
+    private javax.swing.JComboBox<String> select_team_comb;
     // End of variables declaration//GEN-END:variables
 }

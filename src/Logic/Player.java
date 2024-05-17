@@ -26,6 +26,18 @@ public class Player extends Person  {
 
     }
 
+ 
+    public Player(String name, String address, String dob, String nationality, double salary,String position,  Team team,boolean isCaptain ) {
+        super(name, address, dob, nationality, salary);       
+        this.position = position;
+        this.isCaptain = isCaptain;
+        this.team = team;
+    }
+
+    public Player(String name, String address, String dob, String nationality, double salary,String position,boolean isCaptain ) {
+        super(name, address, dob, nationality, salary);
+    }
+
     public String getPosition() {
         return position;
     }

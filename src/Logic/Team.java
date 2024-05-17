@@ -14,11 +14,24 @@ public class Team implements Serializable {
     private Manager manager;
     private ArrayList<Player> players;
 
+   
+
     public Team()  
     {
      players = new ArrayList<>();
     
     }
+
+    public Team(String name, String stadium, int capacity) {
+        players = new ArrayList<>();
+        this.name = name;
+        this.stadium = stadium;
+        this.capacity = capacity;
+        this.manager = manager;
+        this.players = players;
+    }
+    
+    
 
     public String getName() 
     {

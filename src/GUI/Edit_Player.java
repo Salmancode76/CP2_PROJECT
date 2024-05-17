@@ -390,7 +390,7 @@ public class Edit_Player extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 127, 255));
         jLabel7.setText("Enter Postion:");
 
-        positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Attack", "Defence", "Midfielder", "Goal Keeper" }));
+        positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Attack", "Defender", "Midfield", "Goal Keeper", "Forward" }));
         positionComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 positionComboBoxActionPerformed(evt);

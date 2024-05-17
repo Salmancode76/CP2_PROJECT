@@ -29,7 +29,7 @@ public class Person implements Serializable
     private double salary;
     
     public Person() throws FileNotFoundException, IOException {
-        File fil = new File("ids.txt");
+               File fil = new File("ids.txt");
         if(fil.exists() && fil.length() > 0){
             try (BufferedReader reader = new BufferedReader(new FileReader(fil))) {
                 lastAssignedId = Integer.parseInt(reader.readLine());
@@ -38,7 +38,6 @@ public class Person implements Serializable
             }
         } else {
             fil.createNewFile();
-            lastAssignedId = 0;
         }
 
         id = lastAssignedId++;
@@ -49,7 +48,37 @@ public class Person implements Serializable
             e.printStackTrace();
         }
     }
+
     
+
+        // Constructor with five arguments
+    public Person(String name, String address, String dob, String nationality, double salary) throws IOException {
+        this.name = name;
+        this.address = address;
+        this.dob = dob;
+        this.nationality = nationality;
+        this.salary = salary;
+         File fil = new File("ids.txt");
+        if(fil.exists() && fil.length() > 0){
+            try (BufferedReader reader = new BufferedReader(new FileReader(fil))) {
+                lastAssignedId = Integer.parseInt(reader.readLine());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            fil.createNewFile();
+        }
+
+        id = lastAssignedId++;
+
+        try (PrintWriter writer = new PrintWriter(new FileWriter(fil, false))) {
+            writer.println(lastAssignedId); // Convert lastAssignedId to string and write it to file
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
+    }
+
 
     public String getName() 
     {

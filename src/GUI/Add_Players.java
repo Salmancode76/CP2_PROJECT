@@ -379,7 +379,7 @@ public class Add_Players extends javax.swing.JFrame {
         positionLabel.setForeground(new java.awt.Color(0, 127, 255));
         positionLabel.setText("Enter Postion:");
 
-        positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Attack", "Defence", "Midfielder", "Goal Keeper", "Forward" }));
+        positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Attack", "Defender", "Midfield", "Goal Keeper", "Forward" }));
         positionComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 positionComboBoxActionPerformed(evt);
