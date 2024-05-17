@@ -4,6 +4,11 @@
  */
 package GUI;
 
+import Logic.SportsLeague;
+import Logic.Team;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author salma
@@ -13,8 +18,21 @@ public class Select_Team extends javax.swing.JFrame {
     /**
      * Creates new form Select_Team
      */
+    
+       private void loadTeamsFromFile() {
+      
+    DefaultComboBoxModel dmc = new DefaultComboBoxModel();
+     //add data
+    teamComboBox.setModel(dmc);
+   //populating The combo box
+    ArrayList <Team> teams_temp= new SportsLeague().getTeams();
+   for (int i=0;i< teams_temp.size();i++) {
+    teamComboBox.addItem(teams_temp.get(i).getName());
+}
+       }
     public Select_Team() {
         initComponents();
+        loadTeamsFromFile() ;
     }
 
     /**
@@ -98,7 +116,6 @@ public class Select_Team extends javax.swing.JFrame {
         teamLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         teamLabel.setText("Select Team :");
 
-        teamComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         teamComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teamComboBoxActionPerformed(evt);
