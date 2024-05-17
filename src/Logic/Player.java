@@ -22,9 +22,8 @@ public class Player extends Person  {
     private Team team;
 
     public Player() throws IOException, ClassNotFoundException {
-            SportsLeague sl = new SportsLeague();
-            this.setId(sl.getAll_Players().size());
-        //Owner_id=ID++;
+    super(); // Call the superclass constructor to initialize id
+
     }
 
     public String getPosition() {

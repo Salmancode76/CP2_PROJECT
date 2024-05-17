@@ -1,4 +1,5 @@
 package Logic;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 
@@ -7,10 +8,9 @@ public class Manager extends Person implements Serializable
 {
 
     
-    public Manager()
+    public Manager() throws IOException
     {
-          SportsLeague sl = new SportsLeague();
-            this.setId(sl.getManagers().size());
+          super();
         
     }
     private double bonusPercentage;

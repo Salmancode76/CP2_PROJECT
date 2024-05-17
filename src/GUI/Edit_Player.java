@@ -25,13 +25,12 @@ public class Edit_Player extends javax.swing.JFrame {
     
     private Player editPlayer;
     private int id_play;
-    private SportsLeague sp;
 
 
     
     public Edit_Player() {
         initComponents();
-       sp = new SportsLeague(); 
+       
 
     }
     /**
@@ -41,8 +40,8 @@ public class Edit_Player extends javax.swing.JFrame {
      */
     //passing edit_Play from select player page
     public Edit_Player(Player edit_Play) throws IOException { 
+        
         initComponents();
-          sp = new SportsLeague();
           //setting the values in there correct components
          this.editPlayer=edit_Play;
         txt_edit_pla_name.setText(edit_Play.getName());
@@ -256,6 +255,14 @@ public class Edit_Player extends javax.swing.JFrame {
         txt_salary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_salaryActionPerformed(evt);
+            }
+        });
+        txt_salary.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_salaryKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_salaryKeyTyped(evt);
             }
         });
 
@@ -501,53 +508,50 @@ public class Edit_Player extends javax.swing.JFrame {
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
         FileOutputStream fo = null;
-        
-        //changing the player info
-        try {
-            // TODO add your handling code here:
-            sp.editPlayerDetails(editPlayer, txt_edit_pla_name.getText(), txtAddress.getText(), txt_dob.getText(), txt_natio.getText(), Double.parseDouble(txt_salary.getText()), positionComboBox.getSelectedItem().toString());
+       SportsLeague sp = new SportsLeague(); 
        
-
-                for (int i=0;i<sp.getAll_Players().size();i++){
-                      if(editPlayer.getId()==sp.getAll_Players().get(i).getId()){
-                          if(Rbtn_yes.isSelected()==true){
-        sp.getAll_Players().get(i).setIsCaptain(true);
-
- }else{
- sp.getAll_Players().get(i).setIsCaptain(false);
-                }
-                      }
-                }
-                 
-// }
-
-                   
+        //changing the player info
+         
+            if(editPlayer.getTeam()==null){
+            sp.editPlayerDetails(editPlayer, txt_edit_pla_name.getText(), txtAddress.getText(), txt_dob.getText(), txt_natio.getText(), Double.parseDouble(txt_salary.getText()), positionComboBox.getSelectedItem().toString());
+   
                 
-                //Overwriting the old Player arrau with the new array
-              
-            
-            
-            File file_edit_pla = new File("players.txt");
-            fo = new FileOutputStream(file_edit_pla);
+            File file_edit_pla = new File("remain_players.txt");
+                try {
+                    fo = new FileOutputStream(file_edit_pla);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
             try {
                 ObjectOutputStream oos = new ObjectOutputStream(fo);
-                oos.writeObject(sp.getAll_Players());
+                oos.writeObject(sp.getUnassign_players());
             } catch (IOException ex) {
                 Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
+        
+        }else{
+                sp.editPlayerDetails(editPlayer, txt_edit_pla_name.getText(), txtAddress.getText(), txt_dob.getText(), txt_natio.getText(), Double.parseDouble(txt_salary.getText()), positionComboBox.getSelectedItem().toString());              
+                          
+                 if (Rbtn_yes.isSelected()) {
+            sp.designateCaptain(editPlayer, editPlayer.getTeam());
+        } else {
+            sp.undesignateCaptain(editPlayer, editPlayer.getTeam());
+        }
+                      
+                
+            File file_edit_team = new File("teams.txt");              
             try {
-                fo.close();
+                FileOutputStream    fot= new FileOutputStream(file_edit_team);
+                ObjectOutputStream oost = new ObjectOutputStream(fot);
+                oost.writeObject(sp.getTeams());
             } catch (IOException ex) {
                 Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        
-       
-        
+            }
+                
+              
+
         
         
         
@@ -584,7 +588,20 @@ public class Edit_Player extends javax.swing.JFrame {
 
     private void txt_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_salaryActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_txt_salaryActionPerformed
+
+    private void txt_salaryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_salaryKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_salaryKeyPressed
+
+    private void txt_salaryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_salaryKeyTyped
+        // TODO add your handling code here:
+         char c= evt.getKeyChar();
+        if(Character.isLetter(c)&&!evt.isAltDown()){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_salaryKeyTyped
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,7 @@ package GUI;
 
 import Logic.SportsLeague;
 import Logic.Player;
+import Logic.Team;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -22,18 +23,27 @@ public class Select_Player extends javax.swing.JFrame {
      * Creates new form Select_Player
      */
     
-    private void loadTeamsFromFile() {
-      
+   private void loadTeamsFromFile() {
     DefaultComboBoxModel dmcp = new DefaultComboBoxModel();
     //bind
-    //add data
-   //populating The combo box
-    ArrayList <Player> teams_play=new SportsLeague().getAll_Players();
-    select_teamCombo.setModel(dmcp);
-   for (int i=0;i< teams_play.size();i++) {
-    select_teamCombo.addItem(teams_play.get(i).toString());
-}
+    select_teamCombo.setModel(dmcp);    
+
+    // Create a single instance of SportsLeague
+    SportsLeague sp = new SportsLeague();
+
+    //populating The combo box with team players
+    for(int i=0; i<sp.getTeams().size(); i++){
+        for(int j=0; j<sp.getTeams().get(i).getPlayers().size(); j++){
+            select_teamCombo.addItem(sp.getTeams().get(i).getPlayers().get(j).toString());
+        }
     }
+
+    //populating The combo box with unassigned players
+    for(int i=0; i<sp.getUnassign_players().size(); i++){
+        select_teamCombo.addItem(sp.getUnassign_players().get(i).toString());
+    }
+}
+
     public Select_Player() {
         initComponents();
         loadTeamsFromFile();
@@ -229,35 +239,46 @@ public class Select_Player extends javax.swing.JFrame {
     }//GEN-LAST:event_select_teamComboActionPerformed
 
     private void btn_select_playerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_select_playerActionPerformed
-        // TODO add your handling code here:
-           // Get the selected player's name from the combo box
-    String selectedPlayerName = (String) select_teamCombo.getSelectedItem();
+     
+ArrayList<Team> allTeams = new SportsLeague().getTeams();
+Player selectedPlayer = null;
+SportsLeague sp = new SportsLeague();
 
-    // Find the selected player from the list of all players
-    ArrayList<Player> allPlayers = new SportsLeague().getAll_Players();
-    Player selectedPlayer = null;
-    for (Player player : allPlayers) {
-        if (player.toString().equals(selectedPlayerName)) {
+for (Team team : allTeams) {
+    for (Player player : team.getPlayers()) {
+        if (player.toString().equals(select_teamCombo.getSelectedItem().toString() )) {
             selectedPlayer = player;
             break;
         }
     }
-
-    // Pass the selected player to the Edit_Player page
     if (selectedPlayer != null) {
-        Edit_Player ep = new Edit_Player();
-        try {
-            ep = new Edit_Player(selectedPlayer);
-        } catch (IOException ex) {
-            Logger.getLogger(Select_Player.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ep.setVisible(true);
-        this.setVisible(false);
-        ep.setSize(this.getSize());
-    } else {
-        // Handle the case where the selected player is not found
-        System.out.println("Selected player not found");
+        break;
     }
+}
+
+    for (int i=0;i<sp.getUnassign_players().size();i++ ){
+        if(sp.getUnassign_players().get(i).toString().equals(select_teamCombo.getSelectedItem().toString())){
+            selectedPlayer = sp.getUnassign_players().get(i);
+            break;
+        }
+       
+    }
+    
+// Pass the selected player to the Edit_Player page
+if (selectedPlayer != null) {
+    Edit_Player ep = new Edit_Player();
+    try {
+        ep = new Edit_Player(selectedPlayer);
+    } catch (IOException ex) {
+        Logger.getLogger(Select_Player.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    ep.setVisible(true);
+    this.setVisible(false);
+    ep.setSize(this.getSize());
+} else {
+    // Handle the case where the selected player is not found
+    System.out.println("Selected player not found");
+}
          
     }//GEN-LAST:event_btn_select_playerActionPerformed
 

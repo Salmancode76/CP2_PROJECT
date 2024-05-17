@@ -14,12 +14,12 @@ import java.util.logging.Logger;
 public class SportsLeague  implements Serializable 
 {
 
-    private ArrayList <Player> All_Players;
+    private ArrayList <Player> unassign_players;
     private ArrayList <Manager> Managers;
     private ArrayList <Team> Teams;
     
     public SportsLeague() {
-    All_Players = new ArrayList<>();
+    unassign_players = new ArrayList<>();
     Managers = new ArrayList<>();
     Teams = new ArrayList<>();
     //File Object
@@ -58,7 +58,7 @@ public class SportsLeague  implements Serializable
 
 
 }
-    File file_play = new File("players.txt");
+    File file_play = new File("remain_players.txt");
     if (!file_play.exists()){
         try {
             file_play.createNewFile();
@@ -74,7 +74,7 @@ public class SportsLeague  implements Serializable
             while(true){
                 try {
                     ArrayList<Player> playersInFile = (ArrayList<Player>) osp.readObject();
-                    All_Players.addAll(playersInFile);
+                    unassign_players.addAll(playersInFile);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(SportsLeague.class.getName()).log(Level.SEVERE, null, ex);
                 }catch (EOFException ex) {
@@ -159,9 +159,9 @@ public class SportsLeague  implements Serializable
     }
 
    
-    public void addPlayer(Player player) 
+    public void add_unassigned_Player(Player player) 
     {
-        All_Players.add(player);
+        unassign_players.add(player);
     }
 
     
@@ -191,32 +191,50 @@ public class SportsLeague  implements Serializable
         player.setTeam(team);
         //assign player to the team array
         team.addPlayers(player);
-        //add player to the array list of all players
-        this.addPlayer(player);
+       
     }
 
     
-    public boolean designateCaptain(Player player, Team team) 
-{
-    int play_index;
-    for(int i=0;i<team.getPlayers().size();i++){
-        if(team.getPlayers().get(i).isIsCaptain()){
-            team.getPlayers().get(i).setIsCaptain(false);
-            play_index= team.getPlayers().get(i).getId();
-            for (int j=0;j<this.All_Players.size();j++){
-                if(All_Players.get(j).getId()==play_index){
-                    All_Players.get(j).setIsCaptain(false);
-                    
+  public boolean designateCaptain(Player player, Team team) {
+    // Iterate over all teams
+    boolean comp = false;
+    for (int i = 0; i < this.Teams.size(); i++) {
+        // If the current team is the one we're interested in
+        if (this.Teams.get(i).getName().equals(team.getName())  && (this.Teams.get(i).getStadium().equals(team.getStadium())  ) ){
+            // Iterate over all players in the current team
+            for (int j = 0; j < this.Teams.get(i).getPlayers().size(); j++) {
+                // If the current player is the one we want to make captain
+                if (this.Teams.get(i).getPlayers().get(j).getId() == player.getId()) {
+                    // Set the current player as captain
+                    this.Teams.get(i).getPlayers().get(j).setIsCaptain(true);
+                    comp=true;
+                }else{
+                    this.Teams.get(i).getPlayers().get(j).setIsCaptain(false);
                 }
-                
-                
             }
-            
         }
     }
-    player.setIsCaptain(true);
-    return true;
+    return comp;
 }
+    public boolean undesignateCaptain(Player player, Team team) {
+    // Iterate over all teams
+    for (int i = 0; i < this.Teams.size(); i++) {
+        // If the current team is the one we're interested in
+        if (this.Teams.get(i).getName().equals(team.getName())  && (this.Teams.get(i).getStadium().equals(team.getStadium())  ) ){
+            // Iterate over all players in the current team
+            for (int j = 0; j < this.Teams.get(i).getPlayers().size(); j++) {
+                // If the current player is the one we want to make captain
+                if (this.Teams.get(i).getPlayers().get(j).getId() == player.getId()) {
+                    // Set the current player as captain
+                    this.Teams.get(i).getPlayers().get(j).setIsCaptain(false);
+                }
+            }
+        }
+    }
+    return false;
+}
+
+
 
     public boolean designateManager(Manager manag, Team team) 
     {
@@ -238,24 +256,41 @@ public class SportsLeague  implements Serializable
     }
 
     
-    public void editPlayerDetails(Player player, String newName, String newAddress, String newDOB, String newNationality, double newSalary, String newPosition) 
-{
-    
-      // Update the player's details
-  
-    // Update the player in the All_Players list
-    for (int i = 0; i < All_Players.size(); i++) {
-        if (All_Players.get(i).getId() == player.getId()) {
-            All_Players.get(i).setName(newName);
-            All_Players.get(i).setAddress(newAddress);
-            All_Players.get(i).setDob(newDOB);
-            All_Players.get(i).setNationality(newNationality);
-            All_Players.get(i).setSalary(newSalary);
-            
-            break;
+    public void editPlayerDetails(Player player, String newName, String newAddress, String newDOB, String newNationality, double newSalary, String newPosition) {
+        player.setName(newName);
+        player.setAddress(newAddress);
+        player.setDob(newDOB);
+        player.setNationality(newNationality);
+        player.setSalary(newSalary);
+        player.setPosition(newPosition);
+
+        for (Player p : unassign_players) {
+            if (p.getId() == player.getId()) {
+                p.setName(newName);
+                p.setAddress(newAddress);
+                p.setDob(newDOB);
+                p.setNationality(newNationality);
+                p.setSalary(newSalary);
+                p.setPosition(newPosition);
+                break;
+            }
+        }
+
+        for (Team team : Teams) {
+            for (Player p : team.getPlayers()) {
+                if (p.getId() == player.getId()) {
+                    p.setName(newName);
+                    p.setAddress(newAddress);
+                    p.setDob(newDOB);
+                    p.setNationality(newNationality);
+                    p.setSalary(newSalary);
+                    p.setPosition(newPosition);
+                    break;
+                }
+            }
         }
     }
-}
+    
 
 
     
@@ -270,8 +305,8 @@ public class SportsLeague  implements Serializable
         
     }
     //new
-    public ArrayList<Player> getAll_Players() {
-        return All_Players;
+    public ArrayList<Player> getUnassign_players() {
+        return unassign_players;
     }
 
     public ArrayList<Team> getTeams() {

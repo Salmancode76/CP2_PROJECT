@@ -52,6 +52,7 @@ public class Add_Players extends javax.swing.JFrame {
    for (int i=0;i< teams_temp.size();i++) {
     teamComboBox1.addItem(teams_temp.get(i).getName());
 }
+   
 
  
     }
@@ -260,6 +261,11 @@ public class Add_Players extends javax.swing.JFrame {
         salaryLabel.setForeground(new java.awt.Color(0, 127, 255));
         salaryLabel.setText("Enter Salary:");
 
+        salaryTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salaryTxtActionPerformed(evt);
+            }
+        });
         salaryTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 salaryTxtKeyTyped(evt);
@@ -373,7 +379,7 @@ public class Add_Players extends javax.swing.JFrame {
         positionLabel.setForeground(new java.awt.Color(0, 127, 255));
         positionLabel.setText("Enter Postion:");
 
-        positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Attack", "Defence", "Midfielder", "Goal Keeper" }));
+        positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Attack", "Defence", "Midfielder", "Goal Keeper", "Forward" }));
         positionComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 positionComboBoxActionPerformed(evt);
@@ -525,6 +531,7 @@ public class Add_Players extends javax.swing.JFrame {
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         try {
             // TODO add your handling code here:
+            boolean succes =true;
             Player pl = new Player();
             SportsLeague sl = new SportsLeague();
             Team tm = new Team();
@@ -541,30 +548,51 @@ public class Add_Players extends javax.swing.JFrame {
                 if (sl.getTeams().get(i).getName().equals(teamComboBox1.getSelectedItem().toString())){
                     
                    tm=sl.getTeams().get(i);
+                   sl.assignPlayerToTeam(pl,tm);
                 }
             }
 
            if(Rbtn_yes.isSelected()==true){
     boolean isDesignated = sl.designateCaptain(pl, tm);
     if(!isDesignated){
-       JOptionPane.showMessageDialog(null, "A Team MUST have only 1 captain", "Captain Error", JOptionPane.ERROR_MESSAGE); 
+        succes=false;
+       JOptionPane.showMessageDialog(null, "To be a captain YOU NEED A TEAM!", "Captain Error", JOptionPane.ERROR_MESSAGE); 
     }
 }
                 
-             sl.assignPlayerToTeam(pl,tm);
              
-             
-            
-                String file_path_player ="players.txt";
-                String file_path_team ="teams.txt";
+             if(succes){
+             if(pl.getTeam()==null){
+                 sl.add_unassigned_Player(pl);
+                 pl.setIsCaptain(false);
+                 
+                 String file_path_team ="remain_players.txt";
                 try {
-                    FileOutputStream fosp = new FileOutputStream(file_path_player);
                     FileOutputStream fost = new FileOutputStream(file_path_team);
                     try {
-                        ObjectOutputStream oosp = new ObjectOutputStream(fosp);
                          ObjectOutputStream oost = new ObjectOutputStream(fost);
                         
-                        oosp.writeObject(sl.getAll_Players());
+                        oost.writeObject(sl.getUnassign_players());
+                        System.out.println("Player Added");
+                        
+                    } catch (IOException ex) {
+                        Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 
+                 
+             }else{
+             
+            
+                String file_path_team ="teams.txt";
+                try {
+                    FileOutputStream fost = new FileOutputStream(file_path_team);
+                    try {
+                         ObjectOutputStream oost = new ObjectOutputStream(fost);
+                        
                         oost.writeObject(sl.getTeams());
                         System.out.println("Player Added");
                         
@@ -575,9 +603,9 @@ public class Add_Players extends javax.swing.JFrame {
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
                 }
+             }
                 
-                
-                
+             }
             
             
             // Similarly, set other properties of the Player
@@ -601,7 +629,8 @@ public class Add_Players extends javax.swing.JFrame {
         
         
        
-       
+        
+        
        
     }//GEN-LAST:event_addBtnActionPerformed
 
@@ -642,6 +671,10 @@ public class Add_Players extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_salaryTxtKeyTyped
+
+    private void salaryTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salaryTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salaryTxtActionPerformed
 
     /**
      * @param args the command line arguments

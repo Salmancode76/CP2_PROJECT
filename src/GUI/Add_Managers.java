@@ -465,54 +465,65 @@ public class Add_Managers extends javax.swing.JFrame
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
-        
-       Manager m1 = new Manager();
-        SportsLeague sl = new SportsLeague();
+                try {                                       
+                    // TODO add your handling code here:
+                    
+                    Manager m1 = new Manager();
+                    SportsLeague sl = new SportsLeague();
                     Team tm = new Team();
-        m1.setName(nameTxt.getText());
-        m1.setAddress(addressTxt.getText());
-        m1.setDob(dobTxt.getText());
-        m1.setNationality(nationalityTxt.getText());
-
-        double salary = Double.parseDouble(salaryTxt.getText());
-        m1.setSalary(salary);
-
-        double bonusPercentage = Double.parseDouble(bonusTxt.getText());
-        m1.setBonusPercentage(bonusPercentage);
-
-        m1.setQualifications(qualificationsTxt.getText());
-        for (int i=0;i<sl.getTeams().size();i++){
-                if (sl.getTeams().get(i).getName().equals(teamComboBox.getSelectedItem().toString())){
-    
-                   tm=sl.getTeams().get(i);
-                }
-            }
-        if(!sl.designateManager(m1, tm)){
-          JOptionPane.showMessageDialog(null, "A Team MUST have only 1 Manager", "Manager Error", JOptionPane.ERROR_MESSAGE); 
-
-        }
-        
-             String file_path_player ="managers.txt";
-             String file_path_team ="teams.txt";
-                try {
-                    FileOutputStream fosp = new FileOutputStream(file_path_player);
-                    FileOutputStream fost = new FileOutputStream(file_path_team);
-
-                    try {
-                        ObjectOutputStream oosp = new ObjectOutputStream(fosp);
-                         ObjectOutputStream oost = new ObjectOutputStream(fost);
-
-                        oosp.writeObject(sl.getManagers());
-                        oost.writeObject(sl.getTeams());
-                        System.out.println("Manager Added");
+                    m1.setName(nameTxt.getText());
+                    m1.setAddress(addressTxt.getText());
+                    m1.setDob(dobTxt.getText());
+                    m1.setNationality(nationalityTxt.getText());
+                    
+                    double salary = Double.parseDouble(salaryTxt.getText());
+                    m1.setSalary(salary);
+                    
+                    double bonusPercentage = Double.parseDouble(bonusTxt.getText());
+                    m1.setBonusPercentage(bonusPercentage);
+                    
+                    m1.setQualifications(qualificationsTxt.getText());
+                    for (int i=0;i<sl.getTeams().size();i++){
+                        if (sl.getTeams().get(i).getName().equals(teamComboBox.getSelectedItem().toString())){
+                            
+                            tm=sl.getTeams().get(i);
+                        }
+                    }
+                    if(!sl.designateManager(m1, tm)){
+                        JOptionPane.showMessageDialog(null, "A Team MUST have only 1 Manager", "Manager Error", JOptionPane.ERROR_MESSAGE);
                         
-                    } catch (IOException ex) {
+                    }
+                    
+                    String file_path_player ="managers.txt";
+                    String file_path_team ="teams.txt";
+                    try {
+                        FileOutputStream fosp = new FileOutputStream(file_path_player);
+                        FileOutputStream fost = new FileOutputStream(file_path_team);
+                        
+                        try {
+                            ObjectOutputStream oosp = new ObjectOutputStream(fosp);
+                            ObjectOutputStream oost = new ObjectOutputStream(fost);
+                            
+                            oosp.writeObject(sl.getManagers());
+                            oost.writeObject(sl.getTeams());
+                            System.out.println("Manager Added");
+                            
+                        } catch (IOException ex) {
+                            Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        
+                    } catch (FileNotFoundException ex) {
                         Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                    
+                    
+                    
+                    
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(Add_Managers.class.getName()).log(Level.SEVERE, null, ex);
                 }
             
 
@@ -535,32 +546,26 @@ public class Add_Managers extends javax.swing.JFrame
 
     private void addressTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTxtActionPerformed
         // TODO add your handling code here:
-        Manager M = new Manager();
     }//GEN-LAST:event_addressTxtActionPerformed
 
     private void dobTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dobTxtActionPerformed
         // TODO add your handling code here:
-        Manager M = new Manager();
     }//GEN-LAST:event_dobTxtActionPerformed
 
     private void nationalityTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nationalityTxtActionPerformed
         // TODO add your handling code here:
-        Manager M = new Manager();
     }//GEN-LAST:event_nationalityTxtActionPerformed
 
     private void salaryTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salaryTxtActionPerformed
         // TODO add your handling code here:
-        Manager M = new Manager();
     }//GEN-LAST:event_salaryTxtActionPerformed
 
     private void bonusTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bonusTxtActionPerformed
         // TODO add your handling code here:
-        Manager M = new Manager();
     }//GEN-LAST:event_bonusTxtActionPerformed
 
     private void qualificationsTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qualificationsTxtActionPerformed
         // TODO add your handling code here:
-        Manager M = new Manager();
     }//GEN-LAST:event_qualificationsTxtActionPerformed
 
     /**

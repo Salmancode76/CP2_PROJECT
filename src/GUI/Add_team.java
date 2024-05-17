@@ -168,6 +168,11 @@ public class Add_team extends javax.swing.JFrame {
                 stadium_captxtActionPerformed(evt);
             }
         });
+        stadium_captxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                stadium_captxtKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout Field4Layout = new javax.swing.GroupLayout(Field4);
         Field4.setLayout(Field4Layout);
@@ -175,14 +180,15 @@ public class Add_team extends javax.swing.JFrame {
             Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Field4Layout.createSequentialGroup()
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(80, 80, 80)
-                .addComponent(stadium_captxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
+                .addComponent(stadium_captxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         Field4Layout.setVerticalGroup(
             Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Field4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(stadium_captxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -320,6 +326,14 @@ public class Add_team extends javax.swing.JFrame {
     private void stadium_captxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stadium_captxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_stadium_captxtActionPerformed
+
+    private void stadium_captxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stadium_captxtKeyTyped
+        // TODO add your handling code here:
+         char c= evt.getKeyChar();
+        if(!Character.isDigit(c) ){
+            evt.consume();
+        }
+    }//GEN-LAST:event_stadium_captxtKeyTyped
 
     /**
      * @param args the command line arguments
