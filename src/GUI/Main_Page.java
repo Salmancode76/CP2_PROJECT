@@ -5,6 +5,17 @@
 package GUI;
 
 import java.awt.*;
+import Logic.SportsLeague;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.text.DecimalFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -77,7 +88,7 @@ public class Main_Page extends javax.swing.JFrame {
         btn_pay_roll.setBackground(new java.awt.Color(211, 211, 211));
         btn_pay_roll.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         btn_pay_roll.setForeground(new java.awt.Color(0, 127, 255));
-        btn_pay_roll.setText("Pay roll");
+        btn_pay_roll.setText("Pay Report");
         btn_pay_roll.setToolTipText("");
         btn_pay_roll.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 255), 4, true));
         btn_pay_roll.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -194,7 +205,59 @@ public class Main_Page extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_Manage_ManagersActionPerformed
 
     private void btn_pay_rollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pay_rollActionPerformed
-        // TODO add your handling code here:
+        FileOutputStream fos = null;
+            // TODO add your handling code here:
+            File pay_report_fil = new File("payroll.txt");
+            SportsLeague sp=null;
+            try {
+                sp = new SportsLeague();
+            } catch (IOException ex) {
+                Logger.getLogger(Main_Page.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(!pay_report_fil.exists()){
+                try {
+                    pay_report_fil.createNewFile();
+                } catch (IOException ex) {
+                    Logger.getLogger(Main_Page.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+            try {
+                pay_report_fil.delete();
+                pay_report_fil.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Main_Page.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+                PrintStream bw=null;
+            try {
+                bw = new PrintStream(pay_report_fil);
+            } catch (IOException ex) {
+                Logger.getLogger(Main_Page.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            DecimalFormat df = new DecimalFormat("#.#");
+            double teamtotal=0;
+            double total_league=0;
+            for(int i=0;i<sp.getTeams().size();i++){
+                bw.append(sp.getTeams().get(i).getName()+'\n');
+                bw.append(sp.getTeams().get(i).getManager().getId()+ " "+sp.getTeams().get(i).getManager().getName() + " "+df.format(sp.getTeams().get(i).getManager().getSalary()/26) +'\n' );
+                teamtotal+=sp.getTeams().get(i).getManager().getSalary()/26;
+                bw.append("Players:"+'\n');
+                for(int j=0;j<sp.getTeams().get(i).getPlayers().size();j++){
+                    bw.append(sp.getTeams().get(i).getPlayers().get(j).getId()+ " "+sp.getTeams().get(i).getPlayers().get(j).getName() + " "+df.format(sp.getTeams().get(i).getPlayers().get(j).getSalary()/26) +'\n' );
+                    teamtotal+=(sp.getTeams().get(i).getPlayers().get(j).getSalary()/26);
+                }
+                bw.append("--------------------------------------------------------------------------------------------"+'\n');
+                bw.append("Team Total: "+df.format(teamtotal)+'\n');
+               bw.append("--------------------------------------------------------------------------------------------"+'\n');
+               total_league+=teamtotal;
+                teamtotal=0;
+                
+                
+            }
+            bw.append('\n');
+             bw.append("The Total League: "+df.format(total_league));
+             total_league=0;
+        
        
     }//GEN-LAST:event_btn_pay_rollActionPerformed
 

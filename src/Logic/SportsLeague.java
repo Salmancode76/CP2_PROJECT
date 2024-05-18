@@ -57,6 +57,7 @@ if(!file.exists() && !file_play.exists() && !file_managers.exists() && file_boot
 
             Manager manager = new Manager(managerName, managerAddress, managerDob, managerNationality, managerSalary, managerBonusPercentage, managerQualifications);
             Managers.add(manager);
+            team.setManager(manager);
 
             // Read and add the players
             int numPlayers = Integer.parseInt(scanner.nextLine());

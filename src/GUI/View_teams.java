@@ -4,6 +4,11 @@
  */
 package GUI;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import Logic.Team;
+
 /**
  *
  * @author salma
@@ -15,6 +20,24 @@ public class View_teams extends javax.swing.JFrame {
      */
     public View_teams() {
         initComponents();
+    }
+     public View_teams(Team view_team) {
+        initComponents();
+        if(view_team.getManager()==null){
+            tmview_area.append("The team doesn't have a manager");
+        }else{
+                    tmview_area.append("Manager Name: "+view_team.getManager().getName()+" ID: "+view_team.getManager().getId()+" Salary: "+view_team.getManager().getSalary());
+        }
+        tmview_area.append("\n");
+        if(view_team.getPlayers().isEmpty()){
+            tmview_area.append("The team doesn't contain any players");
+        }else{
+        tmview_area.append("Players:");
+        for(int i=0;i<view_team.getPlayers().size();i++){
+            tmview_area.append(view_team.getPlayers().get(i).getName()+" ID: "+view_team.getPlayers().get(i).getId()+" Salary: "+view_team.getPlayers().get(i).getSalary());
+            tmview_area.append("\n");
+        }
+        }
     }
 
     /**
@@ -31,7 +54,7 @@ public class View_teams extends javax.swing.JFrame {
         Main_panel2 = new javax.swing.JPanel();
         jButton18 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        tmview_area = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,9 +85,9 @@ public class View_teams extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        tmview_area.setColumns(20);
+        tmview_area.setRows(5);
+        jScrollPane1.setViewportView(tmview_area);
 
         javax.swing.GroupLayout Main_panel2Layout = new javax.swing.GroupLayout(Main_panel2);
         Main_panel2.setLayout(Main_panel2Layout);
@@ -133,12 +156,16 @@ public class View_teams extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
-        
-        Select_Team_view V = new Select_Team_view();
-        V.setVisible(true);
-        this.setVisible(false);
-        V.setSize(this.getSize());
+        try {
+            // TODO add your handling code here:
+            
+            Select_Team_view V = new Select_Team_view();
+            V.setVisible(true);
+            this.setVisible(false);
+            V.setSize(this.getSize());
+        } catch (IOException ex) {
+            Logger.getLogger(View_teams.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton18ActionPerformed
 
     /**
@@ -182,6 +209,6 @@ public class View_teams extends javax.swing.JFrame {
     private javax.swing.JButton jButton18;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea tmview_area;
     // End of variables declaration//GEN-END:variables
 }

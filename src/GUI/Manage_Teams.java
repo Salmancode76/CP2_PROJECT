@@ -199,12 +199,16 @@ public class Manage_Teams extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void View_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_View_TeamsBtnActionPerformed
-        // TODO add your handling code here:
-        
-        Select_Team_view V = new Select_Team_view();
-        V.setVisible(true);
-        this.setVisible(false);
-        V.setSize(this.getSize());
+        try {
+            // TODO add your handling code here:
+            
+            Select_Team_view V = new Select_Team_view();
+            V.setVisible(true);
+            this.setVisible(false);
+            V.setSize(this.getSize());
+        } catch (IOException ex) {
+            Logger.getLogger(Manage_Teams.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_View_TeamsBtnActionPerformed
 

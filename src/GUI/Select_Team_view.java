@@ -4,6 +4,14 @@
  */
 package GUI;
 
+import Logic.SportsLeague;
+import Logic.Team;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author faisa
@@ -13,8 +21,22 @@ public class Select_Team_view extends javax.swing.JFrame {
     /**
      * Creates new form Select_Team_view
      */
-    public Select_Team_view() {
+    
+     private void loadTeamsFromFile() throws IOException {
+      
+    DefaultComboBoxModel dmc = new DefaultComboBoxModel();
+    //    //add data
+    teamComboBox.setModel(dmc);
+   //populating The combo box
+    ArrayList <Team> teams_temp= new SportsLeague().getTeams();
+   for (int i=0;i< teams_temp.size();i++) {
+    teamComboBox.addItem(teams_temp.get(i).getName());
+}
+       }
+    
+    public Select_Team_view() throws IOException {
         initComponents();
+        loadTeamsFromFile();
     }
 
     /**
@@ -170,15 +192,32 @@ public class Select_Team_view extends javax.swing.JFrame {
 
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
         // TODO add your handling code here:
-
-        View_teams V = new View_teams();
-        V.setVisible(true);
-        this.setVisible(false);
-        V.setSize(this.getSize());
+    
+        try {
+               // TODO add your handling code here:
+               ArrayList<Team> allTeams = new SportsLeague().getTeams();
+               Team Selected_team=null;
+               for (int i=0;i<allTeams.size();i++) {
+                   if(allTeams.get(i).getName().equals(teamComboBox.getSelectedItem())){
+                       Selected_team=allTeams.get(i);
+                   }
+                   
+                   
+               }
+               if(Selected_team!=null){
+                   View_teams V = new View_teams(Selected_team);
+                   V.setVisible(true);
+                   this.setVisible(false);
+                   V.setSize(this.getSize());
+               }
+           } catch (IOException ex) {
+               Logger.getLogger(Select_Team.class.getName()).log(Level.SEVERE, null, ex);
+           }
     }//GEN-LAST:event_viewBtnActionPerformed
 
     private void teamComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBoxActionPerformed
         // TODO add your handling code here:
+    
     }//GEN-LAST:event_teamComboBoxActionPerformed
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
@@ -220,7 +259,11 @@ public class Select_Team_view extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Select_Team_view().setVisible(true);
+                try {
+                    new Select_Team_view().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Select_Team_view.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
