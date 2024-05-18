@@ -4,6 +4,16 @@
  */
 package GUI;
 
+import Logic.SportsLeague;
+import Logic.Player;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author faisa
@@ -13,8 +23,35 @@ public class Delete_Player extends javax.swing.JFrame {
     /**
      * Creates new form Delete_Player
      */
+    
+       private void loadTeamsFromFile() throws IOException {
+    DefaultComboBoxModel dmcp = new DefaultComboBoxModel();
+    //bind
+    playerComboBox.setModel(dmcp);    
+
+    // Create a single instance of SportsLeague
+    SportsLeague sp = new SportsLeague();
+
+    //populating The combo box with team players
+    for(int i=0; i<sp.getTeams().size(); i++){
+        for(int j=0; j<sp.getTeams().get(i).getPlayers().size(); j++){
+            playerComboBox.addItem(sp.getTeams().get(i).getPlayers().get(j).toString());
+        }
+    }
+
+    //populating The combo box with unassigned players
+    for(int i=0; i<sp.getUnassign_players().size(); i++){
+        playerComboBox.addItem(sp.getUnassign_players().get(i).toString());
+    }
+}
+    
     public Delete_Player() {
-        initComponents();
+           try {
+               initComponents();
+               loadTeamsFromFile();
+           } catch (IOException ex) {
+               Logger.getLogger(Delete_Player.class.getName()).log(Level.SEVERE, null, ex);
+           }
     }
 
     /**
@@ -113,11 +150,11 @@ public class Delete_Player extends javax.swing.JFrame {
         Field3Layout.setHorizontalGroup(
             Field3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Field3Layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(selectPlayerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(playerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap(151, Short.MAX_VALUE)
+                .addComponent(selectPlayerLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(playerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(361, 361, 361))
         );
         Field3Layout.setVerticalGroup(
             Field3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,19 +200,19 @@ public class Delete_Player extends javax.swing.JFrame {
         Field4Layout.setHorizontalGroup(
             Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Field4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addGap(151, 151, 151)
+                .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Field4Layout.setVerticalGroup(
             Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Field4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Field4Layout.createSequentialGroup()
+                .addGap(0, 13, Short.MAX_VALUE)
                 .addGroup(Field4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 13, Short.MAX_VALUE))
+                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         Field5.setBackground(new java.awt.Color(255, 255, 255));
@@ -245,7 +282,7 @@ public class Delete_Player extends javax.swing.JFrame {
                 .addComponent(Field2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Field3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Field5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,7 +297,7 @@ public class Delete_Player extends javax.swing.JFrame {
         deletePlayerPanel.setLayout(deletePlayerPanelLayout);
         deletePlayerPanelLayout.setHorizontalGroup(
             deletePlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(deletePlayerTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 1251, Short.MAX_VALUE)
+            .addComponent(deletePlayerTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 1537, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, deletePlayerPanelLayout.createSequentialGroup()
                 .addGap(114, 114, 114)
                 .addComponent(selectPlayerInputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -279,7 +316,7 @@ public class Delete_Player extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1275, Short.MAX_VALUE)
+            .addGap(0, 1561, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -312,7 +349,51 @@ public class Delete_Player extends javax.swing.JFrame {
     }//GEN-LAST:event_playerComboBoxActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
+               String player_choosed = (String) playerComboBox.getSelectedItem();   
+        try {
+             SportsLeague sp = new SportsLeague();
+
+               // TODO add your handling code here:
+               for(int i=0;i<sp.getTeams().size();i++){
+                   for(int j=0;j<sp.getTeams().get(i).getPlayers().size();j++){
+                       if(sp.getTeams().get(i).getPlayers().get(j).toString().equals(player_choosed)){
+                           sp.getTeams().get(i).removePlayer(sp.getTeams().get(i).getPlayers().get(j));
+                           
+                           
+                                         File file_edit_team = new File("teams.txt");
+                try {
+                    FileOutputStream    fot= new FileOutputStream(file_edit_team);
+                    ObjectOutputStream oost = new ObjectOutputStream(fot);
+                    oost.writeObject(sp.getTeams());
+                } catch (IOException ex) {
+                    Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+                       }
+                   }
+                   
+                 
+                   
+                   
+               } 
+            for(int i=0;i<sp.getUnassign_players().size();i++){
+                 if(sp.getUnassign_players().get(i).toString().equals(player_choosed)) {
+                     sp.remove_unassignPlayer(sp.getUnassign_players().get(i));
+                        try {
+                    FileOutputStream    fotrp= new FileOutputStream("remain_players.txt");
+                    ObjectOutputStream oostep = new ObjectOutputStream(fotrp);
+                    oostep.writeObject(sp.getUnassign_players());
+                } catch (IOException ex) {
+                    Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                        break;
+                 }               
+                             }
+           } catch (IOException ex) {
+               Logger.getLogger(Delete_Player.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+        
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**

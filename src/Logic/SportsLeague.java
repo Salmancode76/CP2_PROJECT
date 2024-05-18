@@ -184,7 +184,27 @@ if(!file.exists() && !file_play.exists() && !file_managers.exists() && file_boot
     
     public void removePlayer(Player player)
     {
-        
+        for (int i=0;i<this.getTeams().size();i++) {
+           for (int j=0;j<this.getTeams().get(i).getPlayers().size();j++){
+                if (player.getId()==this.getTeams().get(i).getPlayers().get(j).getId() ){
+                    this.getTeams().get(i).getPlayers().remove(j);
+                            player.setTeam(null);
+
+                    break;
+                }
+            }
+        }
+    }
+    
+    public void remove_unassignPlayer(Player player)
+    {
+           for (int j=0;j<this.getUnassign_players().size();j++){
+                if (player.getId()==this.getUnassign_players().get(j).getId() ){
+                    this.getUnassign_players().remove(j);
+                    break;
+                }
+            
+        }
     }
 
     
@@ -349,6 +369,21 @@ public void editManagerDetails(Manager manager, String newName, String newAddres
         }
 
     }
+public void transferPlayer(Player player, Team sourceTeam, Team targetTeam) {
+    // Remove player from source team
+
+    // Remove player from source team
+    this.removePlayer(player);
+
+    // Set player's team to target team
+    player.setTeam(targetTeam);
+
+    // Add player to target team
+    targetTeam.addPlayers(player);
+
+
+}
+
     
     
 

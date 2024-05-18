@@ -83,7 +83,7 @@ public class Team implements Serializable {
 
     public void removePlayer(Player player)
     {
-        
+        players.remove(player);
     }
 
     public ArrayList<Player> getPlayers() 

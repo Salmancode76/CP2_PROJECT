@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import Logic.SportsLeague;
 import Logic.Team;
+import Logic.Player;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -88,7 +92,7 @@ public class Transfer_Player extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         select_team_comb = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btn_teansfer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,9 +164,14 @@ public class Transfer_Player extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 127, 255));
-        jButton1.setText("Transfer");
+        btn_teansfer.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        btn_teansfer.setForeground(new java.awt.Color(0, 127, 255));
+        btn_teansfer.setText("Transfer");
+        btn_teansfer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_teansferActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Main_panel2Layout = new javax.swing.GroupLayout(Main_panel2);
         Main_panel2.setLayout(Main_panel2Layout);
@@ -179,7 +188,7 @@ public class Transfer_Player extends javax.swing.JFrame {
                             .addGroup(Main_panel2Layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btn_teansfer, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(Main_panel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -211,7 +220,7 @@ public class Transfer_Player extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(Main_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btn_teansfer))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
@@ -276,6 +285,98 @@ public class Transfer_Player extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_select_team_combActionPerformed
 
+    private void btn_teansferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_teansferActionPerformed
+           try {
+               // TODO add your handling code here:
+               ArrayList<Team> allTeams = new SportsLeague().getTeams();
+               Player selectedPlayer = null;
+               Team selectedTeam = null;
+               SportsLeague sp=new SportsLeague();
+               
+               for(int i =0;i<sp.getTeams().size();i++){
+               if(sp.getTeams().get(i).getName().equals(select_team_comb.getSelectedItem().toString())){
+                   selectedTeam=sp.getTeams().get(i);
+                   
+               }
+           }
+               for (Team team : allTeams) {
+                   for (Player player : team.getPlayers()) {
+                       if (player.toString().equals(select_pla_comb.getSelectedItem().toString() )) {
+                           selectedPlayer = player;
+                           Player new_play=selectedPlayer;
+                             selectedPlayer.getTeam().removePlayer(selectedPlayer);
+                          sp.removePlayer(selectedPlayer);
+                          
+                          new_play.setIsCaptain(false);
+                           new_play.setTeam(selectedTeam);
+                           
+                          sp.assignPlayerToTeam(new_play, selectedTeam);
+                              File file_edit_team = new File("teams.txt");
+                try {
+                    FileOutputStream    fot= new FileOutputStream(file_edit_team);
+                    ObjectOutputStream oost = new ObjectOutputStream(fot);
+                    oost.writeObject(sp.getTeams());
+                } catch (IOException ex) {
+                    Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                           
+                           
+                           break;
+                       }
+                   }
+                        {
+               
+           }
+                      
+                           
+                           
+                
+               }
+                 
+                  
+               
+           for (int i=0;i<sp.getUnassign_players().size();i++ ){
+               if(sp.getUnassign_players().get(i).toString().equals(select_pla_comb.getSelectedItem().toString())){
+                    Player selectedPlayer_unassign = sp.getUnassign_players().get(i);
+                   Player new_play=selectedPlayer_unassign;
+                   
+                   sp.remove_unassignPlayer(selectedPlayer_unassign);
+                   sp.assignPlayerToTeam(new_play, selectedTeam);
+                   
+                    
+                       try {
+                    FileOutputStream    fot= new FileOutputStream("teams.txt");
+                    ObjectOutputStream oost = new ObjectOutputStream(fot);
+                    oost.writeObject(sp.getTeams());
+                } catch (IOException ex) {
+                    Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 
+                     try {
+                    FileOutputStream    fotrp= new FileOutputStream("remain_players.txt");
+                    ObjectOutputStream oostep = new ObjectOutputStream(fotrp);
+                    oostep.writeObject(sp.getUnassign_players());
+                } catch (IOException ex) {
+                    Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               }
+               
+           }
+           
+           
+            
+           
+       
+               
+           } catch (IOException ex) {
+               Logger.getLogger(Transfer_Player.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+           
+           
+          
+    }//GEN-LAST:event_btn_teansferActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -319,7 +420,7 @@ public class Transfer_Player extends javax.swing.JFrame {
     private javax.swing.JPanel Main_panel2;
     private javax.swing.JLabel Title2;
     private javax.swing.JButton btn_back;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_teansfer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
