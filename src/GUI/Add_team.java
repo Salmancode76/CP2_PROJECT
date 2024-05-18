@@ -284,31 +284,38 @@ public class Add_team extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_go_backActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
-        // TODO add your handling code here:
-     Team tm = new Team();
-    tm.setName(Team_nametxt.getText());
-    tm.setStadium(stadium_nametxt.getText());
-    int st_cp = Integer.parseInt(stadium_captxt.getText());
-    tm.setCapacity(st_cp);
-    
-    System.out.println("Name: " + tm.getName());
-    System.out.println("Stadium: " + tm.getStadium());
-    System.out.println("Stadium Capacity: " + st_cp);
-    
-    String filePath = "teams.txt";
-    //Add item first to the arraylist
-    SportsLeague sl = new SportsLeague();
-    sl.addTeam(tm);
-    
-    //Overwriting the old array with the new array
-      try (
-        FileOutputStream fos = new FileOutputStream(filePath);
-        // Create a new ObjectOutputStream without writing a header if the file already exists
-        ObjectOutputStream oos = new ObjectOutputStream(fos) {}) {
-        oos.writeObject(sl.getTeams());
-        System.out.println("Team added to file.");
-    } catch (IOException ex) {
-        ex.printStackTrace();
+      try {                                        
+          // TODO add your handling code here:
+          Team tm = new Team();
+          tm.setName(Team_nametxt.getText());
+          tm.setStadium(stadium_nametxt.getText());
+          int st_cp = Integer.parseInt(stadium_captxt.getText());
+          tm.setCapacity(st_cp);
+          
+          System.out.println("Name: " + tm.getName());
+          System.out.println("Stadium: " + tm.getStadium());
+          System.out.println("Stadium Capacity: " + st_cp);
+          
+          String filePath = "teams.txt";
+          //Add item first to the arraylist
+          SportsLeague sl = new SportsLeague();
+          sl.addTeam(tm);
+          
+          //Overwriting the old array with the new array
+          try (
+                  FileOutputStream fos = new FileOutputStream(filePath);
+                  // Create a new ObjectOutputStream without writing a header if the file already exists
+                  ObjectOutputStream oos = new ObjectOutputStream(fos) {}) {
+              oos.writeObject(sl.getTeams());
+              System.out.println("Team added to file.");
+          } catch (IOException ex) {
+              ex.printStackTrace();
+          }
+          
+          
+          
+      } catch (IOException ex) {
+            Logger.getLogger(Add_team.class.getName()).log(Level.SEVERE, null, ex);
     }
 
           

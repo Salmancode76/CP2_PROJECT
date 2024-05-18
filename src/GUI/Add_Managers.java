@@ -24,16 +24,19 @@ public class Add_Managers extends javax.swing.JFrame
     private void loadTeamsFromFile() 
     {
       
-    DefaultComboBoxModel dmc = new DefaultComboBoxModel();
-    //bind
-    //add data
-    teamComboBox.setModel(dmc);
-   //populating The combo box
-    ArrayList <Team> teams_temp= new SportsLeague().getTeams();
-   for (int i=0;i< teams_temp.size();i++)
-   {
-    teamComboBox.addItem(teams_temp.get(i).getName());
-   }
+        try {
+            DefaultComboBoxModel dmc = new DefaultComboBoxModel();
+            //bind
+            //add data
+            teamComboBox.setModel(dmc);
+            //populating The combo box
+            ArrayList <Team> teams_temp= new SportsLeague().getTeams();
+            for (int i=0;i< teams_temp.size();i++)
+            {
+                teamComboBox.addItem(teams_temp.get(i).getName());
+            }    } catch (IOException ex) {
+            Logger.getLogger(Add_Managers.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     /**
      * Creates new form Add_Managers

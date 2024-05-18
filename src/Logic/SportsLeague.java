@@ -27,7 +27,7 @@ public class SportsLeague  implements Serializable
     File file_managers = new File("managers.txt");
     File file_boot=new File("startup.txt");
     
-    public SportsLeague() {
+    public SportsLeague() throws IOException {
     unassign_players = new ArrayList<>();
     Managers = new ArrayList<>();
     Teams = new ArrayList<>();   

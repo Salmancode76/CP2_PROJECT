@@ -19,14 +19,14 @@ import java.util.logging.Logger;
 public class Select_Manager extends javax.swing.JFrame {
 
     
-    public Select_Manager() {
+    public Select_Manager() throws IOException {
         initComponents();
         loadManagerssFromFile();
     }
     /**
      * Creates new form Select_Manager
      */
-    private void loadManagerssFromFile()
+    private void loadManagerssFromFile() throws IOException
     {
          DefaultComboBoxModel dmcpM = new DefaultComboBoxModel();
 
@@ -231,9 +231,13 @@ public class Select_Manager extends javax.swing.JFrame {
     private void btn_Select_ManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Select_ManagerActionPerformed
         // TODO add your handling code here:
         String selectedManagerName = (String) Managers_combo.getSelectedItem();
-
-    // Find the selected player from the list of all players
-    ArrayList<Manager> allManagers = new SportsLeague().getManagers();
+ArrayList<Manager> allManagers =null;
+        try {
+            // Find the selected player from the list of all players
+            allManagers = new SportsLeague().getManagers();
+        } catch (IOException ex) {
+            Logger.getLogger(Select_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     Manager selectedManager = null;
     for (Manager manager : allManagers)
     {
@@ -298,7 +302,11 @@ public class Select_Manager extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Select_Manager().setVisible(true);
+                try {
+                    new Select_Manager().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Select_Manager.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

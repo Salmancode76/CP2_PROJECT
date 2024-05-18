@@ -23,7 +23,7 @@ public class Select_Player extends javax.swing.JFrame {
      * Creates new form Select_Player
      */
     
-   private void loadTeamsFromFile() {
+   private void loadTeamsFromFile() throws IOException {
     DefaultComboBoxModel dmcp = new DefaultComboBoxModel();
     //bind
     select_teamCombo.setModel(dmcp);    
@@ -44,7 +44,7 @@ public class Select_Player extends javax.swing.JFrame {
     }
 }
 
-    public Select_Player() {
+    public Select_Player() throws IOException {
         initComponents();
         loadTeamsFromFile();
     }
@@ -240,30 +240,39 @@ public class Select_Player extends javax.swing.JFrame {
 
     private void btn_select_playerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_select_playerActionPerformed
      
-ArrayList<Team> allTeams = new SportsLeague().getTeams();
-Player selectedPlayer = null;
-SportsLeague sp = new SportsLeague();
-
-for (Team team : allTeams) {
-    for (Player player : team.getPlayers()) {
-        if (player.toString().equals(select_teamCombo.getSelectedItem().toString() )) {
-            selectedPlayer = player;
-            break;
-        }
-    }
-    if (selectedPlayer != null) {
-        break;
-    }
-}
-
-    for (int i=0;i<sp.getUnassign_players().size();i++ ){
-        if(sp.getUnassign_players().get(i).toString().equals(select_teamCombo.getSelectedItem().toString())){
-            selectedPlayer = sp.getUnassign_players().get(i);
-            break;
-        }
-       
-    }
-    
+       try {                                                  
+           
+           SportsLeague sp=null;
+           try {
+               sp = new SportsLeague();
+           } catch (IOException ex) {
+               Logger.getLogger(Select_Player.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+           ArrayList<Team> allTeams = new SportsLeague().getTeams();
+           Player selectedPlayer = null;
+           
+           
+           for (Team team : allTeams) {
+               for (Player player : team.getPlayers()) {
+                   if (player.toString().equals(select_teamCombo.getSelectedItem().toString() )) {
+                       selectedPlayer = player;
+                       break;
+                   }
+               }
+               if (selectedPlayer != null) {
+                   break;
+               }
+           }
+           
+           for (int i=0;i<sp.getUnassign_players().size();i++ ){
+               if(sp.getUnassign_players().get(i).toString().equals(select_teamCombo.getSelectedItem().toString())){
+                   selectedPlayer = sp.getUnassign_players().get(i);
+                   break;
+               }
+               
+           }
+           
 // Pass the selected player to the Edit_Player page
 if (selectedPlayer != null) {
     Edit_Player ep = new Edit_Player();
@@ -279,6 +288,10 @@ if (selectedPlayer != null) {
     // Handle the case where the selected player is not found
     System.out.println("Selected player not found");
 }
+
+       } catch (IOException ex) {
+           Logger.getLogger(Select_Player.class.getName()).log(Level.SEVERE, null, ex);
+       }
          
     }//GEN-LAST:event_btn_select_playerActionPerformed
 
@@ -312,7 +325,11 @@ if (selectedPlayer != null) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Select_Player().setVisible(true);
+                try {
+                    new Select_Player().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Select_Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

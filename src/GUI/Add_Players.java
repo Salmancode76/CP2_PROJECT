@@ -42,16 +42,19 @@ public class Add_Players extends javax.swing.JFrame {
 
     private void loadTeamsFromFile() {
       
-    DefaultComboBoxModel dmc = new DefaultComboBoxModel();
-    //bind
-    dmc.addElement("No Team");
-    //add data
-    teamComboBox1.setModel(dmc);
-   //populating The combo box
-    ArrayList <Team> teams_temp= new SportsLeague().getTeams();
-   for (int i=0;i< teams_temp.size();i++) {
-    teamComboBox1.addItem(teams_temp.get(i).getName());
-}
+        try {
+            DefaultComboBoxModel dmc = new DefaultComboBoxModel();
+            //bind
+            dmc.addElement("No Team");
+            //add data
+            teamComboBox1.setModel(dmc);
+            //populating The combo box
+            ArrayList <Team> teams_temp= new SportsLeague().getTeams();
+            for (int i=0;i< teams_temp.size();i++) {
+                teamComboBox1.addItem(teams_temp.get(i).getName());
+            }       } catch (IOException ex) {
+            Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
+        }
    
 
  

@@ -357,17 +357,26 @@ public class Edit_Team extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
-        // TODO add your handling code here:
-        
-        Select_Team V = new Select_Team();
-        V.setVisible(true);
-        this.setVisible(false);
-        V.setSize(this.getSize());
+        try {
+            // TODO add your handling code here:
+            
+            Select_Team V = new Select_Team();
+            V.setVisible(true);
+            this.setVisible(false);
+            V.setSize(this.getSize());
+        } catch (IOException ex) {
+            Logger.getLogger(Edit_Team.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
-         SportsLeague sp = new SportsLeague(); 
+         SportsLeague sp=null;
+        try { 
+            sp = new SportsLeague();
+        } catch (IOException ex) {
+            Logger.getLogger(Edit_Team.class.getName()).log(Level.SEVERE, null, ex);
+        }
         sp.editTeamDetails(edit_team_obj,tNameTxt.getText(),stadiumTxt.getText(), Integer.parseInt(stadiumCapacityTxt.getText()));
         File file_edit_tea = new File("teams.txt");
         FileOutputStream fot=null;        

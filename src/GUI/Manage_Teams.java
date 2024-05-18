@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author faisa
@@ -224,12 +228,16 @@ public class Manage_Teams extends javax.swing.JFrame {
     }//GEN-LAST:event_Add_TeamsBtnActionPerformed
 
     private void Edit_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_TeamsBtnActionPerformed
-        // TODO add your handling code here:
-        
-        Select_Team V = new Select_Team();
-        V.setVisible(true);
-        this.setVisible(false);
-        V.setSize(this.getSize());
+        try {
+            // TODO add your handling code here:
+            
+            Select_Team V = new Select_Team();
+            V.setVisible(true);
+            this.setVisible(false);
+            V.setSize(this.getSize());
+        } catch (IOException ex) {
+            Logger.getLogger(Manage_Teams.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_Edit_TeamsBtnActionPerformed
 
     private void Delete_TeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_TeamsBtnActionPerformed

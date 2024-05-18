@@ -30,8 +30,12 @@ public class Edit_Manager extends javax.swing.JFrame {
     
     public Edit_Manager() 
     {
-        initComponents();
-        sp = new SportsLeague(); //copied
+        try {
+            initComponents();
+            sp = new SportsLeague(); //copied
+        } catch (IOException ex) {
+            Logger.getLogger(Edit_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
@@ -369,12 +373,16 @@ public class Edit_Manager extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
-        // TODO add your handling code here:
-        
-        Select_Manager M = new Select_Manager();
-        M.setVisible(true);
-        this.setVisible(false);
-        M.setSize(this.getSize());
+        try {
+            // TODO add your handling code here:
+            
+            Select_Manager M = new Select_Manager();
+            M.setVisible(true);
+            this.setVisible(false);
+            M.setSize(this.getSize());
+        } catch (IOException ex) {
+            Logger.getLogger(Edit_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed

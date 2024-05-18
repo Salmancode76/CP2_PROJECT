@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import Logic.SportsLeague;
 import Logic.Team;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author salma
@@ -18,7 +21,7 @@ public class Transfer_Player extends javax.swing.JFrame {
     /**
      * Creates new form Transfer_Player
      */
-       private void loadTeamsFromFile() {
+       private void loadTeamsFromFile() throws IOException {
       
     DefaultComboBoxModel dmctt = new DefaultComboBoxModel();
     //bind
@@ -33,7 +36,7 @@ public class Transfer_Player extends javax.swing.JFrame {
    }
        }
        
-   private void loadTeamsFromFile2() {
+   private void loadTeamsFromFile2() throws IOException {
     DefaultComboBoxModel dmcpt = new DefaultComboBoxModel();
     //bind
     select_pla_comb.setModel(dmcpt);    
@@ -58,7 +61,7 @@ public class Transfer_Player extends javax.swing.JFrame {
 
     
     
-    public Transfer_Player() {
+    public Transfer_Player() throws IOException {
        initComponents();
         loadTeamsFromFile();
         loadTeamsFromFile2();
@@ -303,7 +306,11 @@ public class Transfer_Player extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Transfer_Player().setVisible(true);
+                try {
+                    new Transfer_Player().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Transfer_Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

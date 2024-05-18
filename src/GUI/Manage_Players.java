@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author salma
@@ -203,19 +207,27 @@ public class Manage_Players extends javax.swing.JFrame {
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-        // TODO add your handling code here:
-         Select_Player sp= new Select_Player();
-        sp.setVisible(true);
-        this.setVisible(false);
-        sp.setSize(this.getSize());
+        try {
+            // TODO add your handling code here:
+            Select_Player sp= new Select_Player();
+            sp.setVisible(true);
+            this.setVisible(false);
+            sp.setSize(this.getSize());
+        } catch (IOException ex) {
+            Logger.getLogger(Manage_Players.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void transferBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferBtnActionPerformed
-        // TODO add your handling code here:
-         Transfer_Player tp = new Transfer_Player();
-        tp.setVisible(true);
-        this.setVisible(false);
-        tp.setSize(this.getSize());
+        try {
+            // TODO add your handling code here:
+            Transfer_Player tp = new Transfer_Player();
+            tp.setVisible(true);
+            this.setVisible(false);
+            tp.setSize(this.getSize());
+        } catch (IOException ex) {
+            Logger.getLogger(Manage_Players.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_transferBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed

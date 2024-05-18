@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author faisa
@@ -191,12 +195,16 @@ public class Manage_Managers extends javax.swing.JFrame {
     }//GEN-LAST:event_BackActionPerformed
 
     private void Edit_ManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_ManagerActionPerformed
-        // TODO add your handling code here:
-        
-        Select_Manager M = new Select_Manager();
-        M.setVisible(true);
-        this.setVisible(false);
-        M.setSize(this.getSize());
+        try {
+            // TODO add your handling code here:
+            
+            Select_Manager M = new Select_Manager();
+            M.setVisible(true);
+            this.setVisible(false);
+            M.setSize(this.getSize());
+        } catch (IOException ex) {
+            Logger.getLogger(Manage_Managers.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_Edit_ManagerActionPerformed
 

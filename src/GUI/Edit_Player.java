@@ -499,56 +499,64 @@ public class Edit_Player extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        // TODO add your handling code here:
-        Select_Player sp= new Select_Player();
-        sp.setVisible(true);
-        this.setVisible(false);
-        sp.setSize(this.getSize());
+        try {
+            // TODO add your handling code here:
+            Select_Player sp= new Select_Player();
+            sp.setVisible(true);
+            this.setVisible(false);
+            sp.setSize(this.getSize());
+        } catch (IOException ex) {
+            Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
-        FileOutputStream fo = null;
-       SportsLeague sp = new SportsLeague(); 
-       
-        //changing the player info
-         
+        try {
+            FileOutputStream fo = null;
+            SportsLeague sp = new SportsLeague();
+            
+            //changing the player info
+            
             if(editPlayer.getTeam()==null){
-            sp.editPlayerDetails(editPlayer, txt_edit_pla_name.getText(), txtAddress.getText(), txt_dob.getText(), txt_natio.getText(), Double.parseDouble(txt_salary.getText()), positionComboBox.getSelectedItem().toString());
-   
+                sp.editPlayerDetails(editPlayer, txt_edit_pla_name.getText(), txtAddress.getText(), txt_dob.getText(), txt_natio.getText(), Double.parseDouble(txt_salary.getText()), positionComboBox.getSelectedItem().toString());
                 
-            File file_edit_pla = new File("remain_players.txt");
+
+                File file_edit_pla = new File("remain_players.txt");
                 try {
                     fo = new FileOutputStream(file_edit_pla);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            try {
-                ObjectOutputStream oos = new ObjectOutputStream(fo);
-                oos.writeObject(sp.getUnassign_players());
-            } catch (IOException ex) {
-                Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        
-        }else{
-                sp.editPlayerDetails(editPlayer, txt_edit_pla_name.getText(), txtAddress.getText(), txt_dob.getText(), txt_natio.getText(), Double.parseDouble(txt_salary.getText()), positionComboBox.getSelectedItem().toString());              
-                          
-                 if (Rbtn_yes.isSelected()) {
-            sp.designateCaptain(editPlayer, editPlayer.getTeam());
-        } else {
-            sp.undesignateCaptain(editPlayer, editPlayer.getTeam());
-        }
-                      
+                try {
+                    ObjectOutputStream oos = new ObjectOutputStream(fo);
+                    oos.writeObject(sp.getUnassign_players());
+                } catch (IOException ex) {
+                    Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
-            File file_edit_team = new File("teams.txt");              
-            try {
-                FileOutputStream    fot= new FileOutputStream(file_edit_team);
-                ObjectOutputStream oost = new ObjectOutputStream(fot);
-                oost.writeObject(sp.getTeams());
-            } catch (IOException ex) {
-                Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }else{
+                sp.editPlayerDetails(editPlayer, txt_edit_pla_name.getText(), txtAddress.getText(), txt_dob.getText(), txt_natio.getText(), Double.parseDouble(txt_salary.getText()), positionComboBox.getSelectedItem().toString());
+                
+                if (Rbtn_yes.isSelected()) {
+                    sp.designateCaptain(editPlayer, editPlayer.getTeam());
+                } else {
+                    sp.undesignateCaptain(editPlayer, editPlayer.getTeam());
+                }
+                
+                
+                File file_edit_team = new File("teams.txt");
+                try {
+                    FileOutputStream    fot= new FileOutputStream(file_edit_team);
+                    ObjectOutputStream oost = new ObjectOutputStream(fot);
+                    oost.writeObject(sp.getTeams());
+                } catch (IOException ex) {
+                    Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            }
+        } catch (IOException ex) {
+            Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+        }
                 
               
 
