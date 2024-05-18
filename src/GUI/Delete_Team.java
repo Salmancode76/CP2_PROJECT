@@ -4,17 +4,46 @@
  */
 package GUI;
 
+import Logic.SportsLeague;
+import Logic.Team;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author faisa
  */
 public class Delete_Team extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Delete_Team
-     */
+    private void loadTeamsFromFile() throws IOException 
+    {
+        DefaultComboBoxModel dmcp = new DefaultComboBoxModel();
+        //bind
+        teamComboBox.setModel(dmcp);    
+
+        // Create a single instance of SportsLeague
+        SportsLeague sp = new SportsLeague();
+
+        for (Team team : sp.getTeams()) 
+        {
+            teamComboBox.addItem(team.getName());
+        }
+    }   
     public Delete_Team() {
-        initComponents();
+        try
+           {
+               initComponents();
+               loadTeamsFromFile();
+           } 
+           catch (IOException ex) 
+           {
+               Logger.getLogger(Delete_Team.class.getName()).log(Level.SEVERE, null, ex);
+           }
     }
 
     /**
@@ -287,6 +316,51 @@ public class Delete_Team extends javax.swing.JFrame {
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
+        
+        String team_choosed = (String) teamComboBox.getSelectedItem();
+        
+        try 
+    {
+        SportsLeague sp = new SportsLeague();
+
+        // Iterate through teams to remove the selected team
+        for (int i = 0; i < sp.getTeams().size(); i++) 
+        {
+            if (sp.getTeams().get(i).getName().equals(team_choosed))
+            {
+                sp.getTeams().remove(i);
+                break;
+            }
+        }
+
+        // Save the updated teams list to file
+        File file_edit_team = new File("teams.txt");
+        try 
+        {
+            FileOutputStream fot = new FileOutputStream(file_edit_team);
+            ObjectOutputStream oost = new ObjectOutputStream(fot);
+            oost.writeObject(sp.getTeams());
+        } 
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Refresh the combo box after deletion
+        DefaultComboBoxModel<String> dmcp = new DefaultComboBoxModel<>();
+        teamComboBox.setModel(dmcp);
+
+        for (Team team : sp.getTeams()) 
+        {
+            teamComboBox.addItem(team.getName());
+        }
+
+    } 
+        catch (IOException ex) 
+        {
+        Logger.getLogger(Delete_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void teamComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBoxActionPerformed

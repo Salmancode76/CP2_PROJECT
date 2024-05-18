@@ -174,7 +174,32 @@ if(!file.exists() && !file_play.exists() && !file_managers.exists() && file_boot
     
     public void removeTeam(Team team) 
     {
-        
+        // Remove the team from the Teams list
+    for (int i = 0; i < this.getTeams().size(); i++) 
+    {
+        // Check if the current team matches the team we want to remove
+        if (this.getTeams().get(i).getName().equals(team.getName()) 
+            && this.getTeams().get(i).getStadium().equals(team.getStadium())) 
+        {
+            // Unassign players and manager from the removed team
+            for (Player player : this.getTeams().get(i).getPlayers()) 
+            {
+                player.setTeam(null);
+                this.add_unassigned_Player(player);
+            }
+
+            Manager manager = this.getTeams().get(i).getManager();
+            if (manager != null) 
+            {
+                manager.setTeam(null);
+            }
+
+            // Remove the team from the league
+            this.getTeams().remove(i);
+            
+            break; // Exit the loop after removing the team
+        }
+    }
     }
 
    
