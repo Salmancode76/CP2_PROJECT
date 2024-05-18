@@ -4,19 +4,51 @@
  */
 package GUI;
 
+import Logic.Manager;
+import Logic.SportsLeague;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author faisa
  */
 public class Delete_Manager extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Delete_Manager
-     */
-    public Delete_Manager() {
-        initComponents();
-    }
+   private void loadTeamsFromFile() throws IOException 
+    {
+        DefaultComboBoxModel dmcp = new DefaultComboBoxModel();
+        //bind
+        ManagerComboBox.setModel(dmcp);    
 
+        // Create a single instance of SportsLeague
+        SportsLeague sp = new SportsLeague();
+
+        for (Manager manager : sp.getManagers()) 
+        {
+            ManagerComboBox.addItem(manager.getName());
+        }
+    }   
+  
+    public Delete_Manager() 
+    { 
+         try
+           {
+               initComponents();
+               loadTeamsFromFile();
+           } 
+           catch (IOException ex) 
+           {
+               Logger.getLogger(Delete_Manager.class.getName()).log(Level.SEVERE, null, ex);
+           }
+    }
+    //-------------------------POPULATING THE DROP BOX-----------------------------------
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -301,7 +333,72 @@ public class Delete_Manager extends javax.swing.JFrame {
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
+        
+        String manager_choosed = (String) ManagerComboBox.getSelectedItem();
+        try 
+        {
+            SportsLeague sp = new SportsLeague();
+        
+            // Iterate through teams to set the manager to null if found
+            for (int i = 0; i < sp.getTeams().size(); i++)
+            {
+                if (sp.getTeams().get(i).getManager() != null 
+                && sp.getTeams().get(i).getManager().getName().equals(manager_choosed)) 
+                {
+                    sp.getTeams().get(i).setManager(null);  // Removing manager from team
+                }
+            }
+
+            File file_edit_team = new File("teams.txt");
+        try 
+        {
+            FileOutputStream fot = new FileOutputStream(file_edit_team);
+            ObjectOutputStream oost = new ObjectOutputStream(fot);
+            oost.writeObject(sp.getTeams());
+        } 
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Iterate through managers to remove the selected manager
+        for (int j = 0; j < sp.getManagers().size(); j++) 
+        {
+            if (sp.getManagers().get(j).getName().equals(manager_choosed))
+            {
+                sp.getManagers().remove(j);
+                break;
+            }
+        }
+
+        File file_edit_manager = new File("managers.txt");
+        try 
+        {
+            FileOutputStream fot = new FileOutputStream(file_edit_manager);
+            ObjectOutputStream oost = new ObjectOutputStream(fot);
+            oost.writeObject(sp.getManagers());
+        } 
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Delete_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Refresh the combo box after deletion
+        DefaultComboBoxModel<String> dmcp = new DefaultComboBoxModel<>();
+        ManagerComboBox.setModel(dmcp);
+        
+        for (Manager manager : sp.getManagers())
+        {
+            ManagerComboBox.addItem(manager.getName());
+        }
+
+    } 
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Delete_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void ManagerComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerComboBoxActionPerformed

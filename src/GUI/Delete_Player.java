@@ -24,32 +24,45 @@ public class Delete_Player extends javax.swing.JFrame {
      * Creates new form Delete_Player
      */
     
-       private void loadTeamsFromFile() throws IOException {
-    DefaultComboBoxModel dmcp = new DefaultComboBoxModel();
-    //bind
-    playerComboBox.setModel(dmcp);    
-
-    // Create a single instance of SportsLeague
-    SportsLeague sp = new SportsLeague();
-
-    //populating The combo box with team players
-    for(int i=0; i<sp.getTeams().size(); i++){
-        for(int j=0; j<sp.getTeams().get(i).getPlayers().size(); j++){
-            playerComboBox.addItem(sp.getTeams().get(i).getPlayers().get(j).toString());
-        }
-    }
-
-    //populating The combo box with unassigned players
-    for(int i=0; i<sp.getUnassign_players().size(); i++){
-        playerComboBox.addItem(sp.getUnassign_players().get(i).toString());
-    }
-}
     
-    public Delete_Player() {
-           try {
+    //loadTeamsFromFile
+    //add the file path in the player page (players.txt)
+    //remove player in sportsleague
+    
+       private void loadTeamsFromFile() throws IOException 
+    {
+        DefaultComboBoxModel dmcp = new DefaultComboBoxModel();
+        //bind
+        playerComboBox.setModel(dmcp);    
+
+        // Create a single instance of SportsLeague
+        SportsLeague sp = new SportsLeague();
+
+        //populating The combo box with team players
+        for(int i=0; i<sp.getTeams().size(); i++)
+        {
+            for(int j=0; j<sp.getTeams().get(i).getPlayers().size(); j++)
+            {
+            playerComboBox.addItem(sp.getTeams().get(i).getPlayers().get(j).toString());
+            }
+        }
+
+        //populating The combo box with unassigned players
+        for(int i=0; i<sp.getUnassign_players().size(); i++)
+        {
+            playerComboBox.addItem(sp.getUnassign_players().get(i).toString());
+        }
+    }   
+    
+    public Delete_Player()
+    {
+           try
+           {
                initComponents();
                loadTeamsFromFile();
-           } catch (IOException ex) {
+           } 
+           catch (IOException ex) 
+           {
                Logger.getLogger(Delete_Player.class.getName()).log(Level.SEVERE, null, ex);
            }
     }
@@ -354,44 +367,54 @@ public class Delete_Player extends javax.swing.JFrame {
              SportsLeague sp = new SportsLeague();
 
                // TODO add your handling code here:
-               for(int i=0;i<sp.getTeams().size();i++){
-                   for(int j=0;j<sp.getTeams().get(i).getPlayers().size();j++){
-                       if(sp.getTeams().get(i).getPlayers().get(j).toString().equals(player_choosed)){
+               for(int i=0;i<sp.getTeams().size();i++)
+            {
+                   for(int j=0;j<sp.getTeams().get(i).getPlayers().size();j++)
+                   {
+                       if(sp.getTeams().get(i).getPlayers().get(j).toString().equals(player_choosed))
+                       {
                            sp.getTeams().get(i).removePlayer(sp.getTeams().get(i).getPlayers().get(j));
                            
                            
-                                         File file_edit_team = new File("teams.txt");
-                try {
+                         File file_edit_team = new File("teams.txt");
+                try 
+                {
                     FileOutputStream    fot= new FileOutputStream(file_edit_team);
                     ObjectOutputStream oost = new ObjectOutputStream(fot);
                     oost.writeObject(sp.getTeams());
-                } catch (IOException ex) {
+                } 
+                catch (IOException ex)
+                {
                     Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 break;
                        }
-                   }
-                   
-                 
-                   
-                   
-               } 
-            for(int i=0;i<sp.getUnassign_players().size();i++){
-                 if(sp.getUnassign_players().get(i).toString().equals(player_choosed)) {
+                   } 
+         }
+        //---------------------------------------------------------------------------------------------------------------------------------
+            for(int i=0;i<sp.getUnassign_players().size();i++)
+            {
+                 if(sp.getUnassign_players().get(i).toString().equals(player_choosed)) 
+                 {
                      sp.remove_unassignPlayer(sp.getUnassign_players().get(i));
-                        try {
-                    FileOutputStream    fotrp= new FileOutputStream("remain_players.txt");
-                    ObjectOutputStream oostep = new ObjectOutputStream(fotrp);
-                    oostep.writeObject(sp.getUnassign_players());
-                } catch (IOException ex) {
-                    Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                        try 
+                        {
+                            FileOutputStream    fotrp= new FileOutputStream("remain_players.txt");
+                            ObjectOutputStream oostep = new ObjectOutputStream(fotrp);
+                            oostep.writeObject(sp.getUnassign_players());
+                        } 
+                        catch (IOException ex)
+                        {
+                            Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         break;
                  }               
-                             }
-           } catch (IOException ex) {
-               Logger.getLogger(Delete_Player.class.getName()).log(Level.SEVERE, null, ex);
+            }
            }
+                    catch (IOException ex)
+                    {
+                        Logger.getLogger(Delete_Player.class.getName()).log(Level.SEVERE, null, ex);
+                    }
            
         
     }//GEN-LAST:event_deleteBtnActionPerformed

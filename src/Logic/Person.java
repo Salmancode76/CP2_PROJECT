@@ -22,29 +22,38 @@ public class Person implements Serializable
     private int id; // Each instance of Person will have a unique id
   
 
-     private String name;
+    private String name;
     private String address;
     private String dob;
     private String nationality;
     private double salary;
     
-    public Person() throws FileNotFoundException, IOException {
-               File fil = new File("ids.txt");
-        if(fil.exists() && fil.length() > 0){
-            try (BufferedReader reader = new BufferedReader(new FileReader(fil))) {
+    public Person() throws FileNotFoundException, IOException 
+    {
+        File fil = new File("ids.txt");
+        if(fil.exists() && fil.length() > 0)
+        {
+            try (BufferedReader reader = new BufferedReader(new FileReader(fil))) 
+            {
                 lastAssignedId = Integer.parseInt(reader.readLine());
-            } catch (IOException e) {
+            } catch (IOException e)
+            {
                 e.printStackTrace();
             }
-        } else {
+        } 
+        else
+        {
             fil.createNewFile();
         }
 
         id = lastAssignedId++;
 
-        try (PrintWriter writer = new PrintWriter(new FileWriter(fil, false))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(fil, false)))
+        {
             writer.println(lastAssignedId); // Convert lastAssignedId to string and write it to file
-        } catch (IOException e) {
+        }
+        catch (IOException e) 
+        {
             e.printStackTrace();
         }
     }
@@ -52,20 +61,26 @@ public class Person implements Serializable
     
 
         // Constructor with five arguments
-    public Person(String name, String address, String dob, String nationality, double salary) throws IOException {
+    public Person(String name, String address, String dob, String nationality, double salary) throws IOException 
+    {
         this.name = name;
         this.address = address;
         this.dob = dob;
         this.nationality = nationality;
         this.salary = salary;
-         File fil = new File("ids.txt");
-        if(fil.exists() && fil.length() > 0){
+        File fil = new File("ids.txt");
+        if(fil.exists() && fil.length() > 0)
+        {
             try (BufferedReader reader = new BufferedReader(new FileReader(fil))) {
                 lastAssignedId = Integer.parseInt(reader.readLine());
-            } catch (IOException e) {
+            } 
+            catch (IOException e)
+            {
                 e.printStackTrace();
             }
-        } else {
+        } 
+        else 
+        {
             fil.createNewFile();
         }
 

@@ -22,7 +22,8 @@ public class SportsLeague  implements Serializable
     private ArrayList <Player> unassign_players;
     private ArrayList <Manager> Managers;
     private ArrayList <Team> Teams;
-        File file = new File("teams.txt");
+    
+    File file = new File("teams.txt");
     File file_play = new File("remain_players.txt");
     File file_managers = new File("managers.txt");
     File file_boot=new File("startup.txt");
@@ -219,7 +220,29 @@ if(!file.exists() && !file_play.exists() && !file_managers.exists() && file_boot
     
     public void removeManager(Manager manager) 
     {
-        
+        // Iterate over all teams
+    for (int i = 0; i < this.getTeams().size(); i++) 
+    {
+        // Check if the team has the manager we want to remove
+        if (this.getTeams().get(i).getManager() != null 
+            && this.getTeams().get(i).getManager().getId() == manager.getId()) 
+        {
+            // Remove the manager from the team
+            this.getTeams().get(i).setManager(null);
+            manager.setTeam(null); // Set the manager's team to null
+            break; // Exit the loop after removing the manager
+        }
+    }
+
+    // Remove the manager from the list of managers
+    for (int j = 0; j < this.getManagers().size(); j++) 
+    {
+        if (manager.getId() == this.getManagers().get(j).getId())
+        {
+            this.getManagers().remove(j);
+            break; // Exit the loop after removing the manager
+        }
+    }
     }
 
     
