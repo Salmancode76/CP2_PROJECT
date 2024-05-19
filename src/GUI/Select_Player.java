@@ -102,7 +102,7 @@ public class Select_Player extends javax.swing.JFrame {
 
         btn_select_player.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         btn_select_player.setForeground(new java.awt.Color(0, 127, 255));
-        btn_select_player.setText("Select Palyer");
+        btn_select_player.setText("Select Player");
         btn_select_player.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_select_playerActionPerformed(evt);
