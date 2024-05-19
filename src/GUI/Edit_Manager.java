@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -405,6 +406,13 @@ public class Edit_Manager extends javax.swing.JFrame {
         //changing the player info
         try 
         {
+                 if (nameTxt.getText().isEmpty() || addressTxt.getText().isEmpty() || dobTxt.getText().isEmpty() || 
+            nationalityTxt.getText().isEmpty() || salaryTxt.getText().isEmpty() || bonusTxt.getText().isEmpty() || 
+            qualificationsTxt.getText().isEmpty() ) 
+        {
+            JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; // Exit the method if any field is empty
+        }
             // TODO add your handling code here:
             sp.editManagerDetails(editManager, nameTxt.getText(), addressTxt.getText(), dobTxt.getText(),
             nationalityTxt.getText(), Double.parseDouble(salaryTxt.getText()),Double.parseDouble( bonusTxt.getText()),
@@ -431,17 +439,7 @@ public class Edit_Manager extends javax.swing.JFrame {
         {
             Logger.getLogger(Edit_Manager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        finally 
-        {
-            try 
-            {
-                fo.close();
-            } 
-            catch (IOException ex)
-            {
-                Logger.getLogger(Edit_Manager.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+    JOptionPane.showMessageDialog(null, "Manager edited successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
         
         
