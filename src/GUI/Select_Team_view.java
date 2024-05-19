@@ -78,7 +78,6 @@ public class Select_Team_view extends javax.swing.JFrame {
         selectLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         selectLabel.setText("Select Team :");
 
-        teamComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         teamComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teamComboBoxActionPerformed(evt);

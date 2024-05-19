@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author faisa
@@ -384,6 +385,11 @@ public class Edit_Team extends javax.swing.JFrame {
         // TODO add your handling code here:
          SportsLeague sp=null;
         try { 
+               if (tNameTxt.getText().isEmpty() || stadiumTxt.getText().isEmpty() || stadiumCapacityTxt.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; // Exit the method if any field is empty
+        }
             sp = new SportsLeague();
         } catch (IOException ex) {
             Logger.getLogger(Edit_Team.class.getName()).log(Level.SEVERE, null, ex);
@@ -402,6 +408,8 @@ public class Edit_Team extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
             }
+                        JOptionPane.showMessageDialog(null, "Team edited successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
         
         
     }//GEN-LAST:event_saveBtnActionPerformed
