@@ -13,6 +13,7 @@ import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -317,17 +318,14 @@ public class Delete_Team extends javax.swing.JFrame {
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
         
-        String team_choosed = (String) teamComboBox.getSelectedItem();
-        
-        try 
-    {
+       String team_choosed = (String) teamComboBox.getSelectedItem();
+    
+    try {
         SportsLeague sp = new SportsLeague();
 
         // Iterate through teams to remove the selected team
-        for (int i = 0; i < sp.getTeams().size(); i++) 
-        {
-            if (sp.getTeams().get(i).getName().equals(team_choosed))
-            {
+        for (int i = 0; i < sp.getTeams().size(); i++) {
+            if (sp.getTeams().get(i).getName().equals(team_choosed)) {
                 sp.getTeams().remove(i);
                 break;
             }
@@ -335,14 +333,10 @@ public class Delete_Team extends javax.swing.JFrame {
 
         // Save the updated teams list to file
         File file_edit_team = new File("teams.txt");
-        try 
-        {
-            FileOutputStream fot = new FileOutputStream(file_edit_team);
-            ObjectOutputStream oost = new ObjectOutputStream(fot);
+        try (FileOutputStream fot = new FileOutputStream(file_edit_team);
+             ObjectOutputStream oost = new ObjectOutputStream(fot)) {
             oost.writeObject(sp.getTeams());
-        } 
-        catch (IOException ex) 
-        {
+        } catch (IOException ex) {
             Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -350,16 +344,16 @@ public class Delete_Team extends javax.swing.JFrame {
         DefaultComboBoxModel<String> dmcp = new DefaultComboBoxModel<>();
         teamComboBox.setModel(dmcp);
 
-        for (Team team : sp.getTeams()) 
-        {
+        for (Team team : sp.getTeams()) {
             teamComboBox.addItem(team.getName());
         }
 
-    } 
-        catch (IOException ex) 
-        {
+        // Show success message
+        JOptionPane.showMessageDialog(null, "Team deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (IOException ex) {
         Logger.getLogger(Delete_Manager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    }
         
     }//GEN-LAST:event_deleteBtnActionPerformed
 

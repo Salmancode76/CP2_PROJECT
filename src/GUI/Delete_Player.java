@@ -13,6 +13,7 @@ import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -362,68 +363,66 @@ public class Delete_Player extends javax.swing.JFrame {
     }//GEN-LAST:event_playerComboBoxActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-               String player_choosed = (String) playerComboBox.getSelectedItem();   
-        try {
-             SportsLeague sp = new SportsLeague();
+          
+        String player_choosed = (String) playerComboBox.getSelectedItem();   
+    try {
+        SportsLeague sp = new SportsLeague();
 
-               // TODO add your handling code here:
-               for(int i=0;i<sp.getTeams().size();i++)
-            {
-                   for(int j=0;j<sp.getTeams().get(i).getPlayers().size();j++)
-                   {
-                       if(sp.getTeams().get(i).getPlayers().get(j).toString().equals(player_choosed))
-                       {
-                           sp.getTeams().get(i).removePlayer(sp.getTeams().get(i).getPlayers().get(j));
-                           
-                           
-                         File file_edit_team = new File("teams.txt");
-                try 
-                {
-                    FileOutputStream    fot= new FileOutputStream(file_edit_team);
-                    ObjectOutputStream oost = new ObjectOutputStream(fot);
-                    oost.writeObject(sp.getTeams());
-                } 
-                catch (IOException ex)
-                {
+        // Iterate through teams to find and remove the player
+        for (int i = 0; i < sp.getTeams().size(); i++) {
+            for (int j = 0; j < sp.getTeams().get(i).getPlayers().size(); j++) {
+                if (sp.getTeams().get(i).getPlayers().get(j).toString().equals(player_choosed)) {
+                    sp.getTeams().get(i).removePlayer(sp.getTeams().get(i).getPlayers().get(j));
+
+                    File file_edit_team = new File("teams.txt");
+                    try (FileOutputStream fot = new FileOutputStream(file_edit_team);
+                         ObjectOutputStream oost = new ObjectOutputStream(fot)) {
+                        oost.writeObject(sp.getTeams());
+                    } catch (IOException ex) {
+                        Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
+                }
+            }
+        }
+
+        // Iterate through unassigned players to find and remove the player
+        for (int i = 0; i < sp.getUnassign_players().size(); i++) {
+            if (sp.getUnassign_players().get(i).toString().equals(player_choosed)) {
+                sp.remove_unassignPlayer(sp.getUnassign_players().get(i));
+
+                try (FileOutputStream fotrp = new FileOutputStream("remain_players.txt");
+                     ObjectOutputStream oostep = new ObjectOutputStream(fotrp)) {
+                    oostep.writeObject(sp.getUnassign_players());
+                } catch (IOException ex) {
                     Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 break;
-                       }
-                   } 
-         }
-        //---------------------------------------------------------------------------------------------------------------------------------
-            for(int i=0;i<sp.getUnassign_players().size();i++)
-            {
-                 if(sp.getUnassign_players().get(i).toString().equals(player_choosed)) 
-                 {
-                     sp.remove_unassignPlayer(sp.getUnassign_players().get(i));
-                     
-                        try 
-                        {
-                            FileOutputStream    fotrp= new FileOutputStream("remain_players.txt");
-                            ObjectOutputStream oostep = new ObjectOutputStream(fotrp);
-                            oostep.writeObject(sp.getUnassign_players());
-                        } 
-                        catch (IOException ex)
-                        {
-                            Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        break;
-                 }               
             }
-            
-            
-            
-            
-           }
-                    catch (IOException ex)
-                    {
-                        Logger.getLogger(Delete_Player.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-           
-        
-        
-        
+        }
+
+        // Refresh the combo box after deletion
+        DefaultComboBoxModel<String> dmcp = new DefaultComboBoxModel<>();
+        playerComboBox.setModel(dmcp);
+
+        // Populate the combo box with team players
+        for (int i = 0; i < sp.getTeams().size(); i++) {
+            for (int j = 0; j < sp.getTeams().get(i).getPlayers().size(); j++) {
+                playerComboBox.addItem(sp.getTeams().get(i).getPlayers().get(j).toString());
+            }
+        }
+
+        // Populate the combo box with unassigned players
+        for (int i = 0; i < sp.getUnassign_players().size(); i++) {
+            playerComboBox.addItem(sp.getUnassign_players().get(i).toString());
+        }
+
+        // Show success message
+        JOptionPane.showMessageDialog(null, "Player deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (IOException ex) {
+        Logger.getLogger(Delete_Player.class.getName()).log(Level.SEVERE, null, ex);
+    }
         
         
     }//GEN-LAST:event_deleteBtnActionPerformed

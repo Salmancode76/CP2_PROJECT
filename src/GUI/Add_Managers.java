@@ -478,73 +478,73 @@ public class Add_Managers extends javax.swing.JFrame
     }//GEN-LAST:event_goBackBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-                try {                                       
-                    // TODO add your handling code here:
-                    
-                    Manager m1 = new Manager();
-                    SportsLeague sl = new SportsLeague();
-                    Team tm = new Team();
-                    m1.setName(nameTxt.getText());
-                    m1.setAddress(addressTxt.getText());
-                    m1.setDob(dobTxt.getText());
-                    m1.setNationality(nationalityTxt.getText());
-                    
-                    double salary = Double.parseDouble(salaryTxt.getText());
-                    m1.setSalary(salary);
-                    
-                    double bonusPercentage = Double.parseDouble(bonusTxt.getText());
-                    m1.setBonusPercentage(bonusPercentage);
-                    
-                    m1.setQualifications(qualificationsTxt.getText());
-                    for (int i=0;i<sl.getTeams().size();i++){
-                        if (sl.getTeams().get(i).getName().equals(teamComboBox.getSelectedItem().toString())){
-                            
-                            tm=sl.getTeams().get(i);
-                        }
-                    }
-                    if(!sl.designateManager(m1, tm)){
-                        JOptionPane.showMessageDialog(null, "A Team MUST have only 1 Manager", "Manager Error", JOptionPane.ERROR_MESSAGE);
-                        
-                    }
-                    
-                    String file_path_player ="managers.txt";
-                    String file_path_team ="teams.txt";
-                    try {
-                        FileOutputStream fosp = new FileOutputStream(file_path_player);
-                        FileOutputStream fost = new FileOutputStream(file_path_team);
-                        
-                        try {
-                            ObjectOutputStream oosp = new ObjectOutputStream(fosp);
-                            ObjectOutputStream oost = new ObjectOutputStream(fost);
-                            
-                            oosp.writeObject(sl.getManagers());
-                            oost.writeObject(sl.getTeams());
-                            System.out.println("Manager Added");
-                            
-                        } catch (IOException ex) {
-                            Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                } catch (IOException ex) {
-                    Logger.getLogger(Add_Managers.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            
+        try 
+        {
+        // Check if any field is empty
+        if (nameTxt.getText().isEmpty() || addressTxt.getText().isEmpty() || dobTxt.getText().isEmpty() || 
+            nationalityTxt.getText().isEmpty() || salaryTxt.getText().isEmpty() || bonusTxt.getText().isEmpty() || 
+            qualificationsTxt.getText().isEmpty() || teamComboBox.getSelectedItem() == null) 
+        {
+            JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; // Exit the method if any field is empty
+        }
 
+        Manager m1 = new Manager();
+        SportsLeague sl = new SportsLeague();
+        Team tm = new Team();
+        m1.setName(nameTxt.getText());
+        m1.setAddress(addressTxt.getText());
+        m1.setDob(dobTxt.getText());
+        m1.setNationality(nationalityTxt.getText());
 
+        double salary = Double.parseDouble(salaryTxt.getText());
+        m1.setSalary(salary);
+
+        double bonusPercentage = Double.parseDouble(bonusTxt.getText());
+        m1.setBonusPercentage(bonusPercentage);
+
+        m1.setQualifications(qualificationsTxt.getText());
+        for (int i = 0; i < sl.getTeams().size(); i++) 
+        {
+            if (sl.getTeams().get(i).getName().equals(teamComboBox.getSelectedItem().toString())) 
+            {
+                tm = sl.getTeams().get(i);
+            }
+        }
         
-        
-        
-        
+        if (!sl.designateManager(m1, tm))
+        {
+            JOptionPane.showMessageDialog(null, "A Team MUST have only 1 Manager", "Manager Error", JOptionPane.ERROR_MESSAGE);
+            return; // Exit the method if manager designation fails
+        }
+
+        String file_path_player = "managers.txt";
+        String file_path_team = "teams.txt";
+        try (FileOutputStream fosp = new FileOutputStream(file_path_player);
+             FileOutputStream fost = new FileOutputStream(file_path_team);
+             ObjectOutputStream oosp = new ObjectOutputStream(fosp);
+             ObjectOutputStream oost = new ObjectOutputStream(fost)) 
+        {
+            oosp.writeObject(sl.getManagers());
+            oost.writeObject(sl.getTeams());
+            System.out.println("Manager Added");
+        } 
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Add_Managers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JOptionPane.showMessageDialog(null, "Manager added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+    } 
+        catch (IOException ex) 
+        {
+        Logger.getLogger(Add_Managers.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        catch (NumberFormatException ex)
+        {
+        JOptionPane.showMessageDialog(null, "Please enter valid numbers for salary and bonus percentage!", "Input Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void teamComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboBoxActionPerformed
@@ -592,10 +592,8 @@ public class Add_Managers extends javax.swing.JFrame
 
     private void qualificationsTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qualificationsTxtKeyTyped
         // TODO add your handling code here:
-         char c= evt.getKeyChar();
-        if(Character.isLetter(c)&&!evt.isAltDown()){
-            evt.consume();
-        }
+         
+        
     }//GEN-LAST:event_qualificationsTxtKeyTyped
 
     /**

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -334,29 +335,28 @@ public class Delete_Manager extends javax.swing.JFrame {
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         
-        String manager_choosed = (String) ManagerComboBox.getSelectedItem();
-        try 
+       String manager_choosed = (String) ManagerComboBox.getSelectedItem();
+    try 
+    {
+        SportsLeague sp = new SportsLeague();
+    
+        // Iterate through teams to set the manager to null if found
+        for (int i = 0; i < sp.getTeams().size(); i++) 
         {
-            SportsLeague sp = new SportsLeague();
-        
-            // Iterate through teams to set the manager to null if found
-            for (int i = 0; i < sp.getTeams().size(); i++)
-            {
-                if (sp.getTeams().get(i).getManager() != null 
+            if (sp.getTeams().get(i).getManager() != null 
                 && sp.getTeams().get(i).getManager().getName().equals(manager_choosed)) 
-                {
-                    sp.getTeams().get(i).setManager(null);  // Removing manager from team
-                }
+            {
+                sp.getTeams().get(i).setManager(null);  // Removing manager from team
             }
+        }
 
-            File file_edit_team = new File("teams.txt");
-        try 
+        File file_edit_team = new File("teams.txt");
+        try (FileOutputStream fot = new FileOutputStream(file_edit_team);
+             ObjectOutputStream oost = new ObjectOutputStream(fot)) 
         {
-            FileOutputStream fot = new FileOutputStream(file_edit_team);
-            ObjectOutputStream oost = new ObjectOutputStream(fot);
             oost.writeObject(sp.getTeams());
         } 
-        catch (IOException ex) 
+        catch (IOException ex)
         {
             Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -372,10 +372,9 @@ public class Delete_Manager extends javax.swing.JFrame {
         }
 
         File file_edit_manager = new File("managers.txt");
-        try 
+        try (FileOutputStream fot = new FileOutputStream(file_edit_manager);
+             ObjectOutputStream oost = new ObjectOutputStream(fot))
         {
-            FileOutputStream fot = new FileOutputStream(file_edit_manager);
-            ObjectOutputStream oost = new ObjectOutputStream(fot);
             oost.writeObject(sp.getManagers());
         } 
         catch (IOException ex) 
@@ -387,16 +386,19 @@ public class Delete_Manager extends javax.swing.JFrame {
         DefaultComboBoxModel<String> dmcp = new DefaultComboBoxModel<>();
         ManagerComboBox.setModel(dmcp);
         
-        for (Manager manager : sp.getManagers())
+        for (Manager manager : sp.getManagers()) 
         {
             ManagerComboBox.addItem(manager.getName());
         }
 
+        // Show success message
+        JOptionPane.showMessageDialog(null, "Manager deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
     } 
-        catch (IOException ex) 
-        {
-            Logger.getLogger(Delete_Manager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    catch (IOException ex) 
+    {
+        Logger.getLogger(Delete_Manager.class.getName()).log(Level.SEVERE, null, ex);
+    }
         
         
     }//GEN-LAST:event_deleteBtnActionPerformed

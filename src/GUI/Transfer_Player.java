@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author salma
@@ -287,93 +288,92 @@ public class Transfer_Player extends javax.swing.JFrame {
 
     private void btn_teansferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_teansferActionPerformed
            try {
-               // TODO add your handling code here:
-               ArrayList<Team> allTeams = new SportsLeague().getTeams();
-               Player selectedPlayer = null;
-               Team selectedTeam = null;
-               SportsLeague sp=new SportsLeague();
-               
-               for(int i =0;i<sp.getTeams().size();i++){
-               if(sp.getTeams().get(i).getName().equals(select_team_comb.getSelectedItem().toString())){
-                   selectedTeam=sp.getTeams().get(i);
-                   
-               }
-           }
-               for (Team team : allTeams) {
-                   for (Player player : team.getPlayers()) {
-                       if (player.toString().equals(select_pla_comb.getSelectedItem().toString() )) {
-                           selectedPlayer = player;
-                           Player new_play=selectedPlayer;
-                             selectedPlayer.getTeam().removePlayer(selectedPlayer);
-                          sp.removePlayer(selectedPlayer);
-                          
-                          new_play.setIsCaptain(false);
-                           new_play.setTeam(selectedTeam);
-                           
-                          sp.assignPlayerToTeam(new_play, selectedTeam);
-                              File file_edit_team = new File("teams.txt");
-                try {
-                    FileOutputStream    fot= new FileOutputStream(file_edit_team);
-                    ObjectOutputStream oost = new ObjectOutputStream(fot);
+        ArrayList<Team> allTeams = new SportsLeague().getTeams();
+        Player selectedPlayer = null;
+        Team selectedTeam = null;
+        SportsLeague sp = new SportsLeague();
+
+        // Find the selected team
+        for (int i = 0; i < sp.getTeams().size(); i++) {
+            if (sp.getTeams().get(i).getName().equals(select_team_comb.getSelectedItem().toString())) {
+                selectedTeam = sp.getTeams().get(i);
+                break;
+            }
+        }
+
+        // Find the selected player
+        for (Team team : allTeams) {
+            for (Player player : team.getPlayers()) {
+                if (player.toString().equals(select_pla_comb.getSelectedItem().toString())) {
+                    selectedPlayer = player;
+                    Player newPlay = selectedPlayer;
+                    selectedPlayer.getTeam().removePlayer(selectedPlayer);
+                    sp.removePlayer(selectedPlayer);
+
+                    newPlay.setIsCaptain(false);
+                    newPlay.setTeam(selectedTeam);
+
+                    sp.assignPlayerToTeam(newPlay, selectedTeam);
+                    try (FileOutputStream fot = new FileOutputStream("teams.txt");
+                         ObjectOutputStream oost = new ObjectOutputStream(fot)) {
+                        oost.writeObject(sp.getTeams());
+                    } catch (IOException ex) {
+                        Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
+                }
+            }
+        }
+
+        // Remove player from unassigned players if they were unassigned
+        for (int i = 0; i < sp.getUnassign_players().size(); i++) {
+            if (sp.getUnassign_players().get(i).toString().equals(select_pla_comb.getSelectedItem().toString())) {
+                Player selectedPlayerUnassign = sp.getUnassign_players().get(i);
+                Player newPlay = selectedPlayerUnassign;
+
+                sp.remove_unassignPlayer(selectedPlayerUnassign);
+                sp.assignPlayerToTeam(newPlay, selectedTeam);
+
+                try (FileOutputStream fot = new FileOutputStream("teams.txt");
+                     ObjectOutputStream oost = new ObjectOutputStream(fot)) {
                     oost.writeObject(sp.getTeams());
                 } catch (IOException ex) {
                     Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                           
-                           
-                           break;
-                       }
-                   }
-                        {
-               
-           }
-                      
-                           
-                           
-                
-               }
-                 
-                  
-               
-           for (int i=0;i<sp.getUnassign_players().size();i++ ){
-               if(sp.getUnassign_players().get(i).toString().equals(select_pla_comb.getSelectedItem().toString())){
-                    Player selectedPlayer_unassign = sp.getUnassign_players().get(i);
-                   Player new_play=selectedPlayer_unassign;
-                   
-                   sp.remove_unassignPlayer(selectedPlayer_unassign);
-                   sp.assignPlayerToTeam(new_play, selectedTeam);
-                   
-                    
-                       try {
-                    FileOutputStream    fot= new FileOutputStream("teams.txt");
-                    ObjectOutputStream oost = new ObjectOutputStream(fot);
-                    oost.writeObject(sp.getTeams());
-                } catch (IOException ex) {
-                    Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                 
-                     try {
-                    FileOutputStream    fotrp= new FileOutputStream("remain_players.txt");
-                    ObjectOutputStream oostep = new ObjectOutputStream(fotrp);
+
+                try (FileOutputStream fotrp = new FileOutputStream("remain_players.txt");
+                     ObjectOutputStream oostep = new ObjectOutputStream(fotrp)) {
                     oostep.writeObject(sp.getUnassign_players());
                 } catch (IOException ex) {
                     Logger.getLogger(Edit_Player.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               }
-               
-           }
-           
-           
-            
-           
-       
-               
-           } catch (IOException ex) {
-               Logger.getLogger(Transfer_Player.class.getName()).log(Level.SEVERE, null, ex);
-           }
-           
-           
-           
+                break;
+            }
+        }
+
+        // Refresh the player combo box after transfer
+        DefaultComboBoxModel<String> dmcp = new DefaultComboBoxModel<>();
+        select_pla_comb.setModel(dmcp);
+
+        // Populate the combo box with team players
+        for (int i = 0; i < sp.getTeams().size(); i++) {
+            for (int j = 0; j < sp.getTeams().get(i).getPlayers().size(); j++) {
+                select_pla_comb.addItem(sp.getTeams().get(i).getPlayers().get(j).toString());
+            }
+        }
+
+        // Populate the combo box with unassigned players
+        for (int i = 0; i < sp.getUnassign_players().size(); i++) {
+            select_pla_comb.addItem(sp.getUnassign_players().get(i).toString());
+        }
+
+        // Show success message
+        JOptionPane.showMessageDialog(null, "Player transferred successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (IOException ex) {
+        Logger.getLogger(Transfer_Player.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
           
     }//GEN-LAST:event_btn_teansferActionPerformed
 
