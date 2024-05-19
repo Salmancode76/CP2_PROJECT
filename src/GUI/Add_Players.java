@@ -532,82 +532,82 @@ public class Add_Players extends javax.swing.JFrame {
     }//GEN-LAST:event_positionComboBoxActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        try {
-            // TODO add your handling code here:
-            boolean succes =true;
-            Player pl = new Player();
-            SportsLeague sl = new SportsLeague();
-            Team tm = new Team();
-            pl.setName(nameTxt.getText());
-            pl.setAddress(addressTxt.getText());
-            pl.setDob(dobTxt.getText());
-            pl.setNationality(nationalityTxt.getText());
-            double salary = Double.parseDouble(salaryTxt.getText());
-            pl.setSalary(salary);
-            
-            pl.setPosition(positionComboBox.getSelectedItem().toString());
-            
-            for (int i=0;i<sl.getTeams().size();i++){
-                if (sl.getTeams().get(i).getName().equals(teamComboBox1.getSelectedItem().toString())){
-                    
-                   tm=sl.getTeams().get(i);
-                   sl.assignPlayerToTeam(pl,tm);
+        try 
+        {
+        // Check if any field is empty
+        if (nameTxt.getText().isEmpty() || addressTxt.getText().isEmpty() || dobTxt.getText().isEmpty() || 
+            nationalityTxt.getText().isEmpty() || salaryTxt.getText().isEmpty() || positionComboBox.getSelectedItem() == null)
+        {
+            JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; // Exit the method if any field is empty
+        }
+
+        boolean success = true;
+        Player pl = new Player();
+        SportsLeague sl = new SportsLeague();
+        Team tm = new Team();
+        pl.setName(nameTxt.getText());
+        pl.setAddress(addressTxt.getText());
+        pl.setDob(dobTxt.getText());
+        pl.setNationality(nationalityTxt.getText());
+        double salary = Double.parseDouble(salaryTxt.getText());
+        pl.setSalary(salary);
+
+        pl.setPosition(positionComboBox.getSelectedItem().toString());
+
+        for (int i = 0; i < sl.getTeams().size(); i++)
+        {
+            if (sl.getTeams().get(i).getName().equals(teamComboBox1.getSelectedItem().toString()))
+            {
+                tm = sl.getTeams().get(i);
+                sl.assignPlayerToTeam(pl, tm);
+            }
+        }
+
+        if (Rbtn_yes.isSelected() == true)
+        {
+            boolean isDesignated = sl.designateCaptain(pl, tm);
+            if (!isDesignated) 
+            {
+                success = false;
+                JOptionPane.showMessageDialog(null, "To be a captain YOU NEED A TEAM!", "Captain Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        if (success)
+        {
+            if (pl.getTeam() == null)
+            {
+                sl.add_unassigned_Player(pl);
+                pl.setIsCaptain(false);
+
+                String file_path_team = "remain_players.txt";
+                try (FileOutputStream fost = new FileOutputStream(file_path_team);
+                     ObjectOutputStream oost = new ObjectOutputStream(fost)) 
+                {
+                    oost.writeObject(sl.getUnassign_players());
+                    System.out.println("Player Added");
+                } 
+                catch (IOException ex) 
+                {
+                    Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } 
+            else 
+            {
+                String file_path_team = "teams.txt";
+                try (FileOutputStream fost = new FileOutputStream(file_path_team);
+                     ObjectOutputStream oost = new ObjectOutputStream(fost)) {
+                    oost.writeObject(sl.getTeams());
+                    System.out.println("Player Added");
+                } 
+                catch (IOException ex)
+                {
+                    Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-
-           if(Rbtn_yes.isSelected()==true){
-    boolean isDesignated = sl.designateCaptain(pl, tm);
-    if(!isDesignated){
-        succes=false;
-       JOptionPane.showMessageDialog(null, "To be a captain YOU NEED A TEAM!", "Captain Error", JOptionPane.ERROR_MESSAGE); 
-    }
-}
-                
-             
-             if(succes){
-             if(pl.getTeam()==null){
-                 sl.add_unassigned_Player(pl);
-                 pl.setIsCaptain(false);
-                 
-                 String file_path_team ="remain_players.txt";
-                try {
-                    FileOutputStream fost = new FileOutputStream(file_path_team);
-                    try {
-                         ObjectOutputStream oost = new ObjectOutputStream(fost);
-                        
-                        oost.writeObject(sl.getUnassign_players());
-                        System.out.println("Player Added");
-                        
-                    } catch (IOException ex) {
-                        Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                 
-                 
-             }else{
-             
-            
-                String file_path_team ="teams.txt";
-                try {
-                    FileOutputStream fost = new FileOutputStream(file_path_team);
-                    try {
-                         ObjectOutputStream oost = new ObjectOutputStream(fost);
-                        
-                        oost.writeObject(sl.getTeams());
-                        System.out.println("Player Added");
-                        
-                    } catch (IOException ex) {
-                        Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Add_Players.class.getName()).log(Level.SEVERE, null, ex);
-                }
-             }
-                
+            JOptionPane.showMessageDialog(null, "Player added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
              }
             
             
