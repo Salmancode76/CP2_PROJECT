@@ -62,9 +62,7 @@ public class Manager extends Person implements Serializable
 
     @Override
     public String toString() {
-        if(team!=null){
-        return "ID: "+this.getId()+" Name: "+this.getName()+" Team: "+team.getName();
-    }
+     
                 return "ID: "+this.getId()+" Name: "+this.getName();
 
     }

@@ -446,6 +446,7 @@
                 <Component class="javax.swing.JTextField" name="salaryTxt">
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salaryTxtActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="salaryTxtKeyTyped"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -546,6 +547,7 @@
                 <Component class="javax.swing.JTextField" name="qualificationsTxt">
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="qualificationsTxtActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="qualificationsTxtKeyTyped"/>
                   </Events>
                 </Component>
               </SubComponents>

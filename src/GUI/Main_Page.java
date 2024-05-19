@@ -239,8 +239,11 @@ public class Main_Page extends javax.swing.JFrame {
             double total_league=0;
             for(int i=0;i<sp.getTeams().size();i++){
                 bw.append(sp.getTeams().get(i).getName()+'\n');
-                bw.append(sp.getTeams().get(i).getManager().getId()+ " "+sp.getTeams().get(i).getManager().getName() + " "+df.format(sp.getTeams().get(i).getManager().getSalary()/26) +'\n' );
+                if(sp.getTeams().get(i).getManager()!=null){
+                                    bw.append(sp.getTeams().get(i).getManager().getId()+ " "+sp.getTeams().get(i).getManager().getName() + " "+df.format(sp.getTeams().get(i).getManager().getSalary()/26) +'\n' );
                 teamtotal+=sp.getTeams().get(i).getManager().getSalary()/26;
+                }
+                
                 bw.append("Players:"+'\n');
                 for(int j=0;j<sp.getTeams().get(i).getPlayers().size();j++){
                     bw.append(sp.getTeams().get(i).getPlayers().get(j).getId()+ " "+sp.getTeams().get(i).getPlayers().get(j).getName() + " "+df.format(sp.getTeams().get(i).getPlayers().get(j).getSalary()/26) +'\n' );

@@ -268,6 +268,17 @@ public class Edit_Team extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        stadiumCapacityTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stadiumCapacityTxtActionPerformed(evt);
+            }
+        });
+        stadiumCapacityTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                stadiumCapacityTxtKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout editTeamDetailsInputPanelLayout = new javax.swing.GroupLayout(editTeamDetailsInputPanel);
         editTeamDetailsInputPanel.setLayout(editTeamDetailsInputPanelLayout);
         editTeamDetailsInputPanelLayout.setHorizontalGroup(
@@ -398,6 +409,14 @@ public class Edit_Team extends javax.swing.JFrame {
     private void stadiumTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stadiumTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_stadiumTxtActionPerformed
+
+    private void stadiumCapacityTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stadiumCapacityTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stadiumCapacityTxtActionPerformed
+
+    private void stadiumCapacityTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stadiumCapacityTxtKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stadiumCapacityTxtKeyTyped
 
     /**
      * @param args the command line arguments

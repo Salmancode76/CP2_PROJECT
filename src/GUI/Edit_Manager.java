@@ -230,9 +230,21 @@ public class Edit_Manager extends javax.swing.JFrame {
         salaryLabel.setForeground(new java.awt.Color(0, 127, 255));
         salaryLabel.setText("Enter Salary:");
 
+        salaryTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                salaryTxtKeyTyped(evt);
+            }
+        });
+
         bonusLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
         bonusLabel.setForeground(new java.awt.Color(0, 127, 255));
         bonusLabel.setText("Enter Bonus Percentage:");
+
+        bonusTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                bonusTxtKeyTyped(evt);
+            }
+        });
 
         qualificationsLabel.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
         qualificationsLabel.setForeground(new java.awt.Color(0, 127, 255));
@@ -441,6 +453,22 @@ public class Edit_Manager extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void salaryTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_salaryTxtKeyTyped
+        // TODO add your handling code here:
+            char c= evt.getKeyChar();
+        if(Character.isLetter(c)&&!evt.isAltDown()){
+            evt.consume();
+        }
+    }//GEN-LAST:event_salaryTxtKeyTyped
+
+    private void bonusTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bonusTxtKeyTyped
+        // TODO add your handling code here:
+             char c= evt.getKeyChar();
+        if(!Character.isDigit(c) ){
+            evt.consume();
+        }
+    }//GEN-LAST:event_bonusTxtKeyTyped
 
     /**
      * @param args the command line arguments

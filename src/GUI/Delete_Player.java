@@ -397,6 +397,7 @@ public class Delete_Player extends javax.swing.JFrame {
                  if(sp.getUnassign_players().get(i).toString().equals(player_choosed)) 
                  {
                      sp.remove_unassignPlayer(sp.getUnassign_players().get(i));
+                     
                         try 
                         {
                             FileOutputStream    fotrp= new FileOutputStream("remain_players.txt");
@@ -410,12 +411,20 @@ public class Delete_Player extends javax.swing.JFrame {
                         break;
                  }               
             }
+            
+            
+            
+            
            }
                     catch (IOException ex)
                     {
                         Logger.getLogger(Delete_Player.class.getName()).log(Level.SEVERE, null, ex);
                     }
            
+        
+        
+        
+        
         
     }//GEN-LAST:event_deleteBtnActionPerformed
 

@@ -209,12 +209,13 @@ public class Manage_Managers extends javax.swing.JFrame {
     }//GEN-LAST:event_Edit_ManagerActionPerformed
 
     private void Delete_ManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_ManagerActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
+            
+            Delete_Manager M = new Delete_Manager();
+            M.setVisible(true);
+            this.setVisible(false);
+            M.setSize(this.getSize());
         
-        Delete_Manager M = new Delete_Manager();
-        M.setVisible(true);
-        this.setVisible(false);
-        M.setSize(this.getSize());
         
     }//GEN-LAST:event_Delete_ManagerActionPerformed
 

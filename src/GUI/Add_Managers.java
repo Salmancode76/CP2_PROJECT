@@ -253,6 +253,11 @@ public class Add_Managers extends javax.swing.JFrame
                 salaryTxtActionPerformed(evt);
             }
         });
+        salaryTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                salaryTxtKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout Field4Layout = new javax.swing.GroupLayout(Field4);
         Field4.setLayout(Field4Layout);
@@ -315,6 +320,11 @@ public class Add_Managers extends javax.swing.JFrame
         qualificationsTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 qualificationsTxtActionPerformed(evt);
+            }
+        });
+        qualificationsTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                qualificationsTxtKeyTyped(evt);
             }
         });
 
@@ -561,6 +571,7 @@ public class Add_Managers extends javax.swing.JFrame
 
     private void salaryTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salaryTxtActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_salaryTxtActionPerformed
 
     private void bonusTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bonusTxtActionPerformed
@@ -570,6 +581,22 @@ public class Add_Managers extends javax.swing.JFrame
     private void qualificationsTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qualificationsTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_qualificationsTxtActionPerformed
+
+    private void salaryTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_salaryTxtKeyTyped
+        // TODO add your handling code here:
+            char c= evt.getKeyChar();
+        if(Character.isLetter(c)&&!evt.isAltDown()){
+            evt.consume();
+        }
+    }//GEN-LAST:event_salaryTxtKeyTyped
+
+    private void qualificationsTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qualificationsTxtKeyTyped
+        // TODO add your handling code here:
+             char c= evt.getKeyChar();
+        if(!Character.isDigit(c) ){
+            evt.consume();
+        }
+    }//GEN-LAST:event_qualificationsTxtKeyTyped
 
     /**
      * @param args the command line arguments
