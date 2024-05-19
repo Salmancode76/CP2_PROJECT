@@ -592,8 +592,8 @@ public class Add_Managers extends javax.swing.JFrame
 
     private void qualificationsTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qualificationsTxtKeyTyped
         // TODO add your handling code here:
-             char c= evt.getKeyChar();
-        if(!Character.isDigit(c) ){
+         char c= evt.getKeyChar();
+        if(Character.isLetter(c)&&!evt.isAltDown()){
             evt.consume();
         }
     }//GEN-LAST:event_qualificationsTxtKeyTyped
