@@ -24,14 +24,14 @@ public class View_teams extends javax.swing.JFrame {
      public View_teams(Team view_team) {
         initComponents();
         if(view_team.getManager()==null){
-            tmview_area.append("The team doesn't have a manager");
+            tmview_area.append("The team doesn't have a manager.");
         }else{
                     tmview_area.append("Manager: "+'\n');
                              tmview_area.append("Name "+view_team.getManager().getName()+" ID: "+view_team.getManager().getId()+" Salary: "+view_team.getManager().getSalary());
         }
         tmview_area.append("\n");
         if(view_team.getPlayers().isEmpty()){
-            tmview_area.append("The team doesn't contain any players");
+            tmview_area.append("The team doesn't contain any players.");
         }else{
         tmview_area.append("Players:"+'\n');
         for(int i=0;i<view_team.getPlayers().size();i++){
