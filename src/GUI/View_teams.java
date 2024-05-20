@@ -26,13 +26,14 @@ public class View_teams extends javax.swing.JFrame {
         if(view_team.getManager()==null){
             tmview_area.append("The team doesn't have a manager");
         }else{
-                    tmview_area.append("Manager Name: "+view_team.getManager().getName()+" ID: "+view_team.getManager().getId()+" Salary: "+view_team.getManager().getSalary());
+                    tmview_area.append("Manager: "+'\n');
+                             tmview_area.append("Name "+view_team.getManager().getName()+" ID: "+view_team.getManager().getId()+" Salary: "+view_team.getManager().getSalary());
         }
         tmview_area.append("\n");
         if(view_team.getPlayers().isEmpty()){
             tmview_area.append("The team doesn't contain any players");
         }else{
-        tmview_area.append("Players:");
+        tmview_area.append("Players:"+'\n');
         for(int i=0;i<view_team.getPlayers().size();i++){
             tmview_area.append(view_team.getPlayers().get(i).getName()+" ID: "+view_team.getPlayers().get(i).getId()+" Salary: "+view_team.getPlayers().get(i).getSalary());
             tmview_area.append("\n");

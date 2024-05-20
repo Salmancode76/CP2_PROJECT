@@ -1,5 +1,6 @@
 package Logic;
 import GUI.Add_Players;
+import GUI.Main_Page;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,8 +13,11 @@ import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.PrintStream;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 public class SportsLeague  implements Serializable 
@@ -439,9 +443,77 @@ public void transferPlayer(Player player, Team sourceTeam, Team targetTeam) {
     
     public void generatePayrollReport() 
     {
+           FileOutputStream fos = null;
+    File pay_report_fil = new File("payroll.txt");
+    SportsLeague sp = null;
+    
+    try {
+        sp = new SportsLeague();
+    } catch (IOException ex) {
+        Logger.getLogger(Main_Page.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    if (!pay_report_fil.exists()) {
+        try {
+            pay_report_fil.createNewFile();
+        } catch (IOException ex) {
+            Logger.getLogger(Main_Page.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } else {
+        try {
+            pay_report_fil.delete();
+            pay_report_fil.createNewFile();
+        } catch (IOException ex) {
+            Logger.getLogger(Main_Page.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    PrintStream bw = null;
+    try {
+        bw = new PrintStream(pay_report_fil);
+    } catch (IOException ex) {
+        Logger.getLogger(Main_Page.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    DecimalFormat df = new DecimalFormat("#.#");
+    double teamtotal = 0;
+    double total_league = 0;
+    
+    for (int i = 0; i < sp.getTeams().size(); i++) {
+        bw.append(sp.getTeams().get(i).getName() + '\n');
+        if (sp.getTeams().get(i).getManager() != null) {
+            bw.append(sp.getTeams().get(i).getManager().getId() + " " +
+                      sp.getTeams().get(i).getManager().getName() + " " +
+                      df.format(sp.getTeams().get(i).getManager().getSalary() / 26) + '\n');
+            teamtotal += sp.getTeams().get(i).getManager().getSalary() / 26;
+        }
+        
+        bw.append("Players:" + '\n');
+        for (int j = 0; j < sp.getTeams().get(i).getPlayers().size(); j++) {
+            bw.append(sp.getTeams().get(i).getPlayers().get(j).getId() + " " +
+                      sp.getTeams().get(i).getPlayers().get(j).getName() + " " +
+                      df.format(sp.getTeams().get(i).getPlayers().get(j).getSalary() / 26) + '\n');
+            teamtotal += sp.getTeams().get(i).getPlayers().get(j).getSalary() / 26;
+        }
+        
+        bw.append("--------------------------------------------------------------------------------------------" + '\n');
+        bw.append("Team Total: " + df.format(teamtotal) + '\n');
+        bw.append("--------------------------------------------------------------------------------------------" + '\n');
+        total_league += teamtotal;
+        teamtotal = 0;
+    }
+    
+    bw.append('\n');
+    bw.append("The Total League: " + df.format(total_league));
+    total_league = 0;
+    
+    // Show success message
+    JOptionPane.showMessageDialog(null, "Pay Report has been saved in your project folder!!!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        
+       
         
     }
-    //new
+
     public ArrayList<Player> getUnassign_players() {
         return unassign_players;
     }

@@ -6,17 +6,9 @@ package GUI;
 
 import java.awt.*;
 import Logic.SportsLeague;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -206,74 +198,12 @@ public class Main_Page extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_Manage_ManagersActionPerformed
 
     private void btn_pay_rollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pay_rollActionPerformed
-       FileOutputStream fos = null;
-    File pay_report_fil = new File("payroll.txt");
-    SportsLeague sp = null;
-    
-    try {
-        sp = new SportsLeague();
-    } catch (IOException ex) {
-        Logger.getLogger(Main_Page.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    
-    if (!pay_report_fil.exists()) {
         try {
-            pay_report_fil.createNewFile();
+            SportsLeague sp= new SportsLeague();
+            sp.generatePayrollReport();
         } catch (IOException ex) {
             Logger.getLogger(Main_Page.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } else {
-        try {
-            pay_report_fil.delete();
-            pay_report_fil.createNewFile();
-        } catch (IOException ex) {
-            Logger.getLogger(Main_Page.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    PrintStream bw = null;
-    try {
-        bw = new PrintStream(pay_report_fil);
-    } catch (IOException ex) {
-        Logger.getLogger(Main_Page.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    
-    DecimalFormat df = new DecimalFormat("#.#");
-    double teamtotal = 0;
-    double total_league = 0;
-    
-    for (int i = 0; i < sp.getTeams().size(); i++) {
-        bw.append(sp.getTeams().get(i).getName() + '\n');
-        if (sp.getTeams().get(i).getManager() != null) {
-            bw.append(sp.getTeams().get(i).getManager().getId() + " " +
-                      sp.getTeams().get(i).getManager().getName() + " " +
-                      df.format(sp.getTeams().get(i).getManager().getSalary() / 26) + '\n');
-            teamtotal += sp.getTeams().get(i).getManager().getSalary() / 26;
-        }
-        
-        bw.append("Players:" + '\n');
-        for (int j = 0; j < sp.getTeams().get(i).getPlayers().size(); j++) {
-            bw.append(sp.getTeams().get(i).getPlayers().get(j).getId() + " " +
-                      sp.getTeams().get(i).getPlayers().get(j).getName() + " " +
-                      df.format(sp.getTeams().get(i).getPlayers().get(j).getSalary() / 26) + '\n');
-            teamtotal += sp.getTeams().get(i).getPlayers().get(j).getSalary() / 26;
-        }
-        
-        bw.append("--------------------------------------------------------------------------------------------" + '\n');
-        bw.append("Team Total: " + df.format(teamtotal) + '\n');
-        bw.append("--------------------------------------------------------------------------------------------" + '\n');
-        total_league += teamtotal;
-        teamtotal = 0;
-    }
-    
-    bw.append('\n');
-    bw.append("The Total League: " + df.format(total_league));
-    total_league = 0;
-    
-    // Show success message
-    JOptionPane.showMessageDialog(null, "Pay Report has been saved in your project folder!!!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        
-       
     }//GEN-LAST:event_btn_pay_rollActionPerformed
 
     private void btn_Manage_PlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Manage_PlayersActionPerformed

@@ -566,6 +566,16 @@ public class Add_Players extends javax.swing.JFrame {
 
         if (Rbtn_yes.isSelected() == true)
         {
+            if(pl.getTeam()!=null){
+            for(int i=0;i<pl.getTeam().getPlayers().size();i++){
+                if(pl.getTeam().getPlayers().get(i).isIsCaptain()){
+              JOptionPane.showMessageDialog(null, "TEAM ALREADY GOT A CAPTAIN", "Captain Error", JOptionPane.ERROR_MESSAGE);
+              
+              return;
+
+                }}
+            }
+            
             boolean isDesignated = sl.designateCaptain(pl, tm);
             if (!isDesignated) 
             {
