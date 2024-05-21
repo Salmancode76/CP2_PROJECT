@@ -29,6 +29,9 @@ public class Player extends Person  {
  
     public Player(String name, String address, String dob, String nationality, double salary,String position,  Team team,boolean isCaptain ) throws IOException {
         super(name, address, dob, nationality, salary);       
+         if (name == null || address == null || dob == null || nationality == null || position == null || team == null) {
+            throw new NullPointerException("Parameters cannot be null");
+        }
         this.position = position;
         this.isCaptain = isCaptain;
         this.team = team;
@@ -36,13 +39,20 @@ public class Player extends Person  {
 
     public Player(String name, String address, String dob, String nationality, double salary,String position,boolean isCaptain ) throws IOException {
         super(name, address, dob, nationality, salary);
+         if (name == null || address == null || dob == null || nationality == null || position == null) {
+            throw new NullPointerException("Parameters cannot be null");
+        }
+
     }
 
     public String getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+      public void setPosition(String position) {
+        if (position == null) {
+            throw new NullPointerException("Position cannot be null");
+        }
         this.position = position;
     }
 
@@ -59,6 +69,9 @@ public class Player extends Person  {
     }
 
     public void setTeam(Team team) {
+        if (team == null) {
+            throw new NullPointerException("Team cannot be null");
+        }
         this.team = team;
     }
 

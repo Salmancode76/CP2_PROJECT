@@ -406,13 +406,26 @@ public class Edit_Manager extends javax.swing.JFrame {
         //changing the player info
         try 
         {
-                 if (nameTxt.getText().isEmpty() || addressTxt.getText().isEmpty() || dobTxt.getText().isEmpty() || 
-            nationalityTxt.getText().isEmpty() || salaryTxt.getText().isEmpty() || bonusTxt.getText().isEmpty() || 
-            qualificationsTxt.getText().isEmpty() ) 
+     if (nameTxt.getText().trim().isEmpty() || addressTxt.getText().trim().isEmpty() || dobTxt.getText().trim().isEmpty() || 
+    nationalityTxt.getText().trim().isEmpty() || salaryTxt.getText().trim().isEmpty() || bonusTxt.getText().trim().isEmpty() || 
+    qualificationsTxt.getText().trim().isEmpty() ) 
+{
+    JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
+    return; // Exit the method if any field is empty
+}
+     if (Double.parseDouble(salaryTxt.getText())<0) 
         {
-            JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
-            return; // Exit the method if any field is empty
+             JOptionPane.showMessageDialog(null, "SALARY CAN'T BE NEGATIVE!", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+            
         }
+    if (Double.parseDouble(bonusTxt.getText())<0) 
+        {
+             JOptionPane.showMessageDialog(null, "BONUS CAN'T BE NEGATIVE!", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+            
+        }
+
             // TODO add your handling code here:
             sp.editManagerDetails(editManager, nameTxt.getText(), addressTxt.getText(), dobTxt.getText(),
             nationalityTxt.getText(), Double.parseDouble(salaryTxt.getText()),Double.parseDouble( bonusTxt.getText()),

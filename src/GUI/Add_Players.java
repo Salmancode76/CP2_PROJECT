@@ -535,11 +535,18 @@ public class Add_Players extends javax.swing.JFrame {
         try 
         {
         // Check if any field is empty
-        if (nameTxt.getText().isEmpty() || addressTxt.getText().isEmpty() || dobTxt.getText().isEmpty() || 
-            nationalityTxt.getText().isEmpty() || salaryTxt.getText().isEmpty() || positionComboBox.getSelectedItem() == null)
+    // Check if any field is empty
+        if (nameTxt.getText().trim().isEmpty() || addressTxt.getText().trim().isEmpty() || dobTxt.getText().trim().isEmpty() || 
+            nationalityTxt.getText().trim().isEmpty() || salaryTxt.getText().trim().isEmpty() || positionComboBox.getSelectedItem() == null)
         {
             JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
             return; // Exit the method if any field is empty
+        }
+        if (Double.parseDouble(salaryTxt.getText())<0) 
+        {
+             JOptionPane.showMessageDialog(null, "SALARY CAN'T BE NEGATIVE!", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+            
         }
 
         boolean success = true;

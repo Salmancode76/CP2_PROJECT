@@ -63,6 +63,9 @@ public class Person implements Serializable
         // Constructor with five arguments
     public Person(String name, String address, String dob, String nationality, double salary) throws IOException 
     {
+         if (name == null || address == null || dob == null || nationality == null) {
+            throw new NullPointerException("Parameters cannot be null");
+        }
         this.name = name;
         this.address = address;
         this.dob = dob;
@@ -122,34 +125,42 @@ public class Person implements Serializable
     }
 
 
-    public void setName(String name)
-    {
+public void setName(String name) {
+        if (name == null) {
+            throw new NullPointerException("Name cannot be null");
+        }
         this.name = name;
     }
 
-    public void setAddress(String address) 
-    {
+    public void setAddress(String address) {
+        if (address == null) {
+            throw new NullPointerException("Address cannot be null");
+        }
         this.address = address;
     }
 
-    public void setDob(String dob) 
-    {
+    public void setDob(String dob) {
+        if (dob == null) {
+            throw new NullPointerException("Date of birth cannot be null");
+        }
         this.dob = dob;
     }
 
-    public void setNationality(String nationality)
-    {
+    public void setNationality(String nationality) {
+        if (nationality == null) {
+            throw new NullPointerException("Nationality cannot be null");
+        }
         this.nationality = nationality;
     }
 
-    public void setSalary(double salary)
-    {
+    public void setSalary(double salary) {
+        if (salary < 0) {
+            throw new IllegalArgumentException("Salary cannot be negative");
+        }
         this.salary = salary;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     public int getId() {
         return id;

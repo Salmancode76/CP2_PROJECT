@@ -21,6 +21,9 @@ public class Manager extends Person implements Serializable
 
      public Manager(String name, String address, String dob, String nationality, double salary, double bonusPercentage, String qualifications) throws IOException {
         super(name, address, dob, nationality,salary); 
+          if (name == null || address == null || dob == null || nationality == null || qualifications == null) {
+            throw new NullPointerException("Parameters cannot be null");
+        }
         this.bonusPercentage = bonusPercentage;
         this.qualifications = qualifications;
 
@@ -45,18 +48,24 @@ public class Manager extends Person implements Serializable
         return team;
     }
 
-    public void setBonusPercentage(double bonusPercentage) 
-    {
+   public void setBonusPercentage(double bonusPercentage) {
+        if (bonusPercentage < 0) {
+            throw new IllegalArgumentException("Bonus percentage cannot be negative");
+        }
         this.bonusPercentage = bonusPercentage;
     }
 
-    public void setQualifications(String qualifications)
-    {
+    public void setQualifications(String qualifications) {
+        if (qualifications == null) {
+            throw new NullPointerException("Qualifications cannot be null");
+        }
         this.qualifications = qualifications;
     }
 
-    public void setTeam(Team team) 
-    {
+    public void setTeam(Team team) {
+        if (team == null) {
+            throw new NullPointerException("Team cannot be null");
+        }
         this.team = team;
     }
 

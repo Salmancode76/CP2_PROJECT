@@ -289,10 +289,15 @@ public class Add_team extends javax.swing.JFrame {
         try 
         {
         // Check if any field is empty
-        if (Team_nametxt.getText().isEmpty() || stadium_nametxt.getText().isEmpty() || stadium_captxt.getText().isEmpty()) 
+        if (Team_nametxt.getText().trim().isEmpty() || stadium_nametxt.getText().trim().isEmpty() || stadium_captxt.getText().trim().isEmpty()) 
         {
             JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
             return; // Exit the method if any field is empty
+        }
+        
+        if(Integer.parseInt(stadium_captxt.getText())<0){
+            JOptionPane.showMessageDialog(null, "STADIUM CAPCACITY CAN'T BE NEGATIVE", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; 
         }
 
         Team tm = new Team();

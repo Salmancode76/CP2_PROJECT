@@ -385,10 +385,14 @@ public class Edit_Team extends javax.swing.JFrame {
         // TODO add your handling code here:
          SportsLeague sp=null;
         try { 
-               if (tNameTxt.getText().isEmpty() || stadiumTxt.getText().isEmpty() || stadiumCapacityTxt.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
-            return; // Exit the method if any field is empty
+           if (tNameTxt.getText().trim().isEmpty() || stadiumTxt.getText().trim().isEmpty() || stadiumCapacityTxt.getText().trim().isEmpty())
+    {
+        JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
+        return; // Exit the method if any field is empty
+    }
+            if(Integer.parseInt(stadiumCapacityTxt.getText())<0){
+            JOptionPane.showMessageDialog(null, "STADIUM CAPCACITY CAN'T BE NEGATIVE", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; 
         }
             sp = new SportsLeague();
         } catch (IOException ex) {
@@ -424,6 +428,10 @@ public class Edit_Team extends javax.swing.JFrame {
 
     private void stadiumCapacityTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stadiumCapacityTxtKeyTyped
         // TODO add your handling code here:
+              char c= evt.getKeyChar();
+        if(!Character.isDigit(c) ){
+            evt.consume();
+        }
     }//GEN-LAST:event_stadiumCapacityTxtKeyTyped
 
     /**

@@ -480,14 +480,27 @@ public class Add_Managers extends javax.swing.JFrame
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         try 
         {
-        // Check if any field is empty
-        if (nameTxt.getText().isEmpty() || addressTxt.getText().isEmpty() || dobTxt.getText().isEmpty() || 
-            nationalityTxt.getText().isEmpty() || salaryTxt.getText().isEmpty() || bonusTxt.getText().isEmpty() || 
-            qualificationsTxt.getText().isEmpty() || teamComboBox.getSelectedItem() == null) 
+      // Check if any field is empty
+    if (nameTxt.getText().trim().isEmpty() || addressTxt.getText().trim().isEmpty() || dobTxt.getText().trim().isEmpty() || 
+        nationalityTxt.getText().trim().isEmpty() || salaryTxt.getText().trim().isEmpty() || bonusTxt.getText().trim().isEmpty() || 
+        qualificationsTxt.getText().trim().isEmpty() || teamComboBox.getSelectedItem() == null) 
+    {
+        JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
+        return; // Exit the method if any field is empty
+    }
+    if (Double.parseDouble(salaryTxt.getText())<0) 
         {
-            JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
-            return; // Exit the method if any field is empty
+             JOptionPane.showMessageDialog(null, "SALARY CAN'T BE NEGATIVE!", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+            
         }
+   if (Double.parseDouble(bonusTxt.getText())<0) 
+        {
+             JOptionPane.showMessageDialog(null, "BONUS CAN'T BE NEGATIVE!", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+            
+        }
+
 
         Manager m1 = new Manager();
         SportsLeague sl = new SportsLeague();

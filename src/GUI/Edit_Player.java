@@ -513,12 +513,20 @@ public class Edit_Player extends javax.swing.JFrame {
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
         try {
             
-            if (txt_edit_pla_name.getText().isEmpty() || txtAddress.getText().isEmpty() || txt_dob.getText().isEmpty() || 
-            txt_natio.getText().isEmpty() || txt_salary.getText().isEmpty() || positionComboBox.getSelectedItem() == null)
+                if (txt_edit_pla_name.getText().trim().isEmpty() || txtAddress.getText().trim().isEmpty() || txt_dob.getText().trim().isEmpty() || 
+              txt_natio.getText().trim().isEmpty() || txt_salary.getText().trim().isEmpty() || positionComboBox.getSelectedItem() == null)
+          {
+              JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
+              return; // Exit the method if any field is empty
+          }
+                
+                if (Double.parseDouble(txt_salary.getText())<0) 
         {
-            JOptionPane.showMessageDialog(null, "All fields must be filled out!", "Input Error", JOptionPane.ERROR_MESSAGE);
-            return; // Exit the method if any field is empty
+             JOptionPane.showMessageDialog(null, "SALARY CAN'T BE NEGATIVE!", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+            
         }
+
             
             FileOutputStream fo = null;
             
