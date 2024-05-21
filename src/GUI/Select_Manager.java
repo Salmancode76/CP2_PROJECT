@@ -32,10 +32,33 @@ public class Select_Manager extends javax.swing.JFrame {
 
          ArrayList<Manager> managersData = new SportsLeague().getManagers();
          Managers_combo.setModel(dmcpM);
-         for (int i = 0; i < managersData.size(); i++)
-         {
-            Managers_combo.addItem(managersData.get(i).toString());
-         }
+        for (int i = 0; i < managersData.size(); i++)
+        {
+            try 
+            {
+                if (managersData.get(i) != null) 
+                {
+                    Managers_combo.addItem(managersData.get(i).toString());
+                } 
+                else 
+                {
+                    throw new NullPointerException("Manager data is null at index " + i);
+                }
+            } 
+            catch (NullPointerException e) 
+            {
+                System.err.println("Null value encountered: " + e.getMessage());
+            } 
+            catch (ArrayIndexOutOfBoundsException e)
+            {
+                System.err.println("Array index out of bounds: " + e.getMessage());
+            } 
+            catch (Exception e) 
+            {
+                System.err.println("An unexpected error occurred: " + e.getMessage());
+            }
+        }
+
     }
     
 

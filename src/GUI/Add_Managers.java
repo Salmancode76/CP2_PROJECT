@@ -24,19 +24,47 @@ public class Add_Managers extends javax.swing.JFrame
     private void loadTeamsFromFile() 
     {
       
-        try {
+        try 
+        {
             DefaultComboBoxModel dmc = new DefaultComboBoxModel();
             //bind
             //add data
             teamComboBox.setModel(dmc);
             //populating The combo box
             ArrayList <Team> teams_temp= new SportsLeague().getTeams();
-            for (int i=0;i< teams_temp.size();i++)
+            for (int i = 0; i < teams_temp.size(); i++) 
             {
-                teamComboBox.addItem(teams_temp.get(i).getName());
-            }    } catch (IOException ex) {
-            Logger.getLogger(Add_Managers.class.getName()).log(Level.SEVERE, null, ex);
+                try 
+                {
+                    if (teams_temp.get(i) != null && teams_temp.get(i).getName() != null) 
+                    {
+                        teamComboBox.addItem(teams_temp.get(i).getName());
+                    } 
+                    else 
+                    {
+                        throw new NullPointerException("Team or team name is null at index " + i);
+                    }
+                }    
+                   catch (NullPointerException e) 
+                    {
+                        System.err.println("Null value encountered: " + e.getMessage());
+                    } 
+                    catch (ArrayIndexOutOfBoundsException e) 
+                    {
+                        System.err.println("Array index out of bounds: " + e.getMessage());
+                    } 
+                    catch (Exception e)
+                    {
+                        System.err.println("An unexpected error occurred: " + e.getMessage());
+                    }
+            }
+
+
         }
+            catch (IOException ex) 
+            {
+            Logger.getLogger(Add_Managers.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     /**
      * Creates new form Add_Managers

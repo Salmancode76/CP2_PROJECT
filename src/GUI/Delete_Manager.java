@@ -33,8 +33,31 @@ public class Delete_Manager extends javax.swing.JFrame {
 
         for (Manager manager : sp.getManagers()) 
         {
-            ManagerComboBox.addItem(manager.getName());
+            try 
+            {
+                if (manager != null && manager.getName() != null) 
+                {
+                ManagerComboBox.addItem(manager.getName());
+                } 
+                else 
+                {
+                    throw new NullPointerException("Manager or manager name is null");
+                }
+            } 
+            catch (NullPointerException e)
+            {
+                System.err.println("Null value encountered: " + e.getMessage());
+            } 
+            catch (ArrayIndexOutOfBoundsException e) 
+            {
+                System.err.println("Array index out of bounds: " + e.getMessage());
+            } 
+            catch (Exception e)
+            {
+                System.err.println("An unexpected error occurred: " + e.getMessage());
+            }
         }
+
     }   
   
     public Delete_Manager() 
